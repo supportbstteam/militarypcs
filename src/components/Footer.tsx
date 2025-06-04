@@ -3,12 +3,12 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className=" bg-[#fbfbfb] pt-12 pb-6 text-gray-600 text-sm">
-      <div className=" grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="w-full bg-[#fbfbfb] pt-12 pb-6 text-gray-600 text-sm">
+      <div className=" max-w-[1420px] mx-auto px-4 xl:px-0 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[30%_21%_21%_21%] gap-8 mb-16">
 
         <div className="md:col-span-1">
           <Image src="/images/logo2.webp" alt="militarypcs" width={300} height={60} className="w-[180px] md:w-[230px] mb-8" />
-          <p className="text-base text-gray-500 mt-2 mb-4 leading-8">
+          <p className="text-base text-gray-500 mt-2 mb-4 leading-8 w-10/12">
             We’re a mission-driven platform built by and for the military community.
           </p>
           <div className="mt-4">
@@ -53,9 +53,9 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="mt-10 border-t border-gray-300 pt-4 flex flex-col md:flex-row justify-between items-center px-4">
+      <div className="max-w-[1420px] mx-auto px-4 xl:px-0 mt-10 border-t border-gray-300 pt-4 flex flex-col md:flex-row justify-between items-center">
         <p className="text-sm text-gray-500">
-          © 2025 <span className="font-bold">MilitaryPCS</span>. All rights reserved. Website Design by <span className="font-semibold">Beta Soft Technology</span>.
+          © 2025 <span className="font-medium text-black">MilitaryPCS</span>. All rights reserved. Website Design by <span className="font-medium text-black">Beta Soft Technology</span>.
         </p>
         <div className="flex space-x-3 mt-4 md:mt-0">
           {["facebook", "tiktok", "instagram", "x", "linkedin", "black", "youtube"].map(icon => (

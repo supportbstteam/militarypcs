@@ -20,7 +20,7 @@ type Step = {
 
 const HowItWorks: React.FC = () => {
     return (
-        <section className=" mx-auto my-20">
+        <section className="max-w-[1420px] mx-auto px-4 xl:px-0 my-20">
             <div className="lg:flex justify-between items-start ">
                 <div className="lg:w-[50%]  ">
                     <h2 className="text-3xl font-semibold bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent w-fit">

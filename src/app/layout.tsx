@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable}`}>
-      <body className="font-poppins bg-white text-black antialiased max-w-[1420px] mx-auto px-4 xl:px-0">
+      <body className="font-poppins bg-white text-black antialiased  ">
         {children}
       </body>
     </html>

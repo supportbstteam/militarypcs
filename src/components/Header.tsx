@@ -9,7 +9,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 const Header: React.FC = () => {
     const navItems = ["About Us", "Services", "Membership", "Events", "Donate", "Resourcess"]
     return (
-        <header className="py-4">
+        <header className="max-w-[1420px] mx-auto py-4 px-4 xl:px-0">
             <div className="flex items-center justify-between">
                 {/* Logo (left) */}
                 <div className="6/12 md:w-3/12">

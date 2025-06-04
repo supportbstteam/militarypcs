@@ -14,7 +14,7 @@ const Header: React.FC = () => {
                 {/* Logo (left) */}
                 <div className="6/12 md:w-3/12">
                     <Link href="/">
-                        <Image src="/images/logo.webp" alt="logo" width={300} height={60}  className="w-[230px] md:w-[300px]"/>
+                        <Image src="/images/logo.webp" alt="militarypcs" width={300} height={60}  className="w-[230px] md:w-[300px]"/>
                     </Link>
                 </div>
 
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
                         {navItems.map((item) => (
                             <Link key={item} href="#">
 
-                                <li className="text-black text-base font-medium">{item}</li>
+                                <li className="text-black text-base font-medium hover:bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-clip-text hover:text-transparent">{item}</li>
                             </Link>
                         ))}
                     </ul>

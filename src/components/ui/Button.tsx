@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import type { IconType } from "react-icons";
 
 type ButtonProps = {
   variant?: "primary" | "secondary" | "outline" | "outlineColor";
@@ -15,7 +16,7 @@ type ButtonProps = {
 );
 
 const Button: React.FC<ButtonProps> = ({
-  variant ,
+  variant ="primary",
   className,
   icon,
   iconSize,
@@ -32,13 +33,13 @@ const Button: React.FC<ButtonProps> = ({
     outlineColor:"border-[#B43141] border-2 bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent bg-transparent hover:bg-white hover:text-[#b43141] transition shadow",
   };
 
-  const renderedIcon =
-    icon &&
-    React.cloneElement(icon, {
-      size: iconSize,
-      className: clsx("shrink-0", icon.props.className, iconClassName),
-    });
-
+const renderedIcon =
+  icon && React.isValidElement(icon)
+    ? React.cloneElement(icon as React.ReactElement<{ className?: string; size?: number }>, {
+        ...(iconSize ? { size: iconSize } : {}),
+        className: clsx("shrink-0", (icon.props as { className?: string }).className, iconClassName),
+      })
+    : null;
   const content = (
     <>
       {renderedIcon && <span>{renderedIcon}</span>}

@@ -3,7 +3,7 @@ import backgroundImage from "images/Hero-1.webp";
 import Button from "./ui/Button";
 
 type BannerProps = {
-  title: string;
+  title?: string;
   subtitle?: string;
 };
 

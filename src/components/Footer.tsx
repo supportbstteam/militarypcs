@@ -57,9 +57,9 @@ const Footer = () => {
         <p className="text-sm text-gray-500">
           © 2025 <span className="font-medium text-black">MilitaryPCS</span>. All rights reserved. Website Design by <span className="font-medium text-black">Beta Soft Technology</span>.
         </p>
-        <div className="flex space-x-3 mt-4 md:mt-0">
-          {["facebook", "tiktok", "instagram", "x", "linkedin", "black", "youtube"].map(icon => (
-            <Image key={icon} src={`/icons/${icon}.svg`} alt={icon} width={20} height={20} />
+        <div className="flex space-x-3 mt-4 md:mt-0 rounded-circle overflow-hidden">
+          {["facebook", "tiktok", "instagram", "x", "linkedin", "threads", "youtube"].map(icon => (
+            <Image key={icon} src={`/icons/${icon}.svg`} alt={icon} width={20} height={20} className="rounded-circle overflow-hidden" />
           ))}
         </div>
       </div>

@@ -35,8 +35,8 @@ const CountersSection = () => {
   ];
 
   return (
-    <section className=" pb-16 position-relative top-4">
-      <div className="max-w-[1420px] mx-auto mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <section className=" pb-16 max-w-[1420px] ">
+      <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {data.map((item) => (
           <CounterCard key={item.label} {...item} />
         ))}

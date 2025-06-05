@@ -25,12 +25,12 @@ const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const base = "inline-flex items-center  gap-2 w-fit px-6 py-4 text-base  rounded-lg font-medium";
+  const base = "inline-flex items-center  gap-2 w-fit px-6 py-4 text-base   rounded-lg font-semibold";
   const variants = {
-    primary: "bg-[linear-gradient(135deg,_#b43141,_#274768)] text-white  hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200",
+    primary: " text-white bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200",
     secondary: "bg-gray-200 text-black hover:bg-gray-300",
-    outline:"border-2 border-white text-white bg-transparent hover:bg-white hover:text-[#b43141] transition shadow",
-    outlineColor:"border-[#B43141] border-2 bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent bg-transparent hover:bg-white hover:text-[#b43141] transition shadow",
+    outline:"border-1 border-white text-white bg-transparent hover:bg-white hover:text-[#b43141] transition shadow",
+    outlineColor:"border-[#B43141] border-1 bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent bg-transparent hover:bg-white hover:text-[#b43141] transition shadow",
   };
 
 const renderedIcon =

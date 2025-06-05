@@ -45,8 +45,8 @@ const CounterCard: React.FC<CounterCardProps> = ({
   return (
     <div
       ref={ref}
-      className="bg-white rounded-2xl px-4 py-4 shadow-sm border border-yellow-100 w-full flex items-center gap-4"
-    >
+      className="w-full min-w-[250px] bg-white rounded-2xl px-4 py-4 shadow-sm border border-yellow-100  flex items-center gap-4">
+      {/* className="w-full"> */}
       <div className="w-16 h-16 rounded-full  flex items-center justify-center">
         <img src={icon} alt="icon" className="w-16 h-16 text-white" />
       </div>

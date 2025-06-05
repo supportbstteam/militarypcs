@@ -10,7 +10,7 @@ type BannerProps = {
 const Banner: React.FC<BannerProps> = ({ title, subtitle }) => {
   return (
 <section
-  className="max-w-[1420px] mx-auto relative bg-cover  bg-position-[20%_80%] md:bg-position-[20%_80%] md:bg-center mx-auto flex items-center rounded-3xl mx-4"
+  className="max-w-[1420px] mx-auto relative bg-cover  bg-position-[20%_80%] md:bg-position-[20%_80%] flex items-center rounded-3xl mx-4"
   style={{ backgroundImage: `url('/images/Hero-1.webp')` }}
 >
       <div className="w-full md:flex flex-col md:flex-row justify-end items-center my-6 md:my-36 md:mx-8 px-4 py-8 md:px-0 md:py-0">

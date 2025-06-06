@@ -25,9 +25,9 @@ body {
 
 @layer utilities {
   .h2 {
-    @apply text-3xl font-semibold bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent ;
+    @apply text-3xl font-semibold inline-block  uppercase bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent ;
   }
   .h2White {
-    @apply text-3xl font-semibold mb-4 text-white bg-[linear-gradient(135deg,_#1e3a8a,_#9333ea)] bg-clip-text text-transparent;
+    @apply text-3xl font-semibold inline-block  mb-4 uppercase text-white bg-[linear-gradient(135deg,_#1e3a8a,_#9333ea)] bg-clip-text text-transparent;
   }
 }

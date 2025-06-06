@@ -44,6 +44,8 @@ const TextMediaHome: React.FC<{
         </div>
 
       </div>
+
+      
       <div className="flex flex-col md:flex-row-reverse items-center  md:gap-14 ">
         <div className="md:w-6/12">
           <Image src="/images/img2.webp" alt="militarypcs" width={300} height={60} className="w-full mb-8" unoptimized />

@@ -2,13 +2,24 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
+
+  const quickLinks = [
+        { label: "About Us", link: "/about-us" },
+        { label: "Services", link: "/services" },
+        { label: "Membership", link: "/membership" },
+        { label: "Events", link: "/events" },
+        { label: "Donate", link: "/donate" },
+        { label: "Resourcess", link: "/resourcess" }, // Note: double 's' kept as-is, but consider fixing if typo
+    ];
   return (
     <footer className="w-full bg-[#fbfbfb] pt-12 pb-6 text-gray-600 text-sm">
       <div className=" max-w-[1420px] mx-auto px-4 xl:px-0 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[30%_21%_21%_21%] gap-8 mb-16">
 
         <div className="md:col-span-1">
-          <Image src="/images/logo2.webp" alt="militarypcs" width={300} height={60} className="w-[180px] md:w-[230px] mb-8" />
           <p className="text-base text-gray-500 mt-2 mb-4 leading-8 w-10/12">
+          <Link href="/">
+            <Image  src="/images/logo2.webp" alt="militarypcs" width={300} height={60} className="w-[180px] md:w-[230px] mb-8" />
+          </Link>
             We’re a mission-driven platform built by and for the military community.
           </p>
           <div className="mt-4">
@@ -25,8 +36,8 @@ const Footer = () => {
         <div>
           <h4 className="text-xl font-semibold text-black mb-8">Quick Links</h4>
           <ul className="space-y-4">
-            {["Home", "About Us", "Our Services", "Membership", "Community Events", "Donation", "Library", "Sign up", "Contact Us"].map(link => (
-              <li key={link}><Link href="#" className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-clip-text hover:text-transparent">{link}</Link></li>
+            {quickLinks.map((link,i ) => (
+              <li key={i}><Link href={link.link} className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-clip-text hover:text-transparent">{link.label}</Link></li>
             ))}
           </ul>
         </div>

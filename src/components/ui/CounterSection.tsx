@@ -9,21 +9,21 @@ const CountersSection = () => {
       icon: "/icons/counter1.webp",
       label: "Total Members Joined",
       value: 45870,
-      prefix: "$",
+      prefix: "",
 
     },
     {
       icon: "/icons/counter2.webp",
       label: "Verified Professionals Serving",
       value: 6257,
-      prefix: "$",
+      prefix: "",
 
     },
     {
       icon: "/icons/counter3.webp",
       label: "Military Families Served",
       value: 13500,
-      prefix: "$",
+      prefix: "",
 
     },
     {

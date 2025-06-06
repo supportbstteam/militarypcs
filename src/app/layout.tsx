@@ -4,6 +4,8 @@ import "./globals.css";
 // imports for slider 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 // import "@/styles/globals.css"; // your global Tailwind CSS file
 // imports for slider ends 
 
@@ -26,7 +28,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "MilitryPCS",
+  title: "MilitaryPCS",
   description: " Empowering Military Families with Trusted Services",
 };
 
@@ -38,7 +40,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable}`}>
       <body className="font-poppins bg-white text-black antialiased  ">
+        <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

@@ -14,7 +14,7 @@ const MilitryBasesMap = () => {
                     <h2 className='text-xl sm:text-3xl font-semibold text-white uppercase mb-16'> Explore Militry Bases Across The U.S.</h2>
                     <Image src="/images/map-image.png" alt="militarypcs" width={300} height={60} quality={100} className="w-[75%]" unoptimized />
                 </div>
-                    <div className='md:absolute bottom-[-110px]'>
+                    <div className='md:absolute bottom-[-110px] w-full'>
                         <CountersSection />
                     </div>
             </section>

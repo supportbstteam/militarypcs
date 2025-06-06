@@ -8,15 +8,16 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-      },
       colors:{
         primary: "#B43140",
         secondary: "#26486A",
         light: "#f5f5f5",
         dark: "#171717",
       },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
+      
     }
   },
   plugins: [],

@@ -1,3 +1,5 @@
+import Breadcrumbsbanner from '@/components/shared/Breadcrumbsbanner'
+import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import Button from '@/components/ui/Button'
 import Image from 'next/image'
 import React from 'react'
@@ -6,10 +8,12 @@ import { IoIosArrowRoundForward } from 'react-icons/io'
 
 const page = () => {
   return (
+    <>
+      <Breadcrumbsbanner/>
     <section className="max-w-[1420px] mx-auto px-4 py-8 ">
       <div className="flex flex-col md:flex-row items-center md:gap-14 mb-10" >
         <div className="md:w-1/2">
-          <Image src="/team/image.png" alt="militarypcs" width={300} height={100} className="w-full h-full mb-8 rounded-3xl" unoptimized />
+          <Image src="/team/About_us.jpg" alt="militarypcs" width={300} height={100} className="w-full h-full mb-8 rounded-3xl" unoptimized />
         </div>
         <div className="md:w-1/2">
           <h1 className="h2 mb-6">Welcome to MilitaryPCS where passion meets purpose.</h1>
@@ -46,6 +50,8 @@ const page = () => {
 
       </div>
     </section>
+    </>
+
   )
 }
 

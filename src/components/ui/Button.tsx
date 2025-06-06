@@ -3,13 +3,14 @@ import clsx from "clsx";
 import type { IconType } from "react-icons";
 
 type ButtonProps = {
-  variant?: "primary" | "secondary" | "outline" | "outlineColor";
+  variant?: "primary" | "secondary" | "outlineWhite" | "outlineColor";
   icon?: React.ReactElement;
   iconSize?: number;
   iconClassName?: string;
   href?: string;
   className?: string;
   children: React.ReactNode;
+  width?: string; // e.g., "full", "fit", "auto", or any custom width like "300px"
 } & (
   | React.ButtonHTMLAttributes<HTMLButtonElement>
   | React.AnchorHTMLAttributes<HTMLAnchorElement>
@@ -23,14 +24,20 @@ const Button: React.FC<ButtonProps> = ({
   iconClassName,
   href,
   children,
+  width,
   ...props
 }) => {
-  const base = "inline-flex items-center  gap-2 w-fit px-6 py-4 text-base   rounded-lg font-semibold";
+  // const base = "min-w-[240px]  inline-flex justify-center items-center  gap-2 w-fit px-6 py-4 text-base   rounded-lg font-semibold cursor-pointer";
+  const base = `min-w-[240px] w-${width}  inline-flex justify-center items-center  gap-2 w-fit px-6 py-4 text-base   rounded-lg font-semibold cursor-pointer transition shadow`;
   const variants = {
     primary: " text-white bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200",
     secondary: "bg-gray-200 text-black hover:bg-gray-300",
-    outline:"border-1 border-white text-white bg-transparent hover:bg-white hover:text-[#b43141] transition shadow",
-    outlineColor:"border-[#B43141] border-1 bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent bg-transparent hover:bg-white hover:text-[#b43141] transition shadow",
+    outlineWhite:"border-1 border-white text-white bg-transparent hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] hover:text-white transition shadow",
+    // outlineColor:"border-1 border-[#B43141] bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent text hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] hover:text-white",
+    
+    
+    
+    outlineColor:"border-1 border-[#B43141] text-black bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent  hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] ",
   };
 
 const renderedIcon =

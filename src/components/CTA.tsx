@@ -18,8 +18,8 @@ const CTA = () => {
 
 
                  <div className="flex flex-col lg:flex-row gap-6">
-                    <Button variant="outline" href="/">Create a Free Account</Button>
-                    <Button variant="outline" href="/">Become a Partner</Button>
+                    <Button variant="outlineWhite" href="/">Create a Free Account</Button>
+                    <Button variant="outlineWhite" href="/">Become a Partner</Button>
                  </div>
                  
                 

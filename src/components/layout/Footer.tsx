@@ -66,7 +66,7 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="max-w-[1420px] mx-auto px-4 xl:px-0 mt-10 border-t border-gray-300 pt-4 flex flex-col md:flex-row justify-between items-center">
         <p className="text-sm text-gray-500">
-          © 2025 <span className="font-medium text-black">MilitaryPCS</span>. All rights reserved. Website Design by <span className="font-medium text-black">Beta Soft Technology</span>.
+          © 2025 <span className="font-medium text-black">MilitaryPCS</span>. All rights reserved. Website Design by <span className="font-medium text-black"> <Link href="https://www.betasofttechnology.com/" target="_blank">Beta Soft Technology</Link></span>.
         </p>
         <div className="flex space-x-3 mt-4 md:mt-0 rounded-circle overflow-hidden">
           {["facebook", "tiktok", "instagram", "x", "linkedin", "threads", "youtube"].map(icon => (

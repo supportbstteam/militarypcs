@@ -119,6 +119,7 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+      {type === "signup" && (
 
         <Input
           label="Contact Person"
@@ -126,7 +127,7 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
           value={contactPerson}
           onChange={(e) => setContactPerson(e.target.value)}
         />
-    
+      )}
       {type === "signup" && (
 
 

@@ -168,7 +168,7 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
       options={directoryOptions}
       value={selectedDirectory}
       onChange={setSelectedDirectory}
-      error={!selectedDirectory ? "Role is required" : ""}
+      // error={!selectedDirectory ? "Role is required" : ""}
     />
 
     <Dropdown
@@ -176,7 +176,7 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
       options={SubDirectoryOptions}
       value={selectedSubDirectory}
       onChange={setSelectedSubDirectory}
-      error={!selectedSubDirectory ? "Role is required" : ""}
+      // error={!selectedSubDirectory ? "Role is required" : ""}
     />
 
     <Dropdown
@@ -184,7 +184,7 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
       options={locationOptions}
       value={selectedLocation}
       onChange={setSelectedLocation}
-      error={!selectedLocation ? "Role is required" : ""}
+      // error={!selectedLocation ? "Role is required" : ""}
     />
 
     <Dropdown
@@ -192,7 +192,7 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
       options={subLocationOptions}
       value={selectedSubLocation}
       onChange={setSelectedSubLocation}
-      error={!selectedSubLocation ? "Role is required" : ""}
+      // error={!selectedSubLocation ? "Role is required" : ""}
     />
   </>
 )}

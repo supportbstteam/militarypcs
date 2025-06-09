@@ -36,19 +36,19 @@ const Header: React.FC = () => {
                     </ul>
 
                     <div className="flex gap-2">
-                        {/* <Link href="/auth/login"> */}
+                        <Link href="/auth/login">
                         <button className="flex items-center gap-1 px-4 py-2 text-sm bg-[linear-gradient(135deg,_#b43141,_#274768)] text-white rounded-lg font-semibold hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200 cursor-pointer">
                             <CiLock size={22} className="text-white" />
                             Sign in
                         </button>
-                        {/* </Link> */}
+                        </Link>
 
-                        {/* <Link href="/auth/signup"> */}
+                        <Link href="/auth/signup">
                         <button className="flex items-center gap-1 px-4 py-2 text-sm bg-[linear-gradient(135deg,_#b43141,_#274768)] text-white rounded-lg font-semibold hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200 cursor-pointer">
                             <CiUser size={22} className="text-white" />
                             Join us
                         </button>
-                        {/* </Link> */}
+                        </Link>
                     </div>
                 </nav>
                 <div className="block xl:hidden ">

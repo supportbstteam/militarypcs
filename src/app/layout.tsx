@@ -27,6 +27,12 @@ const poppins = Poppins({
   display: "swap",
 });
 
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+
 export const metadata: Metadata = {
   title: "MilitaryPCS",
   description: " Empowering Military Families with Trusted Services",

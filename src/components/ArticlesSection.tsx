@@ -41,18 +41,17 @@ const articles = [
 
 const ArticlesSection: React.FC = () => {
   return (
-    <section className="bg-white pt-32 pb-16">
+    <section className="bg-white pt-8 md:pt-32  pb-8 md:pb-16">
       <div className="max-w-[1420px] mx-auto px-4 text-center">
 
         <div className="text-center mb-10">
-          <h2 className="h2 mb-4">
+          <h2 className="h2">
             CHECKOUT OUR LATEST ARTICLES
           </h2>
-          <p className="text-black mb-16">
+          <p className="text-black mb-6 md:mb-16">
             Stay informed with expert tips, PCS guidance, and real stories from the military community.
           </p>
         </div>
-
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {articles.map((a) => (
             <div key={a.id} className="bg-white rounded-xl shadow-sm border-[1px] border-gray-100 overflow-hidden">

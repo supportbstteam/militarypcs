@@ -17,19 +17,19 @@ const TextMediaHome: React.FC<{
           <Image src="/images/img1.webp" alt="militarypcs" width={300} height={100} className="w-full h-full mb-8" unoptimized />
         </div>
         <div className="md:w-1/2">
-          <h2 className="h2">LOOKING FOR VA LOAN EXPERTS?</h2>
-          <p className="text-xl text-gray-700 mb-8 leading-8">Get pre-approved with confidence from professionals who understand your military journey.</p>
+          <h2 className="h2">LOOKING FOR TRUSTED VA LOAN EXPERTS?</h2>
+          <p className="text-xl text-gray-700 mb-8 leading-8">Get pre-approved with confidence from vetted military professionals who understand your journey.</p>
 
-          <p className="text-gray-700 mb-6 leading-10">
-            Navigating VA loans can be confusing — but it doesn’t have to be.
+          <p className="text-gray-700 mb-6 leading-10">Navigating VA loans can be confusing – but it doesn’t have to be. 
             <br />
-            Our verified VA Loan Experts are veterans and military spouses who guide you step-by-step through the VA home loan process.
+Our network of VA Loan Experts are veterans and military spouses who will guide you step-by-step through the VA home loan process. 
           </p>
           <ul className="space-y-4 mb-10 ">
             {[
               'Check your eligibility',
-              'Get competitive VA rates',
-              'Move smoothly with expert support',
+              'Receive Lower VA rates',
+              'Save Big with Lower Closing Cost ',
+              'Move smoothly with expert support and care',
             ].map((item) => (
               <li key={item} className="flex items-center gap-2">
                 <span className="text-green-400 text-base"><FaCheckCircle /></span>
@@ -52,11 +52,11 @@ const TextMediaHome: React.FC<{
         </div>
         <div className="md:w-6/12">
           <h2 className="h2">LOOKING FOR REAL ESTATE AGENTS?</h2>
-          <p className="text-xl text-gray-700 mb-8 leading-8">Buy or sell your home with trusted agents who understand PCS moves.</p>
+          <p className="text-xl text-gray-700 mb-8 leading-8">Buy or Sell your home with vetted military real estate agents who understand PCS moves. </p>
 
           <p className="text-gray-700 mb-6 leading-10">
-            Military relocations are stressful — but the right agent makes all the difference. <br />
-            Our verified Real Estate Agents are veterans or military spouses who specialize in helping service members and their families transition smoothly.
+            Military relocations can be stressful – but having the right real estate agent makes all the difference.<br />
+            Our network of Real Estate Agents are veterans or military spouses, who specialize in helping service members and their families transition smoothly. 
           </p>
           <ul className="space-y-4 mb-10 ">
             {[

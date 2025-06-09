@@ -20,10 +20,9 @@ const Header: React.FC = () => {
                 {/* Logo (left) */}
                 <div className="6/12 md:w-3/12">
                     <Link href="/">
-                        <Image src="/images/logo.webp" alt="militarypcs" width={300} height={60} className="w-[230px] md:w-[300px]" />
+                        <Image src="/newLogo.png" alt="militarypcs" width={300} height={60} className="w-[230px] md:w-[300px]" />
                     </Link>
                 </div>
-
                 {/* Navigation (right) */}
                 <nav className="w-9/12 hidden xl:flex gap-12 justify-end items-center ">
                     <ul className="flex items-center gap-8">
@@ -50,7 +49,6 @@ const Header: React.FC = () => {
                             Join us
                         </button>
                         {/* </Link> */}
-
                     </div>
                 </nav>
                 <div className="block xl:hidden ">

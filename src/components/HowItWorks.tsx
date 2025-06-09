@@ -23,11 +23,13 @@ const HowItWorks: React.FC = () => {
         <section className="max-w-[1420px] mx-auto px-4 xl:px-0 my-20">
             <div className="lg:flex justify-between items-start ">
                 <div className="lg:w-[50%]  ">
-                    <h2 className="text-3xl font-semibold bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent w-fit">
+                    <h2 className="h2   ">
                         HOW IT WORKS
                     </h2>
                     <p className="text-lg text-gray-600 mt-2 mb-4">
-                        Supporting military families through simple and secure connections.
+                        We provide military families with PCS resources and vetted connections.
+                        <br />
+                        Military serving Military is our passion.
                     </p>
                 </div>
 
@@ -50,7 +52,7 @@ const HowItWorks: React.FC = () => {
                     <h4 className="text-xl font-semibold text-gray-800 mt-8 mb-0">Sign Up Free</h4>
                     <p className="text-lg leading-8 text-gray-600 mt-2 mb-8">Join the platform at no cost and verify your military status.</p>
                     <a href="/" className="inline-flex items-center gap-2 bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent font-semibold text-sm w-fit">
-                        Register Now <IoIosArrowRoundForward className=" text-black text-lg"/>
+                        Register Now <IoIosArrowRoundForward className=" text-black text-lg" />
                     </a>
                 </div>
                 <div>
@@ -58,7 +60,7 @@ const HowItWorks: React.FC = () => {
                     <h4 className="text-xl font-semibold text-gray-800 mt-8 mb-0">Find Trusted Professionals</h4>
                     <p className="text-lg leading-8 text-gray-600 mt-2 mb-8">Search for verified service providers near your current or next base.</p>
                     <a href="/" className="inline-flex items-center gap-2 bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent font-semibold text-sm w-fit">
-                        Find Professionals Now <IoIosArrowRoundForward className=" text-black text-lg"/>
+                        Find Professionals Now <IoIosArrowRoundForward className=" text-black text-lg" />
                     </a>
                 </div>
                 <div>
@@ -66,7 +68,7 @@ const HowItWorks: React.FC = () => {
                     <h4 className="text-xl text-primary font-semibold text-gray-800 mt-8 mb-0">Connect & Track</h4>
                     <p className="text-lg leading-8 text-gray-600 mt-2 mb-8">Message professionals directly and manage your service requests easily.</p>
                     <a href="/" className="inline-flex items-center gap-2 bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent font-semibold text-sm w-fit">
-                        Connect Now <IoIosArrowRoundForward className=" text-black text-lg"/>
+                        Connect Now <IoIosArrowRoundForward className=" text-black text-lg" />
                     </a>
                 </div>
             </div>

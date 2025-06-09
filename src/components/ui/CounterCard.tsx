@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -45,10 +46,10 @@ const CounterCard: React.FC<CounterCardProps> = ({
   return (
     <div
       ref={ref}
-      className="w-full min-w-[250px] bg-white rounded-2xl px-4 py-4 shadow-sm border border-yellow-100  flex items-center gap-4">
+      className="w-full min-w-[250px] bg-white rounded-2xl px-3 py-3 shadow-sm border border-yellow-100  flex items-center gap-4">
       {/* className="w-full"> */}
-      <div className="w-16 h-16 rounded-full  flex items-center justify-center">
-        <img src={icon} alt="icon" className="w-16 h-16 text-white" />
+      <div className="w-17 h-17 rounded-full  flex items-center justify-center">
+        <Image src={icon} alt="icon" width={100} height={100} className="w-17 h-17 " />
       </div>
       <div>
         <p className="text-sm text-gray-900 mb-1">{label}</p>

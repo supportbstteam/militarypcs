@@ -32,13 +32,12 @@ const HowItWorks: React.FC = () => {
                         Military serving Military is our passion.
                     </p>
                 </div>
-
                 <div className="sm:flex items-center rounded-xl items">
-                    <span className=" rounded-t-xl sm:rounded-t-none sm:rounded-l-xl flex items-center justify-center gap-2  text-black text-base font-semibold px-12 py-3 bg-[#DEDEDE] hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200 hover:text-white">
+                    <span className=" rounded-t-xl sm:rounded-t-none sm:rounded-l-xl cursor-pointer flex items-center justify-center gap-2  text-black text-base font-semibold px-12 py-3 bg-[#DEDEDE] hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200 hover:text-white">
                         For Members
                     </span>
-                    <span className=" rounded-b-xl sm:rounded-b-none sm:rounded-r-xl sm:rounded-br-xl flex items-center justify-center gap-2  text-white text-base font-semibold px-12 py-3 bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200">
-                        For Professionals
+                    <span className=" rounded-b-xl sm:rounded-b-none sm:rounded-r-xl cursor-pointer flex sm:rounded-br-xl  items-center justify-center gap-2  text-white text-base font-semibold px-12 py-3 bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-[#DEDEDE] hover:bg-none hover:text-black transition-all duration-200">
+                        For Professionals   
                     </span>
                 </div>
             </div>

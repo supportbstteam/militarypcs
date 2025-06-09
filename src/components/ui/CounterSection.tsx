@@ -7,7 +7,7 @@ const CountersSection = () => {
   const data = [
     {
       icon: "/icons/counter1.webp",
-      label: "Total Members Joined",
+      label: "Total Military Members Joined",
       value: 45870,
       prefix: "",
 
@@ -28,7 +28,7 @@ const CountersSection = () => {
     },
     {
       icon: "/icons/counter3(Copy).webp",
-      label: "Donations Raised",
+      label: "Donations Raised for Military Families",
       value: 752000,
       prefix: "$",
     },

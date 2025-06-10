@@ -80,7 +80,7 @@ const Services = () => {
           <h2 className="h2White uppercase">
             Need Trusted Home Services Pros?
           </h2>
-          <p className="text-base md:text-xl w-8/12 text-white mb-8 leading-8">Connect with verified military veterans and spouse professionals for everything from home inspections, plumbing, painting — and much more, all near your base.</p>
+          <p className="text-base md:text-xl md:w-8/12 text-white mb-8 leading-8">Connect with verified military veterans and spouse professionals for everything from home inspections, plumbing, painting — and much more, all near your base.</p>
 
 
         </div>

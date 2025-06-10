@@ -1,76 +1,166 @@
 // components/HowItWorks.tsx
-import React from "react";
+
+"use client"
+import React, { useState } from "react";
 import { CiUser } from "react-icons/ci";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { LuNotebookPen } from "react-icons/lu";
-import { PiNetworkLight } from "react-icons/pi";
-import { SlNotebook, SlUserFollowing } from "react-icons/sl";
+import { LuNotebookPen, LuUserRoundPlus } from "react-icons/lu";
+import { PiNetworkLight, PiSpeakerSimpleHighLight } from "react-icons/pi";
+import { SlBadge, SlBell, SlBubble, SlChart, SlEvent, SlLocationPin, SlNotebook, SlUserFollowing } from "react-icons/sl";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
+import Button from "./ui/Button";
 
-const iconMap: Record<string, React.ElementType> = {
-    CiUser, LuNotebookPen, SlNotebook, SlUserFollowing
-};
+
+
 
 type Step = {
     title: string;
     description: string;
     linkText: string;
-    icon: keyof typeof iconMap;
+
 };
 
 const HowItWorks: React.FC = () => {
+    const [toggle, setToggel] = useState<"members" | "professionals">("members")
+    const data = [
+        {
+            "tab": "members",
+            "icon": PiNetworkLight,
+            "title": "Join for Free",
+            "text": "Verify your military status and unlock exclusive access to verified professionals.",
+            "button": "Register Now",
+        },
+        {
+            "tab": "members",
+            "icon": LuUserRoundPlus,
+            "title": "Search for Professionals",
+            "text": "Wherever you’re stationed, find reliable and trusted, military vetted experts ready to help.",
+            "button": "Find Professionals Now",
+        },
+        {
+            "tab": "members",
+            "icon": SlLocationPin,
+            "title": "Connect & Track",
+            "text": "Message professionals directly and manage your service requests easily.",
+            "button": "Connect Now",
+        },
+        {
+            "tab": "members",
+            "icon": SlBubble,
+            "title": "A Platform with Purpose",
+            "text": "Created by Military to connect, support, protect and serve military families nationwide.",
+            "button": "Connect Now",
+        },
+        {
+            "tab": "professionals",
+            "icon": SlBadge,
+            "title": "Affordable, Transparent Membership",
+            "text": "Unlock access to our military network for a low monthly subscription—significantly less than other platforms. We never take commissions or cut any of your revenue. You keep 100% of what you earn.",
+            "button": "Connect Now",
+        },
+        {
+            "tab": "professionals",
+            "icon": PiSpeakerSimpleHighLight,
+            "title": "Promote Your Business ",
+            "text": "Showcase your professional profile, build your reputation within the military community, and grow your presence near bases across the country.",
+            "button": "Connect Now",
+        },
+        {
+            "tab": "professionals",
+            "icon": SlBell,
+            "title": "Receive Service Request",
+            "text": "Email notifications will be sent to professionals that are selected by military members in need of their service — track and manage service request in one convenient place.",
+            "button": "Connect Now",
+        },
+        {
+            "tab": "professionals",
+            "icon": SlChart,
+            "title": "Make a Real Impact",
+            "text": "This isn’t just another lead platform—it’s a chance to give back, provide support and help make positive changes for military families. Grow your business with purpose!",
+            "button": "Connect Now",
+        },
+
+    ]
+
+    const TitleData = [
+        {
+            "tab": "members",
+            "h2": "HOW IT WORKS",
+            "subTitle": "Supporting military families through simple and secure connections with professionals who understand military life."
+        },
+        {
+            "tab": "professionals",
+            "h2": "HOW IT WORKS",
+            "subTitle": "We provide PCS resources and match military families with verified, mission-aligned professionals in real estate, VA lending, insurance, home services, and more. Military Serving Military isn’t just our motto—it’s the heart of what we do."
+        }
+    ]
+
     return (
         <section className="max-w-[1420px] mx-auto px-4 xl:px-0 my-20">
             <div className="lg:flex justify-between items-start ">
-                <div className="lg:w-[50%]  ">
-                    <h2 className="h2   ">
-                        HOW IT WORKS
-                    </h2>
-                    <p className="text-lg text-gray-600 mt-2 mb-4">
-                        We provide military families with PCS resources and vetted connections.
-                        <br />
-                        Military serving Military is our passion.
-                    </p>
-                </div>
+
+                {TitleData.filter(title => title.tab === toggle).map((title, i) => (
+                    <div className="lg:w-[50%]  " key={i}>
+                        <h2 className="h2   ">
+                            {title.h2}
+                        </h2>
+                        <p className="text-base md:text-lg text-gray-600 mt-2 mb-4">
+                            {title.subTitle}
+                        </p>
+                    </div>
+                ))}
                 <div className="sm:flex items-center rounded-xl items">
-                    <span className=" rounded-t-xl sm:rounded-t-none sm:rounded-l-xl cursor-pointer flex items-center justify-center gap-2  text-black text-base font-semibold px-12 py-3 bg-[#DEDEDE] hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200 hover:text-white">
-                        For Members
+                    <span
+                        onClick={() => setToggel("members")}
+                        className={` rounded-t-xl sm:rounded-t-none sm:rounded-l-xl cursor-pointer flex items-center justify-center gap-2   text-base font-semibold px-12 py-3  transition duration-100 ${toggle === "members" ? "bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-white " : " text-black bg-[#DEDEDE]"}`}
+
+                    >
+                        For Military Members
                     </span>
-                    <span className=" rounded-b-xl sm:rounded-b-none sm:rounded-r-xl cursor-pointer flex sm:rounded-br-xl  items-center justify-center gap-2  text-white text-base font-semibold px-12 py-3 bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-[#DEDEDE] hover:bg-none hover:text-black transition-all duration-200">
-                        For Professionals   
+                    <span
+                        onClick={() => setToggel("professionals")}
+                        className={` rounded-b-xl sm:rounded-b-none sm:rounded-r-xl sm:rounded-br-xl  cursor-pointer flex  items-center justify-center gap-2   text-base font-semibold px-12 py-3 transition duration-100 ${toggle === "professionals" ? "bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-white " : " text-black bg-[#DEDEDE]"}`}
+
+
+                    >
+                        For Professionals
                     </span>
                 </div>
             </div>
 
 
 
-            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
-                <div>
-                    <SlNotebook className="text-4xl text-[#b43141] transition-colors " />
-
-                    <h4 className="text-xl font-semibold text-gray-800 mt-8 mb-0">Sign Up Free</h4>
-                    <p className="text-lg leading-8 text-gray-600 mt-2 mb-8">Join the platform at no cost and verify your military status.</p>
-                    <a href="/" className="inline-flex items-center gap-2 bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent font-semibold text-sm w-fit">
-                        Register Now <IoIosArrowRoundForward className=" text-black text-lg" />
-                    </a>
-                </div>
-                <div>
-                    <VscWorkspaceTrusted className="text-4xl text-[#b43141] text-gradient" />
-                    <h4 className="text-xl font-semibold text-gray-800 mt-8 mb-0">Find Trusted Professionals</h4>
-                    <p className="text-lg leading-8 text-gray-600 mt-2 mb-8">Search for verified service providers near your current or next base.</p>
-                    <a href="/" className="inline-flex items-center gap-2 bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent font-semibold text-sm w-fit">
-                        Find Professionals Now <IoIosArrowRoundForward className=" text-black text-lg" />
-                    </a>
-                </div>
-                <div>
-                    <PiNetworkLight className="text-4xl text-[#b43141] text-gradient" />
-                    <h4 className="text-xl text-primary font-semibold text-gray-800 mt-8 mb-0">Connect & Track</h4>
-                    <p className="text-lg leading-8 text-gray-600 mt-2 mb-8">Message professionals directly and manage your service requests easily.</p>
-                    <a href="/" className="inline-flex items-center gap-2 bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent font-semibold text-sm w-fit">
-                        Connect Now <IoIosArrowRoundForward className=" text-black text-lg" />
-                    </a>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                {data
+                    .filter(card => card.tab === toggle)
+                    .map((card, i) => {
+                        const Icon = card.icon;
+                        return (
+                            <div key={i} className="group hover:transform hover:scale-105 transition-all duration-300">
+                                <Icon className="text-4xl text-primary transition-colors group-hover:text-secondary" />
+                                <h4 className="text-xl font-semibold text-gray-800 mt-8 mb-0">
+                                    {card.title}
+                                </h4>
+                                <p className="text-base md:text-lg leading-8 text-gray-600 mt-2 mb-8">
+                                    {card.text}
+                                </p>
+                                <a
+                                    href="/"
+                                    className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold text-sm hover:opacity-80 transition-opacity"
+                                >
+                                    {card.button}
+                                    <IoIosArrowRoundForward className="text-primary text-lg" />
+                                </a>
+                            </div>
+                        );
+                    })}
             </div>
+            <div className="grid">
+                <p className="my-4">Ready to serve those who serve?</p>
+                <Button variant="primary">Join Today</Button>
+
+            </div>
+
 
 
 
@@ -82,27 +172,3 @@ const HowItWorks: React.FC = () => {
 };
 
 export default HowItWorks;
-
-// Static step content
-const steps = [
-    {
-        title: "Sign Up Free",
-        description: "Join the platform at no cost and verify your military status.",
-        linkText: "Register Now",
-        icon: "SlNotebook",
-    },
-    {
-        title: "Find Trusted Professionals",
-        description: "Search for verified service providers near your current or next base.",
-        linkText: "Find Professionals Now",
-        icon: "SlUserFollowing",
-
-    },
-    {
-        title: "Connect & Track",
-        description: "Message professionals directly and manage your service requests easily.",
-        linkText: "Connect Now",
-        icon: "IoIosGitNetwork",
-
-    },
-];

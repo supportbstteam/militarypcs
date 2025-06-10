@@ -46,7 +46,7 @@ const SliderComponent: React.FC = () => {
   return (
     <section className="py-20 bg-[#f9f9f9]">
       <div className="max-w-[1420px] mx-auto px-4">
-        <h2 className="text-center text-2xl md:text-3xl font-semibold bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent mb-12">
+        <h2 className="text-center text-2xl md:text-3xl font-semibold bg-[linear-gradient(135deg,#b43141,#274768)] bg-clip-text text-transparent mb-12">
           Our Corporate Sponsors <br /> Fueling Resources for Military Families
         </h2>
 

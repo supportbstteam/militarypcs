@@ -28,16 +28,14 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   // const base = "min-w-[240px]  inline-flex justify-center items-center  gap-2 w-fit px-6 py-4 text-base   rounded-lg font-semibold cursor-pointer";
-  const base = `min-w-[240px] w-${width}  inline-flex justify-center items-center  gap-2 w-fit px-6 py-4 text-base   rounded-lg font-semibold cursor-pointer transition shadow`;
+  const base = `min-w-[240px] w-${width}  inline-flex justify-center items-center  gap-2 w-fit px-6 py-4 text-base   rounded-lg font-semibold cursor-pointer transition shadow capitalize`;
   const variants = {
-    primary: " text-white bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200",
+    primary: " text-white bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-[linear-gradient(135deg,_theme('colors.secondary'),_theme('colors.primary'))] transition duration-200",
     secondary: "bg-gray-200 text-black hover:bg-gray-300",
-    outlineWhite:"border-1 border-white text-white bg-transparent hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] hover:text-white transition shadow",
-    // outlineColor:"border-1 border-[#B43141] bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent text hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] hover:text-white",
+    outlineWhite:"border border-white text-white bg-transparent hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:text-white transition shadow",
+    // outlineColor:"border border-[#B43141] bg-[linear-gradient(135deg,#b43141,#274768)] bg-clip-text text-transparent text hover:bg-[linear-gradient(135deg,#274768,#b43141)] hover:text-white",
     
-    
-    
-    outlineColor:"border-1 border-[#B43141] text-black bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent  hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] ",
+    outlineColor:"border border-primary text-black bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] bg-clip-text text-transparent  hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] ",
   };
 
 const renderedIcon =

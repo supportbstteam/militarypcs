@@ -72,16 +72,17 @@ const Services = () => {
   ];
 
   return (
-    <section className="bg-[linear-gradient(135deg,_#b43141,_#274768)] py-16 ">
+    <section className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] py-16 ">
+    {/* <section className="bg-primary py-16 "> */}
       <div className="max-w-[1420px] mx-auto px-4">
         {/* Section Heading */}
-        <div className="text-center mb-10">
+        <div className="flex items-center flex-col text-center mb-10">
           <h2 className="h2White uppercase">
             Need Trusted Home Services Pros?
           </h2>
-          <p className="text-white mt-2 mb-16 ">
-            Connect with verified veteran and military spouse professionals for everything from plumbing to painting — all near your base.
-          </p>
+          <p className="text-base md:text-xl w-8/12 text-white mb-8 leading-8">Connect with verified military veterans and spouse professionals for everything from home inspections, plumbing, painting — and much more, all near your base.</p>
+
+
         </div>
 
         {/* Services Grid */}

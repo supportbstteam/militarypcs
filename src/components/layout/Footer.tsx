@@ -24,7 +24,7 @@ const Footer = () => {
           </p>
           <div className="mt-4">
             <h4 className="font-medium text-base text-black mb-2">Contact information</h4>
-            <p className="text-2xl  font-semibold bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent w-fit">
+            <p className="text-2xl  font-semibold bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] bg-clip-text text-transparent w-fit">
               Call : 123 456 7890
             </p>
             <Link href="mailto:info@militarypcs.com" className="underline mt-1 inline-block text-base">
@@ -37,7 +37,7 @@ const Footer = () => {
           <h4 className="text-xl font-semibold text-black mb-8">Quick Links</h4>
           <ul className="space-y-4">
             {quickLinks.map((link,i ) => (
-              <li key={i}><Link href={link.link} className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-clip-text hover:text-transparent">{link.label}</Link></li>
+              <li key={i}><Link href={link.link} className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">{link.label}</Link></li>
             ))}
           </ul>
         </div>
@@ -47,7 +47,7 @@ const Footer = () => {
           <h4 className="text-xl font-semibold text-black mb-8">Locations</h4>
           <ul className="space-y-4">
             {["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia"].map(location => (
-              <li key={location}><Link href="#" className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-clip-text hover:text-transparent">{location}</Link></li>
+              <li key={location}><Link href="#" className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">{location}</Link></li>
             ))}
           </ul>
         </div>
@@ -57,7 +57,7 @@ const Footer = () => {
           <h4 className="text-xl font-semibold text-black mb-8">Information</h4>
           <ul className="space-y-4">
             {["Privacy Policy", "Terms & Conditions", "Refund Policy", "Cookie Policy"].map(policy => (
-              <li key={policy}><Link href="#" className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-clip-text hover:text-transparent">{policy}</Link></li>
+              <li key={policy}><Link href="#" className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">{policy}</Link></li>
             ))}
           </ul>
         </div>

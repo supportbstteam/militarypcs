@@ -9,10 +9,11 @@ export default {
   theme: {
     extend: {
       colors:{
-        primary: "#B43140",
-        secondary: "#26486A",
-        light: "#f5f5f5",
-        dark: "#171717",
+        // primary: "#BF0A30", // red
+        primary: '#008000', // green Test
+        secondary: '#002868', // blue
+        light: '#f5f5f5',
+        dark: '#171717',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],

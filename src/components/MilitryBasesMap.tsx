@@ -6,7 +6,7 @@ const MilitryBasesMap = () => {
     return (
 
 
-        <div className='bg-[linear-gradient(135deg,_#b43141,_#274768)] w-full mb-24'>
+        <div className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] w-full mb-24">
             <section
                 className="max-w-[1420px] relative mx-auto "
             >

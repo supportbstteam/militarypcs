@@ -80,8 +80,9 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      {type === "signup" && (
+  <form onSubmit={handleSubmit} className=" mx-auto p-4 ">
+    {type === "signup" && (
+      <div className="w-full mb-6">
         <RadioGroup
           name="type"
           label=""
@@ -90,27 +91,27 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
           onChange={setPerson}
           error={formError && !person ? formError : undefined}
         />
-      )}
+      </div>
+    )}
 
+    <div className={`grid grid-cols-1 ${type === 'signup' ? 'md:grid-cols-2':''} gap-6`}>
+    {/* <div className={`grid grid-cols-1 ${type === 'signup' ? 'md:grid:cols-2' : ''} gap-6`}></div> */}
       {type === "signup" && (
-
-
-        <Input
-          label="First Name"
-          placeholder="John Doee"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
+        <>
+          <Input
+            label="First Name"
+            placeholder="John"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <Input
+            label="Last Name"
+            placeholder="Doe"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </>
       )}
-      {type === "signup" && (
-        <Input
-          label="Last Name"
-          placeholder="John Doe"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-      )}
-
 
       <Input
         label="Email"
@@ -119,8 +120,8 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+      
       {type === "signup" && (
-
         <Input
           label="Contact Person"
           placeholder="Contact Person"
@@ -128,12 +129,11 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
           onChange={(e) => setContactPerson(e.target.value)}
         />
       )}
+
       {type === "signup" && (
-
-
         <Input
           label="Phone"
-          type="tel"
+          type="  "
           placeholder="xxxxx xxxxx"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
@@ -147,6 +147,7 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+
       {type === "signup" && (
         <Input
           label="Confirm Password"
@@ -156,52 +157,54 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
       )}
+
       {type === "signup" && (
-        <FileUpload label="Upload Document"
-          onChange={(selectedFile) => setFile(selectedFile)}
-          error={error} />
+        <div className="md:col-span-2">
+          <FileUpload 
+            label="Upload Document"
+            onChange={(selectedFile) => setFile(selectedFile)}
+            error={error} 
+          />
+        </div>
       )}
-    {type === "signup" && person == "Professional" && (
-  <>
-    <Dropdown
-      label="Directory"
-      options={directoryOptions}
-      value={selectedDirectory}
-      onChange={setSelectedDirectory}
-      // error={!selectedDirectory ? "Role is required" : ""}
-    />
 
-    <Dropdown
-      label="Sub Directory"
-      options={SubDirectoryOptions}
-      value={selectedSubDirectory}
-      onChange={setSelectedSubDirectory}
-      // error={!selectedSubDirectory ? "Role is required" : ""}
-    />
+      {type === "signup" && person === "Professional" && (
+        <>
+          <Dropdown
+            label="Directory"
+            options={directoryOptions}
+            value={selectedDirectory}
+            onChange={setSelectedDirectory}
+          />
+          <Dropdown
+            label="Sub Directory"
+            options={SubDirectoryOptions}
+            value={selectedSubDirectory}
+            onChange={setSelectedSubDirectory}
+          />
+          <Dropdown
+            label="Location"
+            options={locationOptions}
+            value={selectedLocation}
+            onChange={setSelectedLocation}
+          />
+          <Dropdown
+            label="Sub Location"
+            options={subLocationOptions}
+            value={selectedSubLocation}
+            onChange={setSelectedSubLocation}
+          />
+        </>
+      )}
+    </div>
 
-    <Dropdown
-      label="Location"
-      options={locationOptions}
-      value={selectedLocation}
-      onChange={setSelectedLocation}
-      // error={!selectedLocation ? "Role is required" : ""}
-    />
-
-    <Dropdown
-      label="Sub Location"
-      options={subLocationOptions}
-      value={selectedSubLocation}
-      onChange={setSelectedSubLocation}
-      // error={!selectedSubLocation ? "Role is required" : ""}
-    />
-  </>
-)}
-
+    <div className="mt-6">
       <Button type="submit" variant="primary" width="full">
         {type === "signup" ? "Sign Up" : "Login"}
       </Button>
-    </form>
-  );
-};
+    </div>
+  </form>
+);
+}
 
 export default AuthForm;

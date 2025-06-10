@@ -7,7 +7,7 @@ import Breadcrumbs from "../ui/Breadcrumbs";
 const Breadcrumbsbanner = () => {
     return (
         <section
-            className="w-ful py-8 bg-[linear-gradient(135deg,_#b43141,_#274768)] mb-6">
+            className="w-ful py-8 bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] mb-6">
                 <div className="max-w-[1420px] mx-auto">
 
             <div className="flex justify-center items-center">

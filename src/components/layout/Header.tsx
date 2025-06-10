@@ -10,9 +10,10 @@ const Header: React.FC = () => {
         { label: "About Us", link: "/about-us" },
         { label: "Services", link: "/services" },
         { label: "Membership", link: "/membership" },
+        { label: "Sponsors", link: "/sponsors" },
+        { label: "Resources", link: "/resources" }, // Note: double 's' kept as-is, but consider fixing if typo
         { label: "Events", link: "/events" },
         { label: "Donate", link: "/donate" },
-        { label: "Resourcess", link: "/resourcess" }, // Note: double 's' kept as-is, but consider fixing if typo
     ];
     return (
         <header className="max-w-[1420px] mx-auto py-4 px-4 xl:px-0">
@@ -30,21 +31,21 @@ const Header: React.FC = () => {
                         {navItems.map((item, i) => (
                             <Link key={i} href={item.link} className=" hover:scale-105 transition duration-150 ease-in-out">
 
-                                <li className="text-black text-base font-medium hover:bg-[linear-gradient(135deg,_#b43141,_#274768)] hover:bg-clip-text hover:text-transparent">{item.label}</li>
+                                <li className="text-black text-base font-medium hover:bg-[linear-gradient(135deg,#b43141,#274768)] hover:bg-clip-text hover:text-transparent">{item.label}</li>
                             </Link>
                         ))}
                     </ul>
 
                     <div className="flex gap-2">
                         <Link href="/auth/login">
-                        <button className="flex items-center gap-1 px-4 py-2 text-sm bg-[linear-gradient(135deg,_#b43141,_#274768)] text-white rounded-lg font-semibold hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200 cursor-pointer">
+                        <button className="flex items-center gap-1 px-4 py-2 text-sm bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-white rounded-lg font-semibold hover:bg-[linear-gradient(135deg,_theme('colors.secondary'),_theme('colors.primary'))] transition duration-200 cursor-pointer">
                             <CiLock size={22} className="text-white" />
                             Sign in
                         </button>
                         </Link>
 
                         <Link href="/auth/signup">
-                        <button className="flex items-center gap-1 px-4 py-2 text-sm bg-[linear-gradient(135deg,_#b43141,_#274768)] text-white rounded-lg font-semibold hover:bg-[linear-gradient(135deg,_#274768,_#b43141)] transition duration-200 cursor-pointer">
+                        <button className="flex items-center gap-1 px-4 py-2 text-sm bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-white rounded-lg font-semibold hover:bg-[linear-gradient(135deg,_theme('colors.secondary'),_theme('colors.primary'))] transition duration-200 cursor-pointer">
                             <CiUser size={22} className="text-white" />
                             Join us
                         </button>

@@ -53,7 +53,7 @@ const CounterCard: React.FC<CounterCardProps> = ({
       </div>
       <div>
         <p className="text-sm text-gray-900 mb-1">{label}</p>
-        <p className="text-2xl font-bold bg-[linear-gradient(135deg,_#b43141,_#274768)] bg-clip-text text-transparent">
+        <p className="text-2xl font-bold bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] bg-clip-text text-transparent">
           {prefix}
           <span className="">{count.toLocaleString()}</span>
           {suffix}

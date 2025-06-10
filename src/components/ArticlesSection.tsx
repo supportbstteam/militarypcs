@@ -54,7 +54,7 @@ const ArticlesSection: React.FC = () => {
         </div>
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {articles.map((a) => (
-            <div key={a.id} className="bg-white rounded-xl shadow-sm border-[1px] border-gray-100 overflow-hidden">
+            <div key={a.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
               <img src={a.image} alt={a.title} className="w-full h-48 object-cover" />
               
               <div className="p-5 text-left flex flex-col gap-2">

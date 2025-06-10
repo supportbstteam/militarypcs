@@ -14,7 +14,12 @@ import ArticlesSection from "@/components/ArticlesSection";
 export default function Home() {
   return (
     <>
-      <Banner/>
+      {/* <Banner bgImage={"url('/assets/Homepage1.png')"}/> */}
+      {/* <br /> */}
+      <Banner bgImage={"url('/assets/Homepage2.jpg')"}/>
+      {/* <br /> */}
+      {/* <Banner bgImage={"url('/assets/Homepage3.jpg')"}/> */}
+      {/* <br /> */}
       <HowItWorks/>
       <MilitryBasesMap/>
       <TextMediaHome/>

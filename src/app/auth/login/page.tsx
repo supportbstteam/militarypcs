@@ -1,4 +1,5 @@
 // app/(auth)/login/page.tsx
+import DocumentHelp from "@/components/DocumentHelp";
 import AuthForm from "@/components/shared/AuthForm";
 import Link from "next/link";
 
@@ -13,3 +14,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

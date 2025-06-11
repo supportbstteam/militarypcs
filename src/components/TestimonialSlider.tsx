@@ -67,9 +67,7 @@ const TestimonialSlider: React.FC = () => {
                     <h2 className="h2 mb-4">
                         GENUINE REVIEWS FROM MEMBERS
                     </h2>
-                    <p className="text-black mb-16">
-                        Recognized for outstanding service, trusted by military families nationwide.
-                    </p>
+
                 </div>
                 <Slider {...settings}>
                     {testimonials.map((t, idx) => (

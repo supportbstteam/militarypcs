@@ -24,11 +24,13 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState("");
 
+  
   const [selectedDirectory, setSelectedDirectory] = useState("");
   const [selectedSubDirectory, setSelectedSubDirectory] = useState("");
   const [primaryMilitaryBaseServing, setPrimaryMilitaryBaseServing] = useState("");
   const [professionalMainDirectory, setProfessionalMainDirectory] = useState("");
-
+  
+  const [primaryMilitaryBaseSubServing, setPrimaryMilitaryBaseSubServing] = useState("");
 
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedSubLocation, setSelectedSubLocation] = useState("");
@@ -191,6 +193,8 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
         )}
 
 
+        <div className={`grid md:grid-cols-2 md:col-span-2 gap-6 `}>
+
 
 
         {type === "signup" && person === "professional" && (
@@ -201,7 +205,12 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
               value={primaryMilitaryBaseServing}
               onChange={setPrimaryMilitaryBaseServing}
             />
-            
+            <Dropdown
+              label="Primary Military Base Sub Serving"
+              options={primaryMilitaryBaseServingOptions}
+              value={primaryMilitaryBaseSubServing}
+              onChange={setPrimaryMilitaryBaseSubServing}
+            />
 
             <Dropdown
               label="Professional Main Directory"
@@ -235,6 +244,8 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
             />
           </>
         )}
+        </div>
+
         <div className={`grid grid-cols-1 md:col-span-2 gap-6 ${type=== "signup" ? "md:grid-cols-2" : ""}`}>
           <Input
             label="Password"

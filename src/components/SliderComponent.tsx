@@ -49,7 +49,7 @@ const SliderComponent: React.FC = () => {
         <h2 className="text-center text-2xl md:text-3xl font-semibold bg-[linear-gradient(135deg,#b43141,#274768)] bg-clip-text text-transparent mb-12">
           Our Corporate Sponsors <br /> Fueling Resources for Military Families
         </h2>
-        <div className=" w-[96%]">
+        {/* <div className="  "> */}
 
         <Slider {...settings}>
           {images.map((src, i) => (
@@ -60,7 +60,7 @@ const SliderComponent: React.FC = () => {
             </div>
           ))}
         </Slider>
-          </div>
+          {/* </div> */}
       </div>
 
       <style jsx global>{`
@@ -84,7 +84,7 @@ const SliderComponent: React.FC = () => {
 
 const NextArrow: React.FC<any> = ({ onClick }) => (
   <div
-    className="absolute right-[-32px] top-1/2 transform -translate-y-1/2 pr-4 cursor-pointer text-gray-600 hover:text-black"
+    className="absolute   right-[-1px] md:right-[-32px] top-1/2 transform -translate-y-1/2 pr-4 cursor-pointer text-gray-600 hover:text-black"
     onClick={onClick}
   >
     <FaChevronRight size={24} />
@@ -93,7 +93,7 @@ const NextArrow: React.FC<any> = ({ onClick }) => (
 
 const PrevArrow: React.FC<any> = ({ onClick }) => (
   <div
-    className="absolute left-[-32px] top-1/2 transform -translate-y-1/2 pl-4 cursor-pointer text-gray-600 hover:text-black"
+    className="absolute   left-[-1px] md:left-[-32px] top-1/2 transform -translate-y-1/2 pl-4 cursor-pointer text-gray-600 hover:text-black"
     onClick={onClick}
   >
     <FaChevronLeft size={24} />

@@ -63,7 +63,7 @@ const TestimonialSlider: React.FC = () => {
     return (
         <section className="bg-[#f9f9f9] py-16">
             <div className="max-w-[1420px] mx-auto text-center">
-                <div className="text-center mb-10">
+                <div className="text-center mb-10 w-[95%]">
                     <h2 className="h2 mb-4">
                         GENUINE REVIEWS FROM MEMBERS
                     </h2>
@@ -71,7 +71,6 @@ const TestimonialSlider: React.FC = () => {
                         Recognized for outstanding service, trusted by military families nationwide.
                     </p>
                 </div>
-
                 <Slider {...settings}>
                     {testimonials.map((t, idx) => (
                         <div key={idx} className="px-6">

@@ -24,9 +24,11 @@
 }
 *{
   /* border: 1px solid forestgreen; */
+  /* box-sizing: border-box; */
 }
 body {
   background-color: white !important;
+  background-color: red;
   color: black !important;
   font-family: 'Poppins', sans-serif;
 }

@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { QueryProvider } from "@/lib/query/QueryProvider";
 // import "@/styles/globals.css"; // your global Tailwind CSS file
 // imports for slider ends 
 
@@ -46,9 +47,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable}`}>
       <body className="font-poppins bg-white text-black antialiased  ">
+        <QueryProvider>
+
         <Header/>
         {children}
         <Footer/>
+        </QueryProvider>
       </body>
     </html>
   );

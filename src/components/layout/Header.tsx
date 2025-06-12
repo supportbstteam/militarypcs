@@ -29,11 +29,11 @@ const Header: React.FC = () => {
                 <div className="w-8/12 md:w-3/12">
                     <Link href="/" onClick={closeMobileMenu}>
                         <Image 
-                            src="/newLogo.png" 
+                            src="/images/logo.png" 
                             alt="militarypcs" 
                             width={300} 
                             height={60} 
-                            className="w-[230px] md:w-[300px]" 
+                            className="w-[250px] md:w-[300px]" 
                             priority
                         />
                     </Link>

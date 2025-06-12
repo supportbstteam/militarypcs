@@ -1,8 +1,11 @@
+"use client"
+import { fetchLocation, useLocation } from "@/lib/query/Query";
 import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
 
+  const { data: locationData } = useLocation();
   const quickLinks = [
         { label: "About Us", link: "/about-us" },
         { label: "Services", link: "/services" },
@@ -18,7 +21,7 @@ const Footer = () => {
         <div className="md:col-span-1">
           <p className="text-base text-gray-500 mt-2 mb-4 leading-8 w-10/12">
           <Link href="/">
-            <Image  src="/images/logo2.webp" alt="militarypcs" width={300} height={60} className="w-[180px] md:w-[230px] mb-8" />
+            <Image  src="/images/footerLogo.png" alt="militarypcs" width={300} height={60} className="w-[180px] md:w-[230px] mb-8" />
           </Link>
             We’re a mission-driven platform built by and for the military community.
           </p>
@@ -46,10 +49,10 @@ const Footer = () => {
         <div>
           <h4 className="text-xl font-semibold text-black mb-8">Locations</h4>
           <ul className="space-y-4">
-            {["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia"].map(location => (
-              <li key={location}><Link href="#" className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">{location}</Link></li>
+            {locationData && locationData.map((location:any) => (
+              <li key={location.id}><Link href="#" className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">{location.location}</Link></li>
             ))}
-          </ul>
+            </ul>
         </div>
 
         {/* Information */}

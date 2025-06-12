@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import FileUpload from "../ui/FileUpload";
 import RadioGroup from "../ui/RadioGroup";
 import Dropdown from "../ui/Dropdown";
-
+import { useDirectory, useDirectorySub, useLocation, useLocationSub } from "@/lib/query/Query";
 interface Option {
   label: string;
   value: string;
@@ -24,16 +24,83 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState("");
 
-  
-  const [selectedDirectory, setSelectedDirectory] = useState("");
-  const [selectedSubDirectory, setSelectedSubDirectory] = useState("");
-  const [primaryMilitaryBaseServing, setPrimaryMilitaryBaseServing] = useState("");
-  const [professionalMainDirectory, setProfessionalMainDirectory] = useState("");
-  
-  const [primaryMilitaryBaseSubServing, setPrimaryMilitaryBaseSubServing] = useState("");
 
-  const [selectedLocation, setSelectedLocation] = useState("");
-  const [selectedSubLocation, setSelectedSubLocation] = useState("");
+
+  // ----------------------------- location start -----------------------------
+  const [location, setLocation] = useState("");
+
+  const { data: locationData, isLoading: isLoadingLocation } = useLocation();
+
+  const locationOptions: Option[] = isLoadingLocation || error
+    ? [
+      { label: "Admin", value: "admin" },
+      { label: "User", value: "user" },
+      { label: "Guest", value: "guest" },
+    ]
+    : locationData.map((location: any) => ({
+      label: location.location,
+      value: location.id
+    }));
+
+
+  const [locationId, setLocationId] = useState<number | null>(null);
+
+
+  // ----------------------------- sub location start -----------------------------
+  const [subLocation, setSubLocation] = useState("");
+
+  const { data: subLocationData, isLoading: isLoadingSubLocation } = useLocationSub(locationId ?? 0);
+  console.log("subLocationData", subLocationData);
+  const subLocationOptions: Option[] = (subLocationData ?? []).map((item: any) => ({
+    label: item.city,
+    value: item.id,
+  }));
+
+
+  // ------------------------------------ directory start ------------------------------------
+
+  const [directory, setDirectory] = useState("");
+  const { data: directoryData, isLoading: isLoadingDirectory } = useDirectory();
+
+  const directoryOptions: Option[] = isLoadingDirectory || error
+    ? [
+      { label: "Admin", value: "admin" },
+      { label: "User", value: "user" },
+      { label: "Guest", value: "guest" },
+    ]
+    : directoryData.map((location: any) => ({
+      label: location.title,
+      value: location.id
+    }));
+
+
+  const [directoryId, setDirectoryId] = useState<number | null>(null);
+
+  console.log("directoryId", directoryId);
+
+  // ------------------------------------ directory sub start ------------------------------------
+  const [subDirectory, setSubDirectory] = useState("");
+
+
+      const { data: subDirectoryData, isLoading: isLoadingSubDirectory } = useDirectorySub(directoryId);
+  console.log("subDirectoryData", subDirectoryData);
+  const subDirectoryOptions: Option[] = (subDirectoryData ?? []).map((item: any) => ({
+    label: item.title,
+    value: item.id,
+  }));
+
+
+
+
+
+
+
+
+
+
+  // ---------------------------
+
+
 
   const [person, setPerson] = useState("consumer");
   const [formError, setFormError] = useState("");
@@ -43,13 +110,7 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
 
   const [militaryRank, setMilitaryRank] = useState("")
 
-  primaryMilitaryBaseServing
 
-  const primaryMilitaryBaseServingOptions: Option[] = [
-    { label: "Admin", value: "admin" },
-    { label: "User", value: "user" },
-    { label: "Guest", value: "guest" },
-  ];
 
   const militaryStatusOptions: Option[] = [
     { label: "Active Duty", value: "activeDuty" },
@@ -69,28 +130,14 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
     { label: "Space Force", value: "spaceForce" },
   ]
 
-  const directoryOptions: Option[] = [
-    { label: "Admin", value: "admin" },
-    { label: "User", value: "user" },
-    { label: "Guest", value: "guest" },
-  ];
+
   const SubDirectoryOptions: Option[] = [
     { label: "Admin", value: "admin" },
     { label: "User", value: "user" },
     { label: "Guest", value: "guest" },
   ];
 
-  const locationOptions: Option[] = [
-    { label: "Admin", value: "admin" },
-    { label: "User", value: "user" },
-    { label: "Guest", value: "guest" },
-  ];
 
-  const subLocationOptions: Option[] = [
-    { label: "Admin", value: "admin" },
-    { label: "User", value: "user" },
-    { label: "Guest", value: "guest" },
-  ];
 
   const personOptions = [
     { label: "Consumer", value: "consumer" },
@@ -197,56 +244,45 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
 
 
 
-        {type === "signup" && person === "professional" && (
-          <>
-            <Dropdown
-              label="Primary Military Base Serving"
-              options={primaryMilitaryBaseServingOptions}
-              value={primaryMilitaryBaseServing}
-              onChange={setPrimaryMilitaryBaseServing}
-            />
-            <Dropdown
-              label="Primary Military Base Sub Serving"
-              options={primaryMilitaryBaseServingOptions}
-              value={primaryMilitaryBaseSubServing}
-              onChange={setPrimaryMilitaryBaseSubServing}
-            />
+          {type === "signup" && person === "professional" && (
+            <>
+              <Dropdown
+                label="Primary Military Base Serving (location)"
+                options={locationOptions}
+                value={location}
+                onChange={(value) => {
+                  setLocationId(Number(value));  // for useLocationSub
+                  setLocation(value);            // for controlled dropdown value
+                }}
+              />
+              <Dropdown
+                label="Primary Military Base Sub Serving (sub location)"
+                options={subLocationOptions}
+                value={subLocation}
+                onChange={setSubLocation}
+              />
 
-            <Dropdown
-              label="Professional Main Directory"
-              options={primaryMilitaryBaseServingOptions}
-              value={professionalMainDirectory}
-              onChange={setProfessionalMainDirectory}
-            />
-            {/* <Dropdown
-              label="Directory"
-              options={directoryOptions}
-              value={selectedDirectory}
-              onChange={setSelectedDirectory}
-            /> */}
-            {/* <Dropdown
-              label="Sub Directory"
-              options={SubDirectoryOptions}
-              value={selectedSubDirectory}
-              onChange={setSelectedSubDirectory}
-            /> */}
-            {/* <Dropdown
-              label="Location"
-              options={locationOptions}
-              value={selectedLocation}
-              onChange={setSelectedLocation}
-            /> */}
-            <Dropdown
-              label="Sub Location"
-              options={subLocationOptions}
-              value={selectedSubLocation}
-              onChange={setSelectedSubLocation}
-            />
-          </>
-        )}
+              <Dropdown
+                label="Professional Main Directory "
+                options={directoryOptions}
+                value={directory}
+                onChange={(value) => {
+                  setDirectoryId(Number(value));  // for useDirectorySub
+                  setDirectory(value);            // for controlled dropdown value
+                }}
+              />
+              <Dropdown
+                label="Professional Main Sub Directory"
+                options={subDirectoryOptions}
+                value={subDirectory}
+                onChange={setSubDirectory}
+              />
+
+            </>
+          )}
         </div>
 
-        <div className={`grid grid-cols-1 md:col-span-2 gap-6 ${type=== "signup" ? "md:grid-cols-2" : ""}`}>
+        <div className={`grid grid-cols-1 md:col-span-2 gap-6 ${type === "signup" ? "md:grid-cols-2" : ""}`}>
           <Input
             label="Password"
             type="password"

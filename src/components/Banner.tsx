@@ -25,7 +25,7 @@ const Banner: React.FC<BannerProps> = ({ title, subtitle, bgImage }) => {
       />
       <div className="absolute inset-0 bg-[linear-gradient(135deg,_#b43141,_#274768)] opacity-40 z-0"></div>
       <div className="relative z-10 max-w-[1420px] mx-auto flex items-center">
-        <div className="w-full md:flex flex-col md:flex-row justify-end items-center my-6 md:my-36 md:mx-8 px-4 py-8 md:px-0 md:py-0">
+        <div className="w-full md:flex flex-col md:flex-row justify-end items-center mt-6 md:my-36 md:mx-8 px-4 py-8 md:px-0 md:py-0">
           {/* <div className="w-[45%] md:max-h-[30vh] "></div> */}
           <div className="w-[40%]  "></div>
           <div className="md:w-[50%] mt-[50%] md:mt-0">

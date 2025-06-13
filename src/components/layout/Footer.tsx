@@ -15,13 +15,13 @@ const Footer = () => {
         { label: "Resourcess", link: "/resourcess" }, // Note: double 's' kept as-is, but consider fixing if typo
     ];
   return (
-    <footer className="w-full bg-[#fbfbfb] pt-12 pb-6 text-gray-600 text-sm">
+    <footer className="w-full bg-[#fbfbfb] py-8 md:pt-16 text-gray-600 text-sm">
       <div className=" max-w-[1420px] mx-auto px-4 xl:px-0 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[30%_21%_21%_21%] gap-8 mb-16">
 
         <div className="md:col-span-1">
-          <p className="text-base text-gray-500 mt-2 mb-4 leading-8 w-10/12">
+          <p className="text-base text-gray-500 mt-2 mb-4 leading-8 md:w-10/12">
           <Link href="/">
-            <Image  src="/images/footerLogo.png" alt="militarypcs" width={300} height={60} className="w-[180px] md:w-[230px] mb-8" />
+            <Image  src="/images/footerLogo.png" alt="militarypcs" width={300} height={60} className=" w-full md:w-[250px] mb-8" />
           </Link>
             We’re a mission-driven platform built by and for the military community.
           </p>

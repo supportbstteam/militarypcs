@@ -20,7 +20,7 @@ const TextMediaHome: React.FC<{
           <Image src="/images/img1.webp" alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
         </div>
         <div className="md:w-1/2">
-          <h2 className="h2">LOOKING FOR VA LOAN EXPERTS?</h2>
+          <h2 className="h2 mt-8">LOOKING FOR VA LOAN EXPERTS?</h2>
           <p className="text-xl text-gray-700 mb-8 leading-8">Get pre-approved with confidence from vetted mortgage professionals who understand your military journey.</p>
 
           <p className="text-gray-700 mb-6 leading-8">Navigating the VA loan process can feel overwhelming — but it doesn’t have to be.
@@ -87,13 +87,13 @@ const TextMediaHome: React.FC<{
 
       </div>
 
-      <div className="flex flex-col md:flex-row items-center md:gap-14 mb-12 " >
+      <div className="flex flex-col md:flex-row items-center md:gap-14 md:mb-12 " >
         <div className="md:w-1/2 rounded-2xl "   
         >
           <Image src="/assets/InsuranceAgent.jpg" alt="militarypcs" width={300} height={100} className="w-full h-full object-cover rounded-2xl" unoptimized />
         </div>
         <div className="md:w-1/2">
-          <h2 className="h2">LOOKING FOR HOMEOWNERS INSURANCE AGENTS?</h2>
+          <h2 className="h2 mt-8">LOOKING FOR HOMEOWNERS INSURANCE AGENTS?</h2>
           <p className="text-xl text-gray-700 mb-8 leading-8">Protect your home with coverage tailored to military families—provided by trusted, verified insurance experts</p>
 
           <p className="text-gray-700 mb-6 leading-8">Searching for the right homeowner’s insurance policy can be daunting, but it doesn’t have to be.

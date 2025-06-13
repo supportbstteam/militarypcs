@@ -57,14 +57,14 @@ const Professionals = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-8 md:py-16 bg-white">
       <div className="max-w-[1420px] mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-10">
           <h2 className="h2 mb-4">
             POPULAR MILITARY PROFESSIONALS
           </h2>
-          <p className="text-black mb-16">
+          <p className="text-black mb-4 md:mb-16">
             Recognized for outstanding service, trusted by military families nationwide.
           </p>
         </div>
@@ -84,7 +84,7 @@ const Professionals = () => {
         </div>
 
         {/* Button */}
-        <div className="mt-16 text-center">
+        <div className="mt-8 md:mt-16 text-center">
           <Button variant="outlineColor" href="/">
             Find More Professionals <IoIosArrowRoundForward className=" text-black text-lg" />
           </Button>

@@ -72,16 +72,15 @@ const Services = () => {
   ];
 
   return (
-    <section className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] py-16 ">
+    <section className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] py-8 md:py-16 ">
     {/* <section className="bg-primary py-16 "> */}
       <div className="max-w-[1420px] mx-auto px-4">
         {/* Section Heading */}
-        <div className="flex items-center flex-col text-center mb-10">
+        <div className="flex items-center flex-col text-center md:mb-10">
           <h2 className="h2White uppercase">
             Need Trusted Home Services Pros?
           </h2>
           <p className="text-base md:text-xl md:w-8/12 text-white mb-8 leading-8">Connect with verified military veterans and spouse professionals for everything from home inspections, plumbing, painting — and much more, all near your base.</p>
-
 
         </div>
 
@@ -90,7 +89,7 @@ const Services = () => {
           {servicesData.map((service) => (
             <div
               key={service.id}
-              className="bg-white text-center rounded-2xl overflow-hidden  hover:shadow-lg transition"
+              className="bg-white text-center rounded-3xl overflow-hidden  hover:shadow-lg transition"
             >
             <Image src={service.image} alt={service.title} width={300} height={100} className="w-full                   " unoptimized />
                 
@@ -102,7 +101,7 @@ const Services = () => {
         </div>
 
         {/* CTA Button */}
-        <div className="mt-16 text-center">
+        <div className="mt-8 md:mt-16 text-center">
           <Button variant="outlineWhite" href="/">
             View All Home Services <IoIosArrowRoundForward className=" text-white text-lg" />
           </Button>

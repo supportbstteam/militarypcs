@@ -41,7 +41,7 @@ const articles = [
 
 const ArticlesSection: React.FC = () => {
   return (
-    <section className="bg-white pt-8 md:pt-32  pb-8 md:pb-16">
+    <section className="bg-white   py-8 md:py-16">
       <div className="max-w-[1420px] mx-auto px-4 text-center">
 
         <div className="text-center mb-10">

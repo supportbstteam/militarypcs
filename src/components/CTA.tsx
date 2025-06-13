@@ -18,9 +18,10 @@ const CTA = () => {
                 <h3 className=" text-2xl md:text-[42px] sm:leading-12  font-poppins font-semibold text-shadow-2xs text-shadow-gray-600 mb-8 text-white">
                     Join our mission to connect and empower the military community.
                 </h3>
-                 <div className="flex flex-col xl:flex-row gap-6">
+                 <div className="grid xl:grid-cols-2 gap-6">
                     <Button variant="outlineWhite" href="/">Create a Free Account</Button>
                     <Button variant="outlineWhite" href="/">Become a Partner</Button>
+                    <Button variant="outlineWhite" href="/">Donate Today</Button>
                  </div>
                  
                 

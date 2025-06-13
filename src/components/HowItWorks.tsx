@@ -96,7 +96,7 @@ const HowItWorks: React.FC = () => {
     ]
 
     return (
-        <section className="max-w-[1420px] mx-auto px-4 xl:px-0 my-20">
+        <section className="max-w-[1420px] mx-auto px-4 xl:px-0  py-8 md:py-16">
             <div className="lg:flex justify-between items-start ">
 
                 {TitleData.filter(title => title.tab === toggle).map((title, i) => (

@@ -61,9 +61,9 @@ const TestimonialSlider: React.FC = () => {
         ],
     };
     return (
-        <section className="bg-[#f9f9f9] py-16">
-            <div className="max-w-[1420px] mx-auto text-center">
-                <div className="text-center mb-10 w-[95%]">
+        <section className="bg-[#f9f9f9] py-8 pb-14 md:py-16">
+            <div className="max-w-[1420px] mx-auto text-center px-4">
+                <div className="text-center md:mb-10 w-[95%]">
                     <h2 className="h2 mb-4">
                         GENUINE REVIEWS FROM MEMBERS
                     </h2>

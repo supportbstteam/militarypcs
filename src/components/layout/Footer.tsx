@@ -6,6 +6,7 @@ import Link from "next/link";
 const Footer = () => {
 
   const { data: locationData } = useLocation();
+  
   const quickLinks = [
         { label: "About Us", link: "/about-us" },
         { label: "Services", link: "/services" },
@@ -13,6 +14,12 @@ const Footer = () => {
         { label: "Events", link: "/events" },
         { label: "Donate", link: "/donate" },
         { label: "Resourcess", link: "/resourcess" }, // Note: double 's' kept as-is, but consider fixing if typo
+    ];
+      const InformationLinks = [
+        { label: "Privacy Policy", link: "/privacy-policy" },
+        { label: "Terms & Conditions", link: "/terms" },
+        { label: "Refund Policy", link: "/refund-policy" },
+        { label: "Cookie Policy", link: "/cookie-policy" }
     ];
   return (
     <footer className="w-full bg-[#fbfbfb] py-8 md:pt-16 text-gray-600 text-sm">
@@ -59,8 +66,8 @@ const Footer = () => {
         <div>
           <h4 className="text-xl font-semibold text-black mb-8">Information</h4>
           <ul className="space-y-4">
-            {["Privacy Policy", "Terms & Conditions", "Refund Policy", "Cookie Policy"].map(policy => (
-              <li key={policy}><Link href="#" className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">{policy}</Link></li>
+            {InformationLinks.map(policy => (
+              <li key={policy.label}><Link href={policy.link} className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">{policy.label}</Link></li>
             ))}
           </ul>
         </div>

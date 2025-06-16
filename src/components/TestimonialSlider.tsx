@@ -4,6 +4,7 @@ import React from "react";
 import Slider from "react-slick";
 import { FaStar } from "react-icons/fa";
 import Image from "next/image";
+import { fetchReviews, useReviews } from "@/lib/query/Query";
 
 const testimonials = [
     {
@@ -40,6 +41,10 @@ const testimonials = [
 ];
 
 const TestimonialSlider: React.FC = () => {
+    const reviews = useReviews()
+    // console.log(reviews.data?.messages, "reviews");
+    const testimonials = reviews?.data?.messages
+
     const settings = {
         dots: true,
         infinite: true,
@@ -70,22 +75,22 @@ const TestimonialSlider: React.FC = () => {
 
                 </div>
                 <Slider {...settings}>
-                    {testimonials.map((t, idx) => (
+                    {testimonials?.map((t:any, idx:any) => (
                         <div key={idx} className="px-6">
                             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-left min-h-[240px] ">
                                 <div className="flex mb-6 gap-1 text-yellow-500 text-lg">
-                                    {Array(5)
+                                    {Array(t?.star)
                                         .fill(0)
                                         .map((_, i) => (
                                             <FaStar key={i} />
                                         ))}
                                 </div>
-                                <p className="text-gray-800 mb-4 leading-8">{t.text}</p>
+                                <p className="text-sm text-gray-800 mb-4 md:leading-8">{t.description}</p>
                                 <div className="flex items-center mt-auto">
 
-                                <Image src={t.image} alt={t.name} width={300} height={60} className="w-12 h-12 rounded-full object-cover mr-3" />
-                                    
-                                    <p className="font-semibold">{t.name}</p>
+                                    {/* <Image src={t.image} alt={t.name} width={300} height={60} className="w-12 h-12 rounded-full object-cover mr-3" /> */}
+
+                                    <p className="font-semibold">{t.title}</p>
                                 </div>
                             </div>
                         </div>

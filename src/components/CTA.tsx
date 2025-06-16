@@ -19,9 +19,9 @@ const CTA = () => {
                     Join our mission to connect and empower the military community.
                 </h3>
                  <div className="grid xl:grid-cols-2 gap-6">
-                    <Button variant="outlineWhite" href="/">Create a Free Account</Button>
-                    <Button variant="outlineWhite" href="/">Become a Partner</Button>
-                    <Button variant="outlineWhite" href="/">Donate Today</Button>
+                    <Button variant="outlineWhite" href="/auth/signup">Create a Free Account</Button>
+                    <Button variant="outlineWhite" href="/auth/signup">Become a Partner</Button>
+                    <Button variant="outlineWhite" href="/donate">Donate Today</Button>
                  </div>
                  
                 

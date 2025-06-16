@@ -3,24 +3,27 @@
 import React from "react";
 import Slider, { Settings } from "react-slick";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useSponsors } from "@/lib/query/Query";
 
-const images = [
-  "/sponsors/sponsor1.webp",
-  "/sponsors/sponsor2.webp",
-  "/sponsors/sponsor3.webp",
-  "/sponsors/sponsor4.webp",
-  "/sponsors/sponsor5.webp",
-  "/sponsors/sponsor6.webp",
-  "/sponsors/sponsor7.webp",
-  "/sponsors/sponsor8.webp",
-];
+// const images = [
+//   "/sponsors/sponsor1.webp",
+//   "/sponsors/sponsor2.webp",
+//   "/sponsors/sponsor3.webp",
+//   "/sponsors/sponsor4.webp",
+//   "/sponsors/sponsor5.webp",
+//   "/sponsors/sponsor6.webp",
+//   "/sponsors/sponsor7.webp",
+//   "/sponsors/sponsor8.webp",
+// ];
 
 const SliderComponent: React.FC = () => {
+  const sponsors = useSponsors()
+  console.log(sponsors?.data?.messages, "sponsors");
   const settings: Settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -52,10 +55,10 @@ const SliderComponent: React.FC = () => {
         {/* <div className="  "> */}
 
         <Slider {...settings}>
-          {images.map((src, i) => (
-            <div key={i} className="px-4">
+          {sponsors?.data?.messages.map((sponsor:any) => (
+            <div key={sponsor.id} className="px-4">
               <div className="bg-white rounded-full w-35 h-35 mx-auto flex items-center justify-center ">
-                <img src={src} alt={`Logo ${i + 1}`} className="h-25 object-contain" />
+                <img src={sponsor.logo} alt={`Logo ${sponsor.id}`} className="h-25 object-contain" />
               </div>
             </div>
           ))}

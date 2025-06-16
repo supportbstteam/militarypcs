@@ -1,6 +1,9 @@
+import articles from "@/actions/articles"
 import directory from "@/actions/directory"
 import directorySub from "@/actions/directorySub"
 import location from "@/actions/location"
+import reviews from "@/actions/reviews"
+import sponsors from "@/actions/sponsors"
 import { useQuery } from "@tanstack/react-query"
 
 
@@ -88,4 +91,54 @@ const useDirectorySub = (id: number | null) => {
 
 
 
-export { useLocation, fetchLocation, useDirectory, fetchDirectory ,fetchDirectorySub, useDirectorySub, useLocationSub, fetchLocationSub };
+// --------------------------- reviews -------------------
+
+const fetchReviews = async () => {
+    const response = await reviews()
+    return response
+}
+
+const useReviews = () => {
+    return useQuery({
+        queryKey: ['reviews'],
+        queryFn: fetchReviews
+    })
+}
+
+// --------------------------- articles -------------------
+
+const fetchArticles = async () => {
+    const response = await articles()
+    return response
+}
+
+const useArticles = () => {
+    return useQuery({
+        queryKey: ['articles'],
+        queryFn: fetchArticles
+    })
+}
+
+// --------------------------- sponsors -------------------
+
+const fetchSponsors = async () => {
+    const response = await sponsors()
+    return response
+}
+
+const useSponsors = () => {
+    return useQuery({
+        queryKey: ['sponsors'],
+        queryFn: fetchSponsors
+    })
+}
+
+export { 
+  useLocation, fetchLocation,
+  useDirectory, fetchDirectory,
+  useDirectorySub, fetchDirectorySub,
+  useLocationSub, fetchLocationSub,
+  useReviews, fetchReviews,
+  useArticles, fetchArticles,
+  useSponsors, fetchSponsors
+};

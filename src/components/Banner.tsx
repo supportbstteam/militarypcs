@@ -36,8 +36,8 @@ const Banner: React.FC<BannerProps> = ({ title, subtitle, bgImage }) => {
               Connect with top-rated, verified military veterans and spouses for real estate, VA loans, home services, and more.
             </p>
             <div className="flex flex-col lg:flex-row gap-6">
-              <Button variant="outlineWhite" href="/">Find a Service Provider</Button>
-              <Button variant="outlineWhite" href="/">Join as a Professional</Button>
+              <Button variant="outlineWhite" href="/auth/signup">Find a Service Provider</Button>
+              <Button variant="outlineWhite" href="/auth/signup">Join as a Professional</Button>
             </div>
           </div>
         </div>

@@ -102,7 +102,7 @@ const Services = () => {
 
         {/* CTA Button */}
         <div className="mt-8 md:mt-16 text-center">
-          <Button variant="outlineWhite" href="/">
+          <Button variant="outlineWhite" href="/services">
             View All Home Services <IoIosArrowRoundForward className=" text-white text-lg" />
           </Button>
         </div>

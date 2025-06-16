@@ -145,7 +145,7 @@ const HowItWorks: React.FC = () => {
                                     {card.text}
                                 </p>
                                 <a
-                                    href="/"
+                                    href="/auth/signup"
                                     className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold text-sm hover:opacity-80 transition-opacity"
                                 >
                                     {card.button}
@@ -157,7 +157,7 @@ const HowItWorks: React.FC = () => {
             </div>
             <div className="grid">
                 <p className="my-4">Ready to serve those who serve?</p>
-                <Button variant="primary">Join Today</Button>
+                <Button variant="primary" href="/auth/signup">Join Today</Button>
 
             </div>
 

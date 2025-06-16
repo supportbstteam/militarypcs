@@ -43,7 +43,7 @@ const TextMediaHome: React.FC<{
           </ul>
           <p className="text-base text-gray-700 mb-8 leading-8">Start your VA Loan journey with trusted experts who lived the military lifestyle just like you!</p>
 
-          <Button variant="outlineColor" href="/">
+          <Button variant="outlineColor" href="/auth/signup">
             Find a VA Loan Expert <IoIosArrowRoundForward className=" text-black text-lg" />
           </Button>
 
@@ -79,7 +79,7 @@ const TextMediaHome: React.FC<{
           </ul>
           <p className="text-base text-gray-700 mb-8 leading-8">Find a real estate agent who truly understands your military lifestyle — because they’ve lived it too!</p>
 
-          <Button variant="outlineColor" href="/">
+          <Button variant="outlineColor" href="/auth/signup">
             Find a Real Estate Agent <IoIosArrowRoundForward className=" text-black text-lg" />
           </Button>
 
@@ -115,7 +115,7 @@ const TextMediaHome: React.FC<{
           </ul>
           <p className="text-base text-gray-700 mb-8 leading-8">Get the home protection you deserve today — from insurance experts who understand your service.</p>
 
-          <Button variant="outlineColor" href="/">
+          <Button variant="outlineColor" href="/auth/signup">
             Find a Homeowners Insurance <IoIosArrowRoundForward className=" text-black text-lg" />
           </Button>
 

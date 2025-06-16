@@ -7,12 +7,13 @@ import FileUpload from "../ui/FileUpload";
 import RadioGroup from "../ui/RadioGroup";
 import Dropdown from "../ui/Dropdown";
 import { useDirectory, useDirectorySub, useLocation, useLocationSub } from "@/lib/query/Query";
+
 interface Option {
   label: string;
   value: string;
 }
 
-const AuthForm = ({ type }: { type: "login" | "signup" }) => {
+const AuthForm = ({ type, onSubmit }: { type: "login" | "signup"; onSubmit?: (formData: any) => void }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,94 +24,35 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({});
 
-
-
-  // ----------------------------- location start -----------------------------
   const [location, setLocation] = useState("");
-
   const { data: locationData, isLoading: isLoadingLocation } = useLocation();
-
   const locationOptions: Option[] = isLoadingLocation || error
-    ? [
-      { label: "Admin", value: "admin" },
-      { label: "User", value: "user" },
-      { label: "Guest", value: "guest" },
-    ]
-    : locationData.map((location: any) => ({
-      label: location.location,
-      value: location.id
-    }));
-
-
+    ? [{ label: "Admin", value: "admin" }, { label: "User", value: "user" }, { label: "Guest", value: "guest" }]
+    : locationData.map((location: any) => ({ label: location.location, value: location.id }));
   const [locationId, setLocationId] = useState<number | null>(null);
 
-
-  // ----------------------------- sub location start -----------------------------
   const [subLocation, setSubLocation] = useState("");
-
-  const { data: subLocationData, isLoading: isLoadingSubLocation } = useLocationSub(locationId ?? 0);
-  console.log("subLocationData", subLocationData);
-  const subLocationOptions: Option[] = (subLocationData ?? []).map((item: any) => ({
-    label: item.city,
-    value: item.id,
-  }));
-
-
-  // ------------------------------------ directory start ------------------------------------
+  const { data: subLocationData } = useLocationSub(locationId ?? 0);
+  const subLocationOptions: Option[] = (subLocationData ?? []).map((item: any) => ({ label: item.city, value: item.id }));
 
   const [directory, setDirectory] = useState("");
   const { data: directoryData, isLoading: isLoadingDirectory } = useDirectory();
-
   const directoryOptions: Option[] = isLoadingDirectory || error
-    ? [
-      { label: "Admin", value: "admin" },
-      { label: "User", value: "user" },
-      { label: "Guest", value: "guest" },
-    ]
-    : directoryData.map((location: any) => ({
-      label: location.title,
-      value: location.id
-    }));
-
-
+    ? [{ label: "Admin", value: "admin" }, { label: "User", value: "user" }, { label: "Guest", value: "guest" }]
+    : directoryData.map((location: any) => ({ label: location.title, value: location.id }));
   const [directoryId, setDirectoryId] = useState<number | null>(null);
 
-  console.log("directoryId", directoryId);
-
-  // ------------------------------------ directory sub start ------------------------------------
   const [subDirectory, setSubDirectory] = useState("");
-
-
-      const { data: subDirectoryData, isLoading: isLoadingSubDirectory } = useDirectorySub(directoryId);
-  console.log("subDirectoryData", subDirectoryData);
-  const subDirectoryOptions: Option[] = (subDirectoryData ?? []).map((item: any) => ({
-    label: item.title,
-    value: item.id,
-  }));
-
-
-
-
-
-
-
-
-
-
-  // ---------------------------
-
-
+  const { data: subDirectoryData } = useDirectorySub(directoryId);
+  const subDirectoryOptions: Option[] = (subDirectoryData ?? []).map((item: any) => ({ label: item.title, value: item.id }));
 
   const [person, setPerson] = useState("consumer");
   const [formError, setFormError] = useState("");
-
-  const [branchOfService, setBranchOfService] = useState("")
-  const [militaryStatus, setMilitaryStatus] = useState("")
-
-  const [militaryRank, setMilitaryRank] = useState("")
-
-
+  const [branchOfService, setBranchOfService] = useState("");
+  const [militaryStatus, setMilitaryStatus] = useState("");
+  const [militaryRank, setMilitaryRank] = useState("");
 
   const militaryStatusOptions: Option[] = [
     { label: "Active Duty", value: "activeDuty" },
@@ -120,7 +62,7 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
     { label: "Retirees", value: "retirees" },
     { label: "Military Spouse", value: "militarySpouse" },
     { label: "Surviving Spouse", value: "survivingSpouse" },
-  ]
+  ];
 
   const branchOfServiceOptions: Option[] = [
     { label: "Army", value: "army" },
@@ -128,42 +70,80 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
     { label: "Air Force", value: "airForce" },
     { label: "Coast Guard", value: "coastGuard" },
     { label: "Space Force", value: "spaceForce" },
-  ]
-
-
-  const SubDirectoryOptions: Option[] = [
-    { label: "Admin", value: "admin" },
-    { label: "User", value: "user" },
-    { label: "Guest", value: "guest" },
   ];
-
-
 
   const personOptions = [
     { label: "Consumer", value: "consumer" },
     { label: "Professional", value: "professional" },
   ];
 
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file) {
-      setError("Please upload a file.");
+    const errors: { [key: string]: string } = {};
+
+    if (!email) errors.email = "Email is required";
+    if (!password) errors.password = "Password is required";
+
+    if (type === "signup") {
+      if (!firstName) errors.firstName = "First Name is required";
+      if (!lastName) errors.lastName = "Last Name is required";
+      if (!phone) errors.phone = "Phone is required";
+      if (!contactPerson) errors.contactPerson = "Contact person is required";
+      if (!confirmPassword) errors.confirmPassword = "Please confirm password";
+      if (password !== confirmPassword) errors.confirmPassword = "Passwords do not match";
+
+      if (!branchOfService) errors.branchOfService = "Branch of service is required";
+      if (!militaryStatus) errors.militaryStatus = "Military status is required";
+      if (!militaryRank) errors.militaryRank = "Military rank is required";
+
+      if (person === "professional") {
+        if (!location) errors.location = "Location is required";
+        if (!subLocation) errors.subLocation = "Sub location is required";
+        if (!directory) errors.directory = "Directory is required";
+        if (!subDirectory) errors.subDirectory = "Sub directory is required";
+      }
+
+      if (!file) errors.file = "Document upload is required";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
       return;
     }
 
-    if (!person) {
-      setFormError("Please select a person.");
-      return;
+    setFieldErrors({});
+
+    const formData = new FormData();
+    if (type === "signup") {
+      formData.append("first_name", firstName);
+      formData.append("last_name", lastName);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("confirmPassword", confirmPassword);
+      formData.append("phone", phone);
+      formData.append("contact_person", contactPerson);
+      const userTypeId = person === "consumer" ? "3" : "2";
+      formData.append("user_type", userTypeId);
+      if (userTypeId === "2") {
+        formData.append("location", location);
+        formData.append("subLocation", subLocation);
+        formData.append("directory", directory);
+        formData.append("subDirectory", subDirectory);
+      }
+      formData.append("branch_of_service", branchOfService);
+      formData.append("military_status", militaryStatus);
+      formData.append("military_rank", militaryRank);
+      if (file) formData.append("document", file);
+    } else {
+      formData.append("email", email);
+      formData.append("password", password);
     }
 
-    setError("");
-    console.log("Form submitted", { name, file });
-    console.log({ email, password, firstName, lastName, contactPerson, phone });
+    onSubmit?.(formData);
   };
 
   return (
-    <form onSubmit={handleSubmit} className=" mx-auto ">
+    <form onSubmit={handleSubmit} className="mx-auto">
       {type === "signup" && (
         <div className="w-full mb-6">
           <RadioGroup
@@ -172,142 +152,73 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
             value={person}
             options={personOptions}
             onChange={setPerson}
-            error={formError && !person ? formError : undefined}
+            error={fieldErrors.person}
           />
         </div>
       )}
 
-      <div className={`grid grid-cols-1 ${type === 'signup' ? 'md:grid-cols-2' : ''} gap-6`}>
+      <div className={`grid grid-cols-1 ${type === "signup" ? "md:grid-cols-2" : ""} gap-6`}>
+        {type === "signup" && (
+          <>
+            <Input label="First Name" placeholder="John" value={firstName} onChange={(e) => setFirstName(e.target.value)} error={fieldErrors.firstName} />
+            <Input label="Last Name" placeholder="Doe" value={lastName} onChange={(e) => setLastName(e.target.value)} error={fieldErrors.lastName} />
+          </>
+        )}
+        <Input label="Email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} error={fieldErrors.email} />
+
         {type === "signup" && (
           <>
             <Input
-              label="First Name"
-              placeholder="John"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-            <Input
-              label="Last Name"
-              placeholder="Doe"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
+  label="Phone"
+  placeholder="1234567890"
+  type="tel"
+  value={phone}
+  onChange={(e) => {
+    const numericValue = e.target.value.replace(/\D/g, ""); // remove non-digits
+    setPhone(numericValue);
+  }}
+  error={fieldErrors.phone}
+/>
+            <Input label="Contact Person" placeholder="Contact Person" value={contactPerson} onChange={(e) => setContactPerson(e.target.value)} error={fieldErrors.contactPerson} />
+            <Dropdown label="Branch of Service" options={branchOfServiceOptions} value={branchOfService} onChange={setBranchOfService} error={fieldErrors.branchOfService} />
+            <Dropdown label="Military Status" options={militaryStatusOptions} value={militaryStatus} onChange={setMilitaryStatus} error={fieldErrors.militaryStatus} />
+            <Input label="Military Rank" placeholder="Military Rank" value={militaryRank} onChange={(e) => setMilitaryRank(e.target.value)} error={fieldErrors.militaryRank} />
           </>
         )}
-
-        <Input
-          label="Email"
-          type="email"
-          placeholder="you@example.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-
-
-        {type === "signup" && (
-          <Input
-            label="Phone"
-            type="  "
-            placeholder="xxxxx xxxxx"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        )}
-        {type === "signup" && (
+        {type === "signup" && person === "professional" && (
           <>
             <Dropdown
-              label="Branch of Service"
-              options={branchOfServiceOptions}
-              value={branchOfService}
-              onChange={setBranchOfService}
+              label="Primary Military Base Serving (location)"
+              options={locationOptions}
+              value={location}
+              onChange={(value) => {
+                setLocationId(Number(value));
+                setLocation(value);
+              }}
+              error={fieldErrors.location}
             />
-            <Dropdown
-              label="Military Status"
-              options={militaryStatusOptions}
-              value={militaryStatus}
-              onChange={setMilitaryStatus}
-            />
+            <Dropdown 
+              label="Primary Military Base Sub Serving (sub location)" 
+              options={subLocationOptions} 
+              value={subLocation} 
+              onChange={setSubLocation} 
+              error={fieldErrors.subLocation} />
+              
+
+            <Dropdown label="Professional Main Directory" options={directoryOptions} value={directory} onChange={(value) => {
+              setDirectoryId(Number(value));
+              setDirectory(value);
+            }} error={fieldErrors.directory} />
+            <Dropdown label="Professional Main Sub Directory" options={subDirectoryOptions} value={subDirectory} onChange={setSubDirectory} error={fieldErrors.subDirectory} />
           </>
         )}
+        <Input label="Password" type="password" placeholder="********" value={password} onChange={(e) => setPassword(e.target.value)} error={fieldErrors.password} />
         {type === "signup" && (
-          <Input
-            label="Military Rank"
-            placeholder="Military Rank"
-            value={militaryRank}
-            onChange={(e) => setMilitaryRank(e.target.value)}
-          />
+          <Input label="Confirm Password" type="password" placeholder="********" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} error={fieldErrors.confirmPassword} />
         )}
-
-
-        <div className={`grid md:grid-cols-2 md:col-span-2 gap-6 `}>
-
-
-
-          {type === "signup" && person === "professional" && (
-            <>
-              <Dropdown
-                label="Primary Military Base Serving (location)"
-                options={locationOptions}
-                value={location}
-                onChange={(value) => {
-                  setLocationId(Number(value));  // for useLocationSub
-                  setLocation(value);            // for controlled dropdown value
-                }}
-              />
-              <Dropdown
-                label="Primary Military Base Sub Serving (sub location)"
-                options={subLocationOptions}
-                value={subLocation}
-                onChange={setSubLocation}
-              />
-
-              <Dropdown
-                label="Professional Main Directory "
-                options={directoryOptions}
-                value={directory}
-                onChange={(value) => {
-                  setDirectoryId(Number(value));  // for useDirectorySub
-                  setDirectory(value);            // for controlled dropdown value
-                }}
-              />
-              <Dropdown
-                label="Professional Main Sub Directory"
-                options={subDirectoryOptions}
-                value={subDirectory}
-                onChange={setSubDirectory}
-              />
-
-            </>
-          )}
-        </div>
-
-        <div className={`grid grid-cols-1 md:col-span-2 gap-6 ${type === "signup" ? "md:grid-cols-2" : ""}`}>
-          <Input
-            label="Password"
-            type="password"
-            placeholder="********"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          {type === "signup" && (
-            <Input
-              label="Confirm Password"
-              type="password"
-              placeholder="********"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-          )}
-        </div>
         {type === "signup" && (
           <div className="md:col-span-2">
-            <FileUpload
-              label="Upload Document to Verify Your Military Affiliation"
-              onChange={(selectedFile) => setFile(selectedFile)}
-              error={error}
-            />
+            <FileUpload label="Upload Document to Verify Your Military Affiliation" onChange={(selectedFile) => setFile(selectedFile)} error={fieldErrors.file} />
           </div>
         )}
       </div>
@@ -318,6 +229,6 @@ const AuthForm = ({ type }: { type: "login" | "signup" }) => {
       </div>
     </form>
   );
-}
+};
 
 export default AuthForm;

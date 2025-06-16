@@ -12,6 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.80.7",
     "@tanstack/react-query-devtools": "^5.80.7",
+    "axios": "^1.10.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.17.0",
     "geojson": "^0.5.0",

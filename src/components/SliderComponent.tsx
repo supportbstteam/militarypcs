@@ -18,7 +18,7 @@ import { useSponsors } from "@/lib/query/Query";
 
 const SliderComponent: React.FC = () => {
   const sponsors = useSponsors()
-  console.log(sponsors?.data?.messages, "sponsors");
+  // console.log(sponsors?.data?.messages, "sponsors");
   const settings: Settings = {
     dots: true,
     infinite: true,

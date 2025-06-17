@@ -28,14 +28,14 @@ const HowItWorks: React.FC = () => {
             "icon": PiNetworkLight,
             "title": "Join for Free",
             "text": "Verify your military status and unlock exclusive access to verified professionals.",
-            "button": "Register Now",
+            "button": "Register Today",
         },
         {
             "tab": "members",
             "icon": LuUserRoundPlus,
             "title": "Search for Professionals",
             "text": "Wherever you’re stationed, find reliable and trusted, military vetted experts ready to help.",
-            "button": "Find Professionals Now",
+            "button": "Find Professionals",
         },
         {
             "tab": "members",
@@ -49,21 +49,21 @@ const HowItWorks: React.FC = () => {
             "icon": SlBubble,
             "title": "A Platform with Purpose",
             "text": "Created by Military to connect, support, protect and serve military families nationwide.",
-            "button": "Connect Now",
+            "button": "Join a Platform With Purpose",
         },
         {
             "tab": "professionals",
             "icon": SlBadge,
             "title": "Affordable, Transparent Membership",
             "text": "Unlock access to our military network for a low monthly subscription—significantly less than other platforms. We never take commissions or cut any of your revenue. You keep 100% of what you earn.",
-            "button": "Connect Now",
+            "button": "Become a Professional",
         },
         {
             "tab": "professionals",
             "icon": PiSpeakerSimpleHighLight,
             "title": "Promote Your Business ",
             "text": "Showcase your professional profile, build your reputation within the military community, and grow your presence near bases across the country.",
-            "button": "Connect Now",
+            "button": "Grow Your Business",
         },
         {
             "tab": "professionals",
@@ -120,15 +120,11 @@ const HowItWorks: React.FC = () => {
                     <span
                         onClick={() => setToggel("professionals")}
                         className={` rounded-b-xl sm:rounded-b-none sm:rounded-r-xl sm:rounded-br-xl  cursor-pointer flex  items-center justify-center gap-2   text-base font-semibold px-12 py-3 transition duration-100 ${toggle === "professionals" ? "bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-white " : " text-black bg-[#DEDEDE]"}`}
-
-
                     >
                         For Professionals
                     </span>
                 </div>
             </div>
-
-
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
                 {data
@@ -141,7 +137,7 @@ const HowItWorks: React.FC = () => {
                                 <h4 className="text-xl font-semibold text-gray-800 mt-8 mb-0">
                                     {card.title}
                                 </h4>
-                                <p className="text-base md:text-lg leading-8 text-gray-600 mt-2 mb-8">
+                                <p className="text-base md:text-base leading-8 text-gray-600 mt-2 mb-8">
                                     {card.text}
                                 </p>
                                 <a
@@ -156,7 +152,7 @@ const HowItWorks: React.FC = () => {
                     })}
             </div>
             <div className="grid">
-                <p className="my-4">Ready to serve those who serve?</p>
+                <p className="my-4">Military serving Military matters!</p>
                 <Button variant="primary" href="/auth/signup">Join Today</Button>
 
             </div>

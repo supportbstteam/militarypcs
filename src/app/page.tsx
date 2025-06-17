@@ -9,6 +9,7 @@ import TextMediaHome from "@/components/TextMediaHome";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import CTA from "@/components/CTA";
 import ArticlesSection from "@/components/ArticlesSection";
+import Intro from "@/components/Intro";
 
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
       {/* <br /> */}
       {/* <Banner bgImage={"url('/assets/Homepage3.jpg')"}/> */}
       {/* <br /> */}
+      <Intro/>
       <HowItWorks/>
       <MilitryBasesMap/>
       <TextMediaHome/>

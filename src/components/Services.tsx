@@ -1,12 +1,15 @@
+"use client"
 import React from "react";
 import Button from './ui/Button';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import Image from 'next/image';
 
 import { GoArrowRight } from "react-icons/go";
+import { usePathname } from "next/navigation";
 
 
 const Services = () => {
+  const path = usePathname();
   const servicesData = [
     {
       id: 1,
@@ -101,11 +104,13 @@ const Services = () => {
         </div>
 
         {/* CTA Button */}
+        {path==="/" ? 
         <div className="mt-8 md:mt-16 text-center">
           <Button variant="outlineWhite" href="/services">
             View All Home Services <IoIosArrowRoundForward className=" text-white text-lg" />
           </Button>
         </div>
+          : "" }
       </div>
     </section>
   );

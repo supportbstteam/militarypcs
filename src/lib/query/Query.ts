@@ -1,6 +1,8 @@
 import articles from "@/actions/articles"
+import categories from "@/actions/categories"
 import directory from "@/actions/directory"
 import directorySub from "@/actions/directorySub"
+import event from "@/actions/event"
 import location from "@/actions/location"
 import reviews from "@/actions/reviews"
 import sponsors from "@/actions/sponsors"
@@ -132,6 +134,33 @@ const useSponsors = () => {
         queryFn: fetchSponsors
     })
 }
+// --------------------------- categories -------------------
+
+const fetchCategories = async () => {
+    const response = await categories()
+    return response
+}
+
+const useCategories = () => {
+    return useQuery({
+        queryKey: ['categories'],
+        queryFn: fetchCategories
+    })
+}
+
+// --------------------------- categories -------------------
+
+const fetchEvent = async () => {
+    const response = await event()
+    return response
+}
+
+const useEvent = () => {
+    return useQuery({
+        queryKey: ['event'],
+        queryFn: fetchEvent
+    })
+}
 
 export { 
   useLocation, fetchLocation,
@@ -140,5 +169,8 @@ export {
   useLocationSub, fetchLocationSub,
   useReviews, fetchReviews,
   useArticles, fetchArticles,
-  useSponsors, fetchSponsors
+  useSponsors, fetchSponsors,
+  useCategories, fetchCategories,
+  useEvent, fetchEvent
+
 };

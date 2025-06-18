@@ -1,5 +1,5 @@
 import { IMAGE_BASE_URL } from "@/lib/constants";
-import { fetchArticles } from "@/lib/query/Query";
+import { fetchArticles, fetchEvent } from "@/lib/query/Query";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -18,8 +18,8 @@ interface Props {
   title: string;
 }
 
-const ArticlesSection: React.FC<Props> = async ({ title }) => {
-  const articles = await fetchArticles();
+const EventSection: React.FC<Props> = async ({ title }) => {
+  const articles = await fetchEvent();
   console.log(articles.messages);
   return (
     <section className="bg-white py-8 md:py-16">
@@ -31,7 +31,7 @@ const ArticlesSection: React.FC<Props> = async ({ title }) => {
           </p>
         </div>
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {articles.messages.map((a: Article) => (
+          {articles.data.map((a: Article) => (
           <Link href={`/articles/${a.id}`} className="group" key={a.id}>
             <div
               className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
@@ -66,4 +66,4 @@ const ArticlesSection: React.FC<Props> = async ({ title }) => {
   );
 };
 
-export default ArticlesSection;
+export default EventSection;

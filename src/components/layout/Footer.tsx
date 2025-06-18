@@ -6,7 +6,7 @@ import Link from "next/link";
 const Footer = () => {
 
   const { data: states } = useLocation();
-  console.log(states)
+  // console.log(states)
 
   const quickLinks = [
     { label: "About Us", link: "/about-us" },
@@ -31,7 +31,7 @@ const Footer = () => {
     states.slice(chunkSize, chunkSize * 2),
     states.slice(chunkSize * 2),
   ];
-  console.log(stateChunks)
+  // console.log(stateChunks)
   return (
     <footer className="w-full bg-[#fbfbfb] py-8 md:pt-16 text-gray-600 text-sm">
       <div className=" max-w-[1420px] mx-auto px-4 xl:px-0 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-8 mb-16">

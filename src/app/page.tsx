@@ -30,7 +30,7 @@ export default function Home() {
       <Professionals/>
       <TestimonialSlider/>
       <CTA/>
-      <ArticlesSection/>
+      <ArticlesSection title="ARTICLES"/>
     </>
   );
 }

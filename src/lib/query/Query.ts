@@ -1,28 +1,40 @@
 import articles from "@/actions/articles"
 import categories from "@/actions/categories"
+import categoryBySlug from "@/actions/categoryBySlug"
 import directory from "@/actions/directory"
 import directorySub from "@/actions/directorySub"
 import event from "@/actions/event"
 import location from "@/actions/location"
 import reviews from "@/actions/reviews"
 import sponsors from "@/actions/sponsors"
+// import { useQuery } from "@tanstack/react-query/build/modern"
+// import { useQuery } from '@tanstack/react-query';
 import { useQuery } from "@tanstack/react-query"
 
 
+const noCache = {
+  refetchOnMount: true,
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+    staleTime: 0, // ← important: makes cache always stale
+    // cacheTime: 0, // ← optional: destroys cache immediately
+}
 
 // ------------------ location -------------------              
 
 const fetchLocation = async () => {
-    const response = await location()
-    return response
+  const response = await location()
+  return response
 }
 
 
 const useLocation = () => {
-    return useQuery({
-        queryKey: ['location'],
-        queryFn: location
-    })
+  return useQuery({
+    queryKey: ['location'],
+    queryFn: location,
+    ...noCache
+
+  })
 }
 
 // ------------------------ sub location -------------------
@@ -48,21 +60,25 @@ const useLocationSub = (id: number | null) => {
     queryKey: ['locationSub', id],
     queryFn: () => fetchLocationSub({ id: id as number }),
     enabled: !!id, // avoid running the query if id is 0 or undefined
+    ...noCache
+
   });
 };
 
 // ------------------ directory -------------------
 
 const fetchDirectory = async () => {
-    const response = await directory()
-    return response
+  const response = await directory()
+  return response
 }
 
 const useDirectory = () => {
-    return useQuery({
-        queryKey: ['directory'],
-        queryFn: directory
-    })
+  return useQuery({
+    queryKey: ['directory'],
+    queryFn: directory,
+    ...noCache
+
+  })
 }
 
 // ------------------ directory sub -------------------
@@ -88,6 +104,8 @@ const useDirectorySub = (id: number | null) => {
     queryKey: ['directorySub', id],
     queryFn: () => fetchDirectorySub({ id: id as number }),
     enabled: !!id, // avoid running the query if id is 0 or undefined
+    ...noCache
+
   });
 };
 
@@ -96,73 +114,99 @@ const useDirectorySub = (id: number | null) => {
 // --------------------------- reviews -------------------
 
 const fetchReviews = async () => {
-    const response = await reviews()
-    return response
+  const response = await reviews()
+  return response
 }
 
 const useReviews = () => {
-    return useQuery({
-        queryKey: ['reviews'],
-        queryFn: fetchReviews
-    })
+  return useQuery({
+    queryKey: ['reviews'],
+    queryFn: fetchReviews,
+    ...noCache
+
+  })
 }
 
 // --------------------------- articles -------------------
 
 const fetchArticles = async () => {
-    const response = await articles()
-    return response
+  const response = await articles()
+  return response
 }
 
 const useArticles = () => {
-    return useQuery({
-        queryKey: ['articles'],
-        queryFn: fetchArticles
-    })
+  return useQuery({
+    queryKey: ['articles'],
+    queryFn: fetchArticles,
+    ...noCache
+
+  })
 }
 
 // --------------------------- sponsors -------------------
 
 const fetchSponsors = async () => {
-    const response = await sponsors()
-    return response
+  const response = await sponsors()
+  return response
 }
 
 const useSponsors = () => {
-    return useQuery({
-        queryKey: ['sponsors'],
-        queryFn: fetchSponsors
-    })
+  return useQuery({
+    queryKey: ['sponsors'],
+    queryFn: fetchSponsors,
+    ...noCache
+
+  })
 }
 // --------------------------- categories -------------------
 
 const fetchCategories = async () => {
-    const response = await categories()
-    return response
+  const response = await categories()
+  return response
 }
 
 const useCategories = () => {
-    return useQuery({
-        queryKey: ['categories'],
-        queryFn: fetchCategories
-    })
+  return useQuery({
+    queryKey: ['categories'],
+    queryFn: fetchCategories,
+    ...noCache
+
+  })
 }
 
-// --------------------------- categories -------------------
+// --------------------------- CategoryBySlug -------------------
+
+const fetchCategoryBySlug = async (slug: string) => {
+  const response = await categoryBySlug(slug)
+  return response
+}
+
+const useCategoryBySlug = (slug: string) => {
+  return useQuery({
+    queryKey: ['category'],
+    queryFn: () => fetchCategoryBySlug(slug),
+    ...noCache
+
+  })
+}
+
+// --------------------------- event -------------------
 
 const fetchEvent = async () => {
-    const response = await event()
-    return response
+  const response = await event()
+  return response
 }
 
 const useEvent = () => {
-    return useQuery({
-        queryKey: ['event'],
-        queryFn: fetchEvent
-    })
+  return useQuery({
+    queryKey: ['event'],
+    queryFn: fetchEvent,
+    ...noCache
+  })
 }
 
-export { 
+
+export {
   useLocation, fetchLocation,
   useDirectory, fetchDirectory,
   useDirectorySub, fetchDirectorySub,
@@ -171,6 +215,7 @@ export {
   useArticles, fetchArticles,
   useSponsors, fetchSponsors,
   useCategories, fetchCategories,
-  useEvent, fetchEvent
+  useEvent, fetchEvent,
+  useCategoryBySlug, fetchCategoryBySlug
 
 };

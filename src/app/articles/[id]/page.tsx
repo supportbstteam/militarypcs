@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 export default async function Page({ params }: any) {
-  const id = Number(params.id);
+  const id = await Number(params.id);
 
   const articles = await fetchArticles();
 

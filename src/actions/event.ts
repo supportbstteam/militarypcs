@@ -1,12 +1,14 @@
-import axios from "axios";
-
-const event = async () => {
+export const fetchEvent = async () => {
   try {
-    const response = await axios.get("https://teamwebdevelopers.com/MilitaryPCS/api/event");
-    return response.data; // Axios auto-parses JSON
+    const res = await fetch("https://teamwebdevelopers.com/MilitaryPCS/api/event", {
+      cache: "no-store",
+    });
+
+    if (!res.ok) throw new Error("Failed to fetch event");
+
+    return await res.json();
   } catch (error) {
-    console.error("Error fetching articles:", error);
-    throw new Error("Failed to fetch articles");
+    console.error("fetchEvent error:", error);
+    throw error; // re-throw to be caught upstream
   }
 };
-export default event;

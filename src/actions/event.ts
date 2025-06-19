@@ -1,4 +1,4 @@
-export const fetchEvent = async () => {
+const event = async () => {
   try {
     const res = await fetch("https://teamwebdevelopers.com/MilitaryPCS/api/event", {
       cache: "no-store",
@@ -12,3 +12,5 @@ export const fetchEvent = async () => {
     throw error; // re-throw to be caught upstream
   }
 };
+
+export default event

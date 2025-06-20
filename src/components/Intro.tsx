@@ -42,14 +42,14 @@ const Intro = () => {
                     <h2 className="h2 mb-4">
                         Welcome to MilitaryPCS.com — Built by Military, for Military
                     </h2>
-                    <p className="text-black mb-4 md:mb-8">
+                    <p className="text-black mb-4 md:mb-8 text-left">
                         At MilitaryPCS.com, we believe in the power of our community to create something bigger than ourselves. This isn’t just another resource platform — it’s a mission-driven movement to transform how military families connect, move, thrive and are served by others.
                         <br />
                         <br />
                         When you share MilitaryPCS.com with other military families, you help build a powerful network of members and professionals who understand the unique challenges and lifestyle of military life. The more we grow together, the more impact we make — saving time, money, and bringing peace of mind to every military family that joins.
 
                     </p>
-                    <p className="text-black mb-4 md:mb-8">
+                    <p className="text-black mb-4 md:mb-8 text-left">
                         Here’s how MilitaryPCS.com delivers unmatched value:
                     </p>
                 </div>

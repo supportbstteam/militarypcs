@@ -1,12 +1,15 @@
 import Breadcrumbsbanner from '@/components/shared/Breadcrumbsbanner'
 import Breadcrumbs from '@/components/ui/Breadcrumbs'
 import Button from '@/components/ui/Button'
+import { fetchAbout } from '@/lib/query/Query'
 import Image from 'next/image'
 import React from 'react'
 import { FaCheckCircle } from 'react-icons/fa'
 import { IoIosArrowRoundForward } from 'react-icons/io'
 
-const page = () => {
+const page = async() => {
+  const about = await fetchAbout()
+  // console.log(about.data)
   return (
     <>
       <Breadcrumbsbanner />

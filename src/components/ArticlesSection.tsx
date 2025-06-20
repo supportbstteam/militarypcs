@@ -20,7 +20,7 @@ interface Props {
 
 const ArticlesSection: React.FC<Props> = async ({ title }) => {
   const articles = await fetchArticles();
-  console.log(articles.messages);
+  // console.log(articles.messages);
   return (
     <section className="bg-white py-8 md:py-16">
       <div className="max-w-[1420px] mx-auto px-4 text-center">

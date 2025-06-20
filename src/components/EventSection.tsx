@@ -52,9 +52,9 @@ const EventSection: React.FC<Props> = async ({ title }) => {
                   {a.short_desc}
                 </p>
 
-                <span className="mt-2 inline-block text-xs px-4 py-2 rounded-full font-medium w-fit bg-gray-100 text-gray-800">
+                {/* <span className="mt-2 inline-block text-xs px-4 py-2 rounded-full font-medium w-fit bg-gray-100 text-gray-800">
                   {a.category?.title || "Uncategorized"}
-                </span>
+                </span> */}
               </div>
             </div>
           </Link>

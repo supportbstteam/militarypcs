@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import CountersSection from './ui/CounterSection';
+import Map from './ui/Map';
 
 const MilitryBasesMap = () => {
     return (
@@ -13,7 +14,8 @@ const MilitryBasesMap = () => {
                 <div className='flex items-center justify-center flex-col  px-4 xl:px-0 mb-8 '>
                     <h2 className='h2White text-center'> Explore Military Bases Across The U.S.</h2>
                     <p className="text-base md:text-lg text-white mt-2 mb-4">Explore Military Bases—get Resources and Connect with Professionals</p>
-                    <Image src="/images/map-image.png" alt="militarypcs" width={300} height={60} quality={100} className="w-[75%]" unoptimized />
+                    {/* <Image src="/images/map-image.png" alt="militarypcs" width={300} height={60} quality={100} className="w-[75%]" unoptimized /> */}
+                    <Map/>
                 </div>
                     <div className='md:absolute bottom-[-210px] w-full '>
                         <CountersSection />

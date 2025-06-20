@@ -23,15 +23,15 @@ const Footer = () => {
     { label: "Cookie Policy", link: "/cookie-policy" }
   ];
 
-// Split into 4 chunks
-if (!Array.isArray(states) || states.length === 0) return null;
-const chunkSize = Math.ceil(states.length / 4);
-const stateChunks = [
-  states.slice(0, chunkSize),
-  states.slice(chunkSize, chunkSize * 2),
-  states.slice(chunkSize * 2, chunkSize * 3),
-  states.slice(chunkSize * 3),
-];
+  // Split into 4 chunks
+  if (!Array.isArray(states) || states.length === 0) return null;
+  const chunkSize = Math.ceil(states.length / 4);
+  const stateChunks = [
+    states.slice(0, chunkSize),
+    states.slice(chunkSize, chunkSize * 2),
+    states.slice(chunkSize * 2, chunkSize * 3),
+    states.slice(chunkSize * 3),
+  ];
   // console.log(stateChunks)
   return (
     <footer className="w-full bg-[#fbfbfb] py-8 md:pt-16 text-gray-600 text-sm">
@@ -80,16 +80,20 @@ const stateChunks = [
           <h4 className="text-xl font-semibold text-black mb-8">Locations</h4>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-  {stateChunks.map((chunk, idx) => (
-    <ul key={idx} className="space-y-4">
-      {chunk.map((state) => (
-        <li key={state.id} className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">
-          {state.location}
-        </li>
-      ))}
-    </ul>
-  ))}
-</div>
+          {stateChunks.map((chunk, idx) => (
+            <ul key={idx} className="space-y-4">
+              {chunk.map((state) => (
+                <li className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">
+                  <Link key={state.id} href={`/states/${state.location}`}>
+
+                    {state.location}
+
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
       </div>
       {/* Bottom Section */}
       <div className="max-w-[1420px] mx-auto px-4 xl:px-0 mt-10 border-t border-gray-300 pt-4 flex flex-col md:flex-row justify-between items-center">

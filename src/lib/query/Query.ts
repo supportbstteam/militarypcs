@@ -22,13 +22,13 @@ const noCache = {
 
 // ------------------ location -------------------              
 
-const fetchLocation = async () => {
+export const fetchLocation = async () => {
   const response = await location()
   return response
 }
 
 
-const useLocation = () => {
+export const useLocation = () => {
   return useQuery({
     queryKey: ['location'],
     queryFn: location,
@@ -39,7 +39,7 @@ const useLocation = () => {
 
 // ------------------------ sub location -------------------
 
-const fetchLocationSub = async ({ id }: { id: number }) => {
+export const fetchLocationSub = async ({ id }: { id: number }) => {
   const response = await fetch('https://teamwebdevelopers.com/MilitaryPCS/api/get-sublocations', {
     method: 'POST',
     headers: {
@@ -55,7 +55,7 @@ const fetchLocationSub = async ({ id }: { id: number }) => {
   return response.json()
 };
 
-const useLocationSub = (id: number | null) => {
+export const useLocationSub = (id: number | null) => {
   return useQuery({
     queryKey: ['locationSub', id],
     queryFn: () => fetchLocationSub({ id: id as number }),
@@ -67,12 +67,12 @@ const useLocationSub = (id: number | null) => {
 
 // ------------------ directory -------------------
 
-const fetchDirectory = async () => {
+export const fetchDirectory = async () => {
   const response = await directory()
   return response
 }
 
-const useDirectory = () => {
+export const useDirectory = () => {
   return useQuery({
     queryKey: ['directory'],
     queryFn: directory,
@@ -83,7 +83,7 @@ const useDirectory = () => {
 
 // ------------------ directory sub -------------------
 
-const fetchDirectorySub = async ({ id }: { id: number }) => {
+export const fetchDirectorySub = async ({ id }: { id: number }) => {
   const response = await fetch('https://teamwebdevelopers.com/MilitaryPCS/api/get-subDirectory', {
     method: 'POST',
     headers: {
@@ -99,7 +99,7 @@ const fetchDirectorySub = async ({ id }: { id: number }) => {
   return response.json()
 };
 
-const useDirectorySub = (id: number | null) => {
+export const useDirectorySub = (id: number | null) => {
   return useQuery({
     queryKey: ['directorySub', id],
     queryFn: () => fetchDirectorySub({ id: id as number }),
@@ -113,12 +113,12 @@ const useDirectorySub = (id: number | null) => {
 
 // --------------------------- reviews -------------------
 
-const fetchReviews = async () => {
+export const fetchReviews = async () => {
   const response = await reviews()
   return response
 }
 
-const useReviews = () => {
+export const useReviews = () => {
   return useQuery({
     queryKey: ['reviews'],
     queryFn: fetchReviews,
@@ -129,12 +129,12 @@ const useReviews = () => {
 
 // --------------------------- articles -------------------
 
-const fetchArticles = async () => {
+export const fetchArticles = async () => {
   const response = await articles()
   return response
 }
 
-const useArticles = () => {
+export const useArticles = () => {
   return useQuery({
     queryKey: ['articles'],
     queryFn: fetchArticles,
@@ -145,12 +145,12 @@ const useArticles = () => {
 
 // --------------------------- sponsors -------------------
 
-const fetchSponsors = async () => {
+export const fetchSponsors = async () => {
   const response = await sponsors()
   return response
 }
 
-const useSponsors = () => {
+export const useSponsors = () => {
   return useQuery({
     queryKey: ['sponsors'],
     queryFn: fetchSponsors,
@@ -160,12 +160,12 @@ const useSponsors = () => {
 }
 // --------------------------- categories -------------------
 
-const fetchCategories = async () => {
+export const fetchCategories = async () => {
   const response = await categories()
   return response
 }
 
-const useCategories = () => {
+export const useCategories = () => {
   return useQuery({
     queryKey: ['categories'],
     queryFn: fetchCategories,
@@ -176,12 +176,12 @@ const useCategories = () => {
 
 // --------------------------- CategoryBySlug -------------------
 
-const fetchCategoryBySlug = async (slug: string) => {
+export const fetchCategoryBySlug = async (slug: string) => {
   const response = await categoryBySlug(slug)
   return response
 }
 
-const useCategoryBySlug = (slug: string) => {
+export const useCategoryBySlug = (slug: string) => {
   return useQuery({
     queryKey: ['category'],
     queryFn: () => fetchCategoryBySlug(slug),
@@ -192,12 +192,12 @@ const useCategoryBySlug = (slug: string) => {
 
 // --------------------------- event -------------------
 
-const fetchEvent = async () => {
+export const fetchEvent = async () => {
   const response = await event()
   return response
 }
 
-const useEvent = () => {
+export const useEvent = () => {
   return useQuery({
     queryKey: ['event'],
     queryFn: fetchEvent,
@@ -205,17 +205,17 @@ const useEvent = () => {
   })
 }
 
+// --------------------------- about -------------------
 
-export {
-  useLocation, fetchLocation,
-  useDirectory, fetchDirectory,
-  useDirectorySub, fetchDirectorySub,
-  useLocationSub, fetchLocationSub,
-  useReviews, fetchReviews,
-  useArticles, fetchArticles,
-  useSponsors, fetchSponsors,
-  useCategories, fetchCategories,
-  useEvent, fetchEvent,
-  useCategoryBySlug, fetchCategoryBySlug
+export const fetchAbout = async () => {
+  const response = await event()
+  return response
+}
 
-};
+export const useAbout = () => {
+  return useQuery({
+    queryKey: ['about'],
+    queryFn: fetchAbout,
+    ...noCache
+  })
+}

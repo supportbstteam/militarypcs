@@ -4,11 +4,22 @@ import { number } from "framer-motion";
 
 const StatePage = async ({params}:any ) => {
   const State = String(params.state)
-  console.log(State)
+  console.log(State)  
+
   const allStates = await fetchLocation()
   console.log(allStates)
 
-  const singleState = allStates.find((state: any) => state.location === State);
+  const rawState = params.state;
+  
+  const toTitleCase = (str: string) =>
+  str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase());
+
+const decodedState = toTitleCase(
+  decodeURIComponent(String(rawState)).replace("-", " ")
+);
+
+
+  const singleState = allStates.find((state: any) => state.location === decodedState);
 
   if (!singleState) {
     // Handle the missing state
@@ -22,8 +33,6 @@ const StatePage = async ({params}:any ) => {
 
 
 
-  const rawState = params.state;
-  const decodedState = decodeURIComponent(String(rawState)).replace("-", " ");
 
   return (
     <div style={{ padding: "2rem" }}>

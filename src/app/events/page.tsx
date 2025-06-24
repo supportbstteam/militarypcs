@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+
+
 import ArticlesSection from '@/components/ArticlesSection'
 import EventSection from '@/components/EventSection'
 import Breadcrumbsbanner from '@/components/shared/Breadcrumbsbanner'

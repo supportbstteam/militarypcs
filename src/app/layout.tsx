@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { QueryProvider } from "@/lib/query/QueryProvider";
+
 // import "@/styles/globals.css"; // your global Tailwind CSS file
 // imports for slider ends 
 

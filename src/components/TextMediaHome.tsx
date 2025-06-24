@@ -4,12 +4,26 @@ import { FaCheckCircle } from 'react-icons/fa';
 import Button from './ui/Button';
 import { BiArrowFromLeft } from 'react-icons/bi';
 import { IoIosArrowRoundForward } from 'react-icons/io';
+import { fetchHome } from '@/lib/query/Query';
+import { IMAGE_BASE_URL } from '@/lib/constants';
 
 const TextMediaHome: React.FC<{
   title?: string;
   subtitle?: string;
   media?: React.ReactNode;
-}> = ({ title, subtitle, media }) => {
+}> = async ({ title, subtitle, media }) => {
+
+      const { data, isLoading, error } = await fetchHome();
+  
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error loading content</div>;
+    if (!data) return <div>No content found</div>;
+  
+    const section2 = await data.section2[0];
+    const section3 = await data.section3[0];
+    const section4 = await data.section4[0];
+    const section5 = await data.section5[0];
+    // console.log(section2)
 
 
 
@@ -18,16 +32,20 @@ const TextMediaHome: React.FC<{
       <section className="max-w-[1420px] mx-auto">
         <div className="flex flex-col md:flex-row items-stretch md:gap-14 py-8 md:py-16 px-4 md:px-0" >
           <div className=" md:w-1/2 rounded-2xl  bg-contain bg-top bg-no-repeat md:bg-cover overflow-hidden "
-            style={{ backgroundImage: "url('/images/img1.webp')" }}>
-            <Image src="/images/img1.webp" alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
+            // style={{ backgroundImage: "url('/images/img1.webp')" }}
+            style={{ backgroundImage: `url('${IMAGE_BASE_URL}${section3.expert1_image}')` }}
+            >
+            <Image src={`${IMAGE_BASE_URL}${section3.expert1_image}`} alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
           </div>
           {/* <div className="md:w-1/2  h-full">
 
         </div> */}
           <div className="md:w-1/2">
-            <h2 className="h2 mt-8">LOOKING FOR VA LOAN EXPERTS?</h2>
-            <p className="text-xl text-gray-700 mb-8 leading-8">Get pre-approved with confidence from vetted mortgage professionals who understand your military journey.</p>
+            {/* <h2 className="h2 mt-8">LOOKING FOR VA LOAN EXPERTS?</h2> */}
+            <h2 className="h2 mt-8">{section3.expert1_title}</h2>
+            <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html: section3.expert1_description }} />
 
+            {/* <p className="text-xl text-gray-700 mb-8 leading-8">Get pre-approved with confidence from vetted mortgage professionals who understand your military journey.</p>
             <p className="text-gray-700 mb-6 leading-8">Navigating the VA loan process can feel overwhelming — but it doesn’t have to be.
               <br />
               Our VA Loan Experts are <span className='font-bold'> military veterans and spouses </span> who will guide you step-by-step through the VA home loan process.
@@ -46,7 +64,7 @@ const TextMediaHome: React.FC<{
                 </li>
               ))}
             </ul>
-            <p className="text-base text-gray-700 mb-8 leading-8">Start your VA Loan journey with trusted experts who lived the military lifestyle just like you!</p>
+            <p className="text-base text-gray-700 mb-8 leading-8">Start your VA Loan journey with trusted experts who lived the military lifestyle just like you!</p> */}
 
             <Button variant="outlineColor" href="/auth/signup">
               Find a VA Loan Expert <IoIosArrowRoundForward className=" text-black text-lg" />
@@ -60,16 +78,20 @@ const TextMediaHome: React.FC<{
         <div className="max-w-[1420px] mx-auto px-4 md:px-0 py-8 md:py-16 ">
 
 
-
           <div className="flex flex-col md:flex-row-reverse items-stretch  md:gap-14 ">
             <div className=" md:w-1/2 rounded-2xl bg-left bg-contain bg-no-repeat md:bg-cover overflow-hidden "
-              style={{ backgroundImage: "url('/assets/img2.webp')" }}>
-              <Image src="/assets/img2.webp" alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
+              // style={{ backgroundImage: "url('/assets/img2.webp')" }}
+            style={{ backgroundImage: `url('${IMAGE_BASE_URL}${section4.expert2_image}')` }}
+              >
+              <Image src={`${IMAGE_BASE_URL}${section4.expert2_image}`} alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
 
             </div>
             <div className="md:w-6/12">
-              <h2 className="h2 mt-8">LOOKING FOR REAL ESTATE AGENTS? </h2>
-              <p className="text-xl text-gray-700 mb-8 leading-8">Buy or Sell your home with vetted real estate agents who understand PCS moves.</p>
+              {/* <h2 className="h2 mt-8">LOOKING FOR REAL ESTATE AGENTS? </h2> */}
+            <h2 className="h2 mt-8">{section4.expert2_title}</h2>
+            <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html: section4.expert2_description }} />
+
+              {/* <p className="text-xl text-gray-700 mb-8 leading-8">Buy or Sell your home with vetted real estate agents who understand PCS moves.</p>
 
               <p className="text-gray-700 mb-6 leading-8">
                 Military relocations can be stressful — but having the right real estate agent makes all the difference. <br />
@@ -88,7 +110,7 @@ const TextMediaHome: React.FC<{
                   </li>
                 ))}
               </ul>
-              <p className="text-base text-gray-700 mb-8 leading-8">Find a real estate agent who truly understands your military lifestyle — because they’ve lived it too!</p>
+              <p className="text-base text-gray-700 mb-8 leading-8">Find a real estate agent who truly understands your military lifestyle — because they’ve lived it too!</p> */}
 
               <Button variant="outlineColor" href="/auth/signup">
                 Find a Real Estate Agent <IoIosArrowRoundForward className=" text-black text-lg" />
@@ -103,8 +125,9 @@ const TextMediaHome: React.FC<{
 
         <div className="flex flex-col md:flex-row items-stretch md:gap-14  " >
           <div className=" md:w-1/2 rounded-2xl  bg-contain bg-right bg-no-repeat md:bg-cover overflow-hidden  "
-            style={{ backgroundImage: "url('/assets/InsuranceAgent.jpg')" }}>
-            <Image src="/assets/InsuranceAgent.jpg" alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
+            style={{ backgroundImage: `url('${IMAGE_BASE_URL}${section5.expert3_image}')` }}
+            >
+            <Image src={`${IMAGE_BASE_URL}${section5.expert3_image}`} alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
 
           </div>
           {/* <div className="md:w-1/2 rounded-2xl "   
@@ -112,9 +135,12 @@ const TextMediaHome: React.FC<{
           <Image src="/assets/InsuranceAgent.jpg" alt="militarypcs" width={300} height={100} className="w-full h-full object-cover rounded-2xl" unoptimized />
         </div> */}
           <div className="md:w-1/2">
-            <h2 className="h2 mt-8">LOOKING FOR HOMEOWNERS INSURANCE AGENTS?</h2>
+            {/* <h2 className="h2 mt-8">LOOKING FOR HOMEOWNERS INSURANCE AGENTS?</h2> */}
+             <h2 className="h2 mt-8">{section5.expert3_title}</h2>
+            <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html: section5.expert3_description }} />
 
-            <p className="text-xl text-gray-700 mb-8 leading-8">Protect your home with coverage tailored to military families—provided by trusted, verified insurance experts</p>
+
+            {/* <p className="text-xl text-gray-700 mb-8 leading-8">Protect your home with coverage tailored to military families—provided by trusted, verified insurance experts</p>
 
             <p className="text-gray-700 mb-6 leading-8">Searching for the right homeowner’s insurance policy can be daunting, but it doesn’t have to be.
               <br />
@@ -133,7 +159,7 @@ const TextMediaHome: React.FC<{
                 </li>
               ))}
             </ul>
-            <p className="text-base text-gray-700 mb-8 leading-8">Get the home protection you deserve today — from insurance experts who understand your service.</p>
+            <p className="text-base text-gray-700 mb-8 leading-8">Get the home protection you deserve today — from insurance experts who understand your service.</p> */}
 
             <Button variant="outlineColor" href="/auth/signup">
               Find a Homeowners Insurance <IoIosArrowRoundForward className=" text-black text-lg" />

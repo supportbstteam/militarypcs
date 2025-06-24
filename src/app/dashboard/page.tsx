@@ -1,17 +1,18 @@
     "use client";
 
 import { useEffect } from "react";
+import { getCookie } from 'cookies-next';
 import { useRouter } from "next/navigation";
 
 const DashboardPage = () => {
   const router = useRouter();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
+  useEffect(()=>{
+    const token = getCookie('token')
     if (!token) {
-      router.push("/login");
+      router.push('/login'); // Redirect to login if not authenticated
     }
-  }, [router]);
+  })
 
   return (
     <div className="p-6">

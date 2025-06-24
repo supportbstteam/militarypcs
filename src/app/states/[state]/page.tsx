@@ -1,13 +1,15 @@
 import { fetchLocation, fetchLocationSub } from "@/lib/query/Query";
 import { number } from "framer-motion";
+import Link from "next/link";
+import slugify from "slugify";
 
 
 const StatePage = async ({params}:any ) => {
   const State = String(params.state)
-  console.log(State)  
+  // console.log(State)  
 
   const allStates = await fetchLocation()
-  console.log(allStates)
+  // console.log(allStates)
 
   const rawState = params.state;
   
@@ -31,23 +33,27 @@ const decodedState = toTitleCase(
   const subLocation = await fetchLocationSub({ id });
 
 
-
-
-
   return (
+      <section className="max-w-[1420px] mx-auto px-4 text-center">
+
+
     <div style={{ padding: "2rem" }}>
 
       <h2 className="h2">Sub Location of {decodedState}</h2>
       <ul>
         {
           subLocation.map((city: any) => (
-            <li key={city.id} className="">
-              - {city.city}
-            </li>
+            <Link key={city.id} href={`/city/${slugify(city.city)}`}>
+              <li key={city.id} className="">
+                - {city.city}
+              </li>
+            </Link>
           ))
         }
       </ul>
     </div>
+    </section>
+
   );
 };
 

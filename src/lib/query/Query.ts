@@ -1,10 +1,13 @@
+import about from "@/actions/about"
 import articles from "@/actions/articles"
 import categories from "@/actions/categories"
 import categoryBySlug from "@/actions/categoryBySlug"
 import directory from "@/actions/directory"
 import directorySub from "@/actions/directorySub"
 import event from "@/actions/event"
+import home from "@/actions/home"
 import location from "@/actions/location"
+import refundPolicy from "@/actions/refundPolicy"
 import reviews from "@/actions/reviews"
 import sponsors from "@/actions/sponsors"
 // import { useQuery } from "@tanstack/react-query/build/modern"
@@ -14,10 +17,10 @@ import { useQuery } from "@tanstack/react-query"
 
 const noCache = {
   refetchOnMount: true,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-    staleTime: 0, // ← important: makes cache always stale
-    // cacheTime: 0, // ← optional: destroys cache immediately
+  refetchOnWindowFocus: true,
+  refetchOnReconnect: true,
+  staleTime: 0, // ← important: makes cache always stale
+  // cacheTime: 0, // ← optional: destroys cache immediately
 }
 
 // ------------------ location -------------------              
@@ -208,7 +211,7 @@ export const useEvent = () => {
 // --------------------------- about -------------------
 
 export const fetchAbout = async () => {
-  const response = await event()
+  const response = await about()
   return response
 }
 
@@ -216,6 +219,36 @@ export const useAbout = () => {
   return useQuery({
     queryKey: ['about'],
     queryFn: fetchAbout,
+    ...noCache
+  })
+}
+
+// --------------------------- home -------------------
+
+export const fetchHome = async () => {
+  const response = await home()
+  return response
+}
+
+export const useHome = () => {
+  return useQuery({
+    queryKey: ['home'],
+    queryFn: fetchHome,
+    ...noCache
+  })
+}
+
+// --------------------------- FundPolicy -------------------
+
+export const fetchRefundPolicy = async () => {
+  const response = await refundPolicy()
+  return response
+}
+
+export const useFundPolicy = () => {
+  return useQuery({
+    queryKey: ['refundPolicy'],
+    queryFn: fetchRefundPolicy,
     ...noCache
   })
 }

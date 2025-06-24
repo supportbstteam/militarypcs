@@ -1,11 +1,16 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { CiLock, CiUser, CiMenuBurger} from "react-icons/ci";
+import { CiLock, CiUser, CiMenuBurger } from "react-icons/ci";
 import { motion, AnimatePresence } from "framer-motion";
 import { RxCross1 } from "react-icons/rx";
+
+
+import { useRouter } from "next/navigation";
+import { deleteCookie } from "cookies-next";
+import { hasCookie } from "cookies-next/client";
 
 const Header: React.FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,18 +27,32 @@ const Header: React.FC = () => {
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
     const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
+    const router = useRouter();
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        setIsLoggedIn(hasCookie("token"));
+    }, []);
+
+    const handleLogout = () => {
+        deleteCookie("token");
+        setIsLoggedIn(false);
+        router.push("/auth/login");
+    };
+
     return (
         <header className="max-w-[1420px] mx-auto py-4 px-4 xl:px-0 relative">
             <div className="flex items-center justify-between">
                 {/* Logo */}
                 <div className="w-8/12 md:w-3/12">
                     <Link href="/" onClick={closeMobileMenu}>
-                        <Image 
-                            src="/images/logo.png" 
-                            alt="militarypcs" 
-                            width={300} 
-                            height={60} 
-                            className="w-[250px] md:w-[300px]" 
+                        <Image
+                            src="/images/logo.png"
+                            alt="militarypcs"
+                            width={300}
+                            height={60}
+                            className="w-[250px] md:w-[300px]"
                             priority
                         />
                     </Link>
@@ -44,7 +63,7 @@ const Header: React.FC = () => {
                     <ul className="flex items-center gap-8">
                         {navItems.map((item, i) => (
                             <li key={i}>
-                                <Link 
+                                <Link
                                     href={item.link}
                                     className="block hover:scale-105 transition duration-150 ease-in-out"
                                 >
@@ -57,13 +76,27 @@ const Header: React.FC = () => {
                     </ul>
 
                     <div className="flex gap-2">
-                        <Link href="/auth/login">
-                            <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
-                                <CiLock size={22} className="text-white" />
-                                Sign in
-                            </button>
-                        </Link>
 
+
+
+                        {isLoggedIn ? (
+
+                            <button onClick={handleLogout} className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
+                                <CiUser size={22} className="text-white" />
+                                Log Out
+                            </button>
+                        )
+                            :
+                            (
+
+                                <Link href="/auth/login">
+                                    <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
+                                        <CiLock size={22} className="text-white" />
+                                        Sign in
+                                    </button>
+                                </Link>
+                            )
+                        }
                         <Link href="/auth/signup">
                             <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
                                 <CiUser size={22} className="text-white" />
@@ -74,7 +107,7 @@ const Header: React.FC = () => {
                 </nav>
 
                 {/* Mobile Menu Toggle */}
-                <button 
+                <button
                     className="block xl:hidden p-2"
                     onClick={toggleMobileMenu}
                     aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -111,7 +144,7 @@ const Header: React.FC = () => {
                         >
                             <div className="h-full flex flex-col py-4 px-4">
                                 <div className="flex justify-end mb-8">
-                                    <button 
+                                    <button
                                         onClick={closeMobileMenu}
                                         className="p-2"
                                         aria-label="Close menu"
@@ -124,7 +157,7 @@ const Header: React.FC = () => {
                                     <ul className="space-y-1">
                                         {navItems.map((item, i) => (
                                             <li key={i}>
-                                                <Link 
+                                                <Link
                                                     href={item.link}
                                                     onClick={closeMobileMenu}
                                                     className="block py-2 text-lg font-medium text-gray-800 hover:text-primary transition"
@@ -137,8 +170,8 @@ const Header: React.FC = () => {
                                 </nav>
 
                                 <div className="mt-auto space-y-4 pt-4s ">
-                                    <Link 
-                                        href="/auth/login" 
+                                    <Link
+                                        href="/auth/login"
                                         onClick={closeMobileMenu}
                                         className="block w-full"
                                     >
@@ -148,8 +181,8 @@ const Header: React.FC = () => {
                                         </button>
                                     </Link>
 
-                                    <Link 
-                                        href="/auth/signup" 
+                                    <Link
+                                        href="/auth/signup"
                                         onClick={closeMobileMenu}
                                         className="block w-full"
                                     >

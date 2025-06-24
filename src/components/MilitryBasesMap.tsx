@@ -2,11 +2,10 @@ import Image from 'next/image'
 import React from 'react'
 import CountersSection from './ui/CounterSection';
 import Map from './ui/Map';
+import UsaMap from './ui/UsaMap';
 
 const MilitryBasesMap = () => {
     return (
-
-
         <div className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] w-full py-8 md:py-16 md:mb-24">
             <section
                 className="max-w-[1420px] relative mx-auto "
@@ -16,13 +15,13 @@ const MilitryBasesMap = () => {
                     <p className="text-base md:text-lg text-white mt-2 mb-4">Explore Military Bases—get Resources and Connect with Professionals</p>
                     {/* <Image src="/images/map-image.png" alt="militarypcs" width={300} height={60} quality={100} className="w-[75%]" unoptimized /> */}
                     <Map/>
+                    {/* <UsaMap/> */}
                 </div>
                     <div className='md:absolute bottom-[-210px] w-full '>
                         <CountersSection />
                     </div>
             </section>
         </div>
-
     )
 }
 

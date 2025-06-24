@@ -83,7 +83,7 @@ const Footer = () => {
           {stateChunks.map((chunk, idx) => (
             <ul key={idx} className="space-y-4">
               {chunk.map((state) => (
-                <li className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">
+                <li key={state.id} className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">
                   <Link key={state.id} href={`/states/${state.location}`}>
 
                     {state.location}

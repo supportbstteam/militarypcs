@@ -1,83 +1,54 @@
+import { IMAGE_BASE_URL } from '@/lib/constants';
+import { fetchHome } from '@/lib/query/Query';
 import Image from 'next/image';
 import React from 'react'
 
-const Intro = () => {
-    const data = [
-        {
-            id: 1,
-            title: "Exclusive Military-Only Network",
-            description: "We only promote military-affiliated professionals (veterans and spouses) to serve our members. No other platform holds this standard of loyalty and connection.",
-        },
-        {
-            id: 2,
-            title: "Empowering Military Professionals",
-            description: "Whether you’re a realtor, loan officer, plumber, or contractor — MilitaryPCS.com helps you grow your business and income by serving those who share your values, without taking a cut of your hard-earned commission.",
-        },
-        {
-            id: 3,
-            title: "Saving Families Thousands",
-            description: "Our mortgage partners must commit to eliminating junk fees like origination, underwriting, and processing fees. This alone can save military families thousands when buying a home.",
-        },
-        {
-            id: 4,
-            title: "Raising Industry Standards",
-            description: "As our member base grows, we will influence service industries near every base, forcing competitors to either match our standards or lose business.",
-        },
-        {
-            id: 5,
-            title: "Free Tools & Education",
-            description: "From credit building to VA loan strategies, we deliver free resources to help military families build wealth and navigate PCS moves with confidence.",
-        },
-        {
-            id: 6,
-            title: "Protecting Our Own",
-            description: "We advocate against predatory companies and support military families with nonprofit-backed initiatives like closing cost assistance and job transition opportunities.",
-        }
-    ];
+const Intro = async () => {
+
+    const { data, isLoading, error } = await fetchHome();
+
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error loading content</div>;
+    if (!data) return <div>No content found</div>;
+
+    const section1 = await data.section1[0];
+      console.log(section1)
+    //   console.log(data.section1[0])
+
+    //   const section2 = data.data.section2[0];
+    //   const section3 = data.data.section3[0];
+    //   const section4 = data.data.section4[0];
+    //   const section5 = data.data.section5[0];
+
     return (
         <section className="py-8 md:py-16 bg-white">
             <div className="max-w-[1420px] mx-auto px-4">
                 {/* Heading */}
                 <div className="text-center mb-10">
                     <h2 className="h2 mb-4">
-                        Welcome to MilitaryPCS.com — Built by Military, for Military
+                        {/* Welcome to MilitaryPCS.com — Built by Military, for Military */}
+                        {section1.section1_title}
                     </h2>
-                    <p className="text-black mb-4 md:mb-8 text-left">
-                        At MilitaryPCS.com, we believe in the power of our community to create something bigger than ourselves. This isn’t just another resource platform — it’s a mission-driven movement to transform how military families connect, move, thrive and are served by others.
-                        <br />
-                        <br />
-                        When you share MilitaryPCS.com with other military families, you help build a powerful network of members and professionals who understand the unique challenges and lifestyle of military life. The more we grow together, the more impact we make — saving time, money, and bringing peace of mind to every military family that joins.
 
-                    </p>
-                    <p className="text-black mb-4 md:mb-8 text-left">
-                        Here’s how MilitaryPCS.com delivers unmatched value:
-                    </p>
+                    <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html: section1.section1_description1 }} />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-8">
-                    {data.map((d) => (
-                        <div
-                            key={d.id}
-                            className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-center rounded-3xl overflow-hidden  hover:shadow-lg transition px-7 py-4 "
-                        >
-                            <h3 className="text-xl font-semibold text-white my-3">
-                                {d.title}
-                            </h3>
-                            <p className="text-sm text-white mb-3">
-                                {d.description}
-                            </p>
-                        </div>
-                    ))}
+                    <div className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-center rounded-3xl overflow-hidden  hover:shadow-lg transition px-7 py-4 text-white" dangerouslySetInnerHTML={{ __html: section1.section1_description2 }}></div>
+                    <div className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-center rounded-3xl overflow-hidden  hover:shadow-lg transition px-7 py-4 text-white" dangerouslySetInnerHTML={{ __html: section1.section1_description3 }}></div>
+                    <div className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-center rounded-3xl overflow-hidden  hover:shadow-lg transition px-7 py-4 text-white" dangerouslySetInnerHTML={{ __html: section1.section1_description4 }}></div>
+                    <div className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-center rounded-3xl overflow-hidden  hover:shadow-lg transition px-7 py-4 text-white" dangerouslySetInnerHTML={{ __html: section1.section1_description5 }}></div>
+                    <div className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-center rounded-3xl overflow-hidden  hover:shadow-lg transition px-7 py-4 text-white" dangerouslySetInnerHTML={{ __html: section1.section1_description6 }}></div>
+                    <div className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-center rounded-3xl overflow-hidden  hover:shadow-lg transition px-7 py-4 text-white" dangerouslySetInnerHTML={{ __html: section1.section1_description7 }}></div>
                 </div>
 
-                <div className="text-center ">
-                    <p className="text-black mb-4 md:mb-8">
-                        Together, we are creating something powerful — a trusted ecosystem where military serves military, and everyone wins.
 
-                    </p>
-                    <p className="text-black mb-4 md:mb-8 font-semibold">
-                        Invite a fellow military family to join today — the bigger we grow, the stronger we become.
-                    </p>
+
+
+                <div className="text-center ">
+
+                    <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html: section1.section1_description8 }} />
+
                 </div>
 
 

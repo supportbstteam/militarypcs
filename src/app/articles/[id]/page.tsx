@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+
+
 import Categories from '@/components/Categories';
 import { IMAGE_BASE_URL } from '@/lib/constants';
 import { fetchArticles } from '@/lib/query/Query';

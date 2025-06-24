@@ -1,19 +1,31 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import FileUpload from "../ui/FileUpload";
 import RadioGroup from "../ui/RadioGroup";
 import Dropdown from "../ui/Dropdown";
 import { useDirectory, useDirectorySub, useLocation, useLocationSub } from "@/lib/query/Query";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 interface Option {
   label: string;
   value: string;
 }
+interface AuthFormProps {
+  type: "login" | "signup";
+  onSubmit?: (formData: FormData) => void;
+  status?: {
+    isPending: boolean;
+    isError: boolean;
+    isSuccess: boolean;
+    error?: unknown;
+  };
+}
 
-const AuthForm = ({ type, onSubmit }: { type: "login" | "signup"; onSubmit?: (formData: any) => void }) => {
+// const AuthForm = ({ type, onSubmit , status }: { type: "login" | "signup"; onSubmit?: (formData: any) => void }) => {
+const AuthForm = ({ type, onSubmit , status }: AuthFormProps) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -223,7 +235,7 @@ const AuthForm = ({ type, onSubmit }: { type: "login" | "signup"; onSubmit?: (fo
         )}
       </div>
       <div className="mt-6">
-        <Button type="submit" variant="primary" width="full">
+        <Button type="submit" variant="primary" width="full" >
           {type === "signup" ? "Sign Up" : "Login"}
         </Button>
       </div>

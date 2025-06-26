@@ -53,7 +53,7 @@ const Map = () => {
       const name = (ev.target.dataItem?.dataContext as { name? : string}) ?.name;
       if (name) {
         const slug = name.toLowerCase().replace(/\s/g, "-"); // e.g., New York → new-york
-        router.push(`/states/${slug}`);
+        router.push(`/states/${slug}?state=${encodeURIComponent(slug)}`);
       }
     });
 

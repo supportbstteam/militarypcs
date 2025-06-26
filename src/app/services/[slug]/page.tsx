@@ -1,4 +1,5 @@
 import DebugExposeStore from '@/components/DebugExposeStore'
+import ClientFilterSummary from '@/components/wrappers/ClientFilterSummary'
 import QueryHydratorWrapper from '@/components/wrappers/QueryHydratorWrapper'
 import { fetchDirectorySub } from '@/lib/query/Query'
 import Image from 'next/image'
@@ -9,8 +10,6 @@ import slugify from 'slugify'
 const page = async ({ params }: any) => {
   const slug = await params.slug
   const id = slug.split('-').pop()
-  // const id = Number(5)
-  // console.log(id)
 
   function unslugify(slug: string) {
     return slug
@@ -22,21 +21,12 @@ const page = async ({ params }: any) => {
     <div>
       <DebugExposeStore />
       <QueryHydratorWrapper keys={['subDirectory']} />
-      <h2 className='h2'> {unslugify(slug)}123  </h2>
-        <div className="max-w-[1420px] mx-auto px-4">
-          <div className="grid grid-cols-2 gap-8">
-            <div>
-              <p>Find professional on the basis of</p>
-            <p>state - { }</p>
-            <p>city -{ }</p>
-            <p>directory -{ }</p>
-            <p>sub directory -{ }</p>
-            </div>
-          </div>
-        </div>
-
+      <div className="max-w-[1420px] mx-auto px-4">
+        <h2 className='h2'> {unslugify(slug)}123  </h2>
+        <p>You are looking a professional on the basis of</p>
+        <ClientFilterSummary />
+      </div>
     </div>
-
   )
 }
 

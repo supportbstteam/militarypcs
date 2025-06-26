@@ -1,6 +1,6 @@
-const refundPolicy = async () => {
+const information = async () => {
   try {
-    const res = await fetch("https://teamwebdevelopers.com/MilitaryPCS/api/refund-policy", {
+    const res = await fetch("https://teamwebdevelopers.com/MilitaryPCS/api/information", {
       cache: "no-store",
     });
 
@@ -13,4 +13,4 @@ const refundPolicy = async () => {
   }
 };
 
-export default refundPolicy
+export default information

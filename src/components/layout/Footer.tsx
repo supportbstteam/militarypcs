@@ -91,7 +91,7 @@ const Footer = () => {
                     <Link key={state.id} href={`/states/${state.location}?state=${encodeURIComponent(state.location)}` }>
                       
 
-                      {state.location}{state.id}
+                      {state.location}
                     
 
                     </Link>

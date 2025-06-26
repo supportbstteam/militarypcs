@@ -2,13 +2,17 @@ export const dynamic = 'force-dynamic';
 
 
 import Breadcrumbsbanner from '@/components/shared/Breadcrumbsbanner'
-import { fetchRefundPolicy } from '@/lib/query/Query'
+import { fetchInformation} from '@/lib/query/Query'
 import React from 'react'
 
 const page = async () => {
-  const infoData = await fetchRefundPolicy()
+  const infoData = await fetchInformation()
+
   // console.log(infoData)
-  const info = infoData[1]
+  // const info = infoData[1]
+  const cookiePolicy = JSON.parse(infoData.cookie_policy || '[]');
+  const info = cookiePolicy[0]
+  // console.log(info)
   return (
     <>
       <Breadcrumbsbanner />

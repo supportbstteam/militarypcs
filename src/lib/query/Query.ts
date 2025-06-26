@@ -8,12 +8,13 @@ import event from "@/actions/event"
 import home from "@/actions/home"
 import location from "@/actions/location"
 import professional from "@/actions/professional"
-import refundPolicy from "@/actions/refundPolicy"
+import refundPolicy from "@/actions/information"
 import reviews from "@/actions/reviews"
 import sponsors from "@/actions/sponsors"
 // import { useQuery } from "@tanstack/react-query/build/modern"
 // import { useQuery } from '@tanstack/react-query';
 import { useQuery } from "@tanstack/react-query"
+import information from "@/actions/information"
 
 
 const noCache = {
@@ -239,17 +240,17 @@ export const useHome = () => {
   })
 }
 
-// --------------------------- FundPolicy -------------------
+// --------------------------- information -------------------
 
-export const fetchRefundPolicy = async () => {
-  const response = await refundPolicy()
+export const fetchInformation = async () => {
+  const response = await information()
   return response
 }
 
-export const useFundPolicy = () => {
+export const useInformation = () => {
   return useQuery({
-    queryKey: ['refundPolicy'],
-    queryFn: fetchRefundPolicy,
+    queryKey: ['information'],
+    queryFn: fetchInformation,
     ...noCache
   })
 }

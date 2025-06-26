@@ -6,6 +6,7 @@ import Link from "next/link";
 const Footer = () => {
 
   const { data: states } = useLocation();
+
   // console.log(states)
 
   const quickLinks = [
@@ -14,7 +15,8 @@ const Footer = () => {
     { label: "Membership", link: "/membership" },
     { label: "Events", link: "/events" },
     { label: "Donate", link: "/donate" },
-    { label: "Resourcess", link: "/resourcess" }, // Note: double 's' kept as-is, but consider fixing if typo
+    { label: "Resourcess", link: "/resourcess" },
+    { label: "Testing", link: "/testing" }, 
   ];
   const InformationLinks = [
     { label: "Privacy Policy", link: "/privacy-policy" },
@@ -33,6 +35,8 @@ const Footer = () => {
     states.slice(chunkSize * 3),
   ];
   // console.log(stateChunks)
+
+
   return (
     <footer className="w-full bg-[#fbfbfb] py-8 md:pt-16 text-gray-600 text-sm">
       <div className=" max-w-[1420px] mx-auto px-4 xl:px-0 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-8 mb-16">
@@ -79,21 +83,23 @@ const Footer = () => {
         <div>
           <h4 className="text-xl font-semibold text-black mb-8">Locations</h4>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {stateChunks.map((chunk, idx) => (
-            <ul key={idx} className="space-y-4">
-              {chunk.map((state) => (
-                <li key={state.id} className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">
-                  <Link key={state.id} href={`/states/${state.location}`}>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {stateChunks.map((chunk, idx) => (
+              <ul key={idx} className="space-y-4">
+                {chunk.map((state) => (
+                  <li key={state.id} className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">
+                    <Link key={state.id} href={`/states/${state.location}?state=${encodeURIComponent(state.location)}` }>
+                      
 
-                    {state.location}
+                      {state.location}{state.id}
+                    
 
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
       </div>
       {/* Bottom Section */}
       <div className="max-w-[1420px] mx-auto px-4 xl:px-0 mt-10 border-t border-gray-300 pt-4 flex flex-col md:flex-row justify-between items-center">

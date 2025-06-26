@@ -1,7 +1,7 @@
 const home = async () => {
   try {
     const res = await fetch("https://teamwebdevelopers.com/MilitaryPCS/api/home", {
-      cache: "no-store",
+      // cache: "no-store",
     });
 
     if (!res.ok) throw new Error("Failed to fetch event");

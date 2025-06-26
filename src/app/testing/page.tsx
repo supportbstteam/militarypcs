@@ -1,16 +1,23 @@
-export const dynamic = 'force-dynamic';
-import Directory from '@/components/Directory';
-import { fetchDirectory, useDirectorySub } from '@/lib/query/Query';
-import React from 'react';
+'use client'
 
-const Page = async () => {
-  const directory = await fetchDirectory();
+import { useFilterStore } from '@/store/filterStore'
+
+export default function StoreDisplay() {
+  // ✅ Reactively read values from store
+  const state = useFilterStore((s) => s.state)
+  const city = useFilterStore((s) => s.city)
+  const directory = useFilterStore((s) => s.directory)
+  const subDirectory = useFilterStore((s) => s.subDirectory)
 
   return (
-    <div>
-      <Directory directoryData={directory} />
+    <div className="mt-6 p-4 border rounded bg-gray-50 text-left">
+      <h3 className="text-lg font-semibold mb-2">Selected Filters</h3>
+      <ul className="space-y-1 text-sm text-gray-700">
+        <li><strong>State:</strong> {state || '—'}</li>
+        <li><strong>City:</strong> {city || '—'}</li>
+        <li><strong>Directory:</strong> {directory || '—'}</li>
+        <li><strong>SubDirectory:</strong> {subDirectory || '—'}</li>
+      </ul>
     </div>
-  );
-};
-
-export default Page;
+  )
+}

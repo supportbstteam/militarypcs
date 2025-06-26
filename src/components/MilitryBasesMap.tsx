@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import CountersSection from './ui/CounterSection';
 import Map from './ui/Map';
-import UsaMap from './ui/UsaMap';
+// import UsaMap from './ui/UsaMap';
 
 const MilitryBasesMap = () => {
     return (

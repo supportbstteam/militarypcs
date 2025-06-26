@@ -5,3 +5,6 @@ interface JQuery {
   vectorMap(options: any): JQuery;
   vectorMap(method: string): void;
 }
+
+
+export type FilterKey = 'state' | 'city' | 'directory' | 'subDirectory'

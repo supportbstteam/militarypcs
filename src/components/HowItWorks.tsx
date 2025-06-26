@@ -1,3 +1,4 @@
+
 // components/HowItWorks.tsx
 
 "use client"
@@ -156,12 +157,6 @@ const HowItWorks: React.FC = () => {
                 <Button variant="primary" href="/auth/signup">Join Today</Button>
 
             </div>
-
-
-
-
-
-
 
         </section>
     );

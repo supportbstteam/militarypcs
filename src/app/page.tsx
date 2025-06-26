@@ -26,7 +26,7 @@ export default function Home() {
       <Intro/>
       <HowItWorks/>
       <MilitryBasesMap/>
-      <TextMediaHome/>
+      {/* <TextMediaHome/> */}
       <SliderComponent/>
       <Services/>
       <Professionals/>

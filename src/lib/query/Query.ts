@@ -7,6 +7,7 @@ import directorySub from "@/actions/directorySub"
 import event from "@/actions/event"
 import home from "@/actions/home"
 import location from "@/actions/location"
+import professional from "@/actions/professional"
 import refundPolicy from "@/actions/refundPolicy"
 import reviews from "@/actions/reviews"
 import sponsors from "@/actions/sponsors"
@@ -193,7 +194,7 @@ export const useCategoryBySlug = (slug: string) => {
   })
 }
 
-// --------------------------- event -------------------
+// --------------------------- event ------------------------
 
 export const fetchEvent = async () => {
   const response = await event()
@@ -234,7 +235,7 @@ export const useHome = () => {
   return useQuery({
     queryKey: ['home'],
     queryFn: fetchHome,
-    ...noCache
+    // ...noCache
   })
 }
 
@@ -252,3 +253,17 @@ export const useFundPolicy = () => {
     ...noCache
   })
 }
+
+// ---------------------professional----------------------
+export const fetchProfessionalById = async (id:number) =>{
+  const response = await professional(id)
+  return response
+}
+
+export const useProfessional = (id:number) =>{
+  return useQuery({
+    queryKey: ['professional'],
+    queryFn: () => fetchProfessionalById(id),
+    ...noCache
+  })
+}                          

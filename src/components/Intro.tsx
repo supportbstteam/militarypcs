@@ -10,9 +10,13 @@ const Intro = async () => {
 
     const data = section1.section1.data
     const title = section1.section1.titleData[0]
+    const section1_descriptionbottom = section1.section1.titleData[0].section1_descriptionbottom
+    const section1_descriptiontop =section1.section1.titleData[0].section1_descriptiontop
 
 
-    // console.log(section1)
+
+    console.log(section1)
+    console.log(section1_descriptionbottom)
     // console.log(title, "title ")
 
 
@@ -28,25 +32,31 @@ const Intro = async () => {
                     </h2>
 
                     <div className="text-black mb-4 md:mb-8 text-left" >
-                        {title.section1_descriptiontop}
-
+                        {/* {title.section1_descriptiontop} */}
+                        <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html:section1_descriptiontop}} />
+                        
                     </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-8">
                     {
                         data.map((card: any) => (
 
-                            <div key={card.id} className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-center rounded-3xl overflow-hidden  hover:shadow-lg transition px-8 py-6 text-white" >
+                            <div key={card.id} className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-left rounded-3xl overflow-hidden  hover:shadow-lg transition px-8 py-6 text-white" >
                                 <h3 className='h3 mb-4'>{card.title}</h3>
                                 <p>{card.description}</p>
                             </div>
                         ))
                     }
+                    
                 </div>   
+                <>
+                </>
                     <div className="text-center ">
 
                         <div className="text-black text-left" >
-                        {title.section1_descriptionbottom}
+                        {/* {title.section1_descriptionbottom} */}
+                        <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html:section1_descriptionbottom}} />
+
 
                         </div>
 

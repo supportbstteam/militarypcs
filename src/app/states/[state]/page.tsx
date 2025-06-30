@@ -1,7 +1,9 @@
 
 import DebugExposeStore from "@/components/DebugExposeStore";
+import FilterSetter from "@/components/wrappers/FilterSetter";
 import QueryHydratorWrapper from "@/components/wrappers/QueryHydratorWrapper";
 import { fetchLocation, fetchLocationSub } from "@/lib/query/Query";
+import { cookies } from "next/headers";
 import Link from "next/link";
 import slugify from "slugify";
 
@@ -9,8 +11,12 @@ import slugify from "slugify";
 
 const StatePage = async ({ params }: any) => {
 
+
+
   const State = String(params.state)
   console.log(State)  
+
+
 
   const allStates = await fetchLocation()
   // console.log(allStates)
@@ -26,6 +32,9 @@ const StatePage = async ({ params }: any) => {
 
   const singleState = allStates.find((state: any) => state.location === decodedState);
 
+  console.log(singleState.id, "State")
+
+
   if (!singleState) {
     // Handle the missing state
     console.error("State not found:", State);
@@ -39,8 +48,8 @@ const StatePage = async ({ params }: any) => {
     <section className="max-w-[1420px] mx-auto px-4 text-center">
 
       <DebugExposeStore />
-      <QueryHydratorWrapper keys={['state']} />
-      
+        {/* <QueryHydratorWrapper keys={['state']}/> */}
+        <FilterSetter stateId={singleState.id} />
       <div style={{ padding: "2rem" }}>
 
         <h2 className="h2">Sub Location of {decodedState}</h2>

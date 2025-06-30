@@ -11,7 +11,7 @@ const directory = async () => {
 
     const json = await res.json();
 
-    console.log('✅ Directory fetched:', json);
+    // console.log('✅ Directory fetched:', json);
 
     return json;
   } catch (error) {

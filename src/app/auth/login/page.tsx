@@ -7,10 +7,13 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { cookies } from 'next/headers'; // for server (see note below)
 import { setCookie } from 'cookies-next'; // For client-side install: npm i cookies-next
+import { useAuthStore } from "@/store/authStore";
 
 
 export default function LoginPage() {
   const router = useRouter();
+
+  const setIsLoggedIn = useAuthStore((state)=> state.setIsLoggedIn);
 
   const { mutate, isPending, isError, isSuccess, error } = useLogin();
 
@@ -24,13 +27,12 @@ export default function LoginPage() {
           secure: true,
           sameSite: 'strict',
         });
+        setIsLoggedIn(true);
         // Redirect on success
         router.push("/dashboard");
       },
     });
-
   };
-
   return (
     <div className="max-w-md mx-auto">
       <h1 className="text-xl font-semibold mb-4">Login</h1>

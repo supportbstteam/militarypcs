@@ -11,8 +11,10 @@ import { RxCross1 } from "react-icons/rx";
 import { useRouter } from "next/navigation";
 import { deleteCookie } from "cookies-next";
 import { hasCookie } from "cookies-next/client";
+import { useAuthStore } from "@/store/authStore";
 
 const Header: React.FC = () => {
+    
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navItems = [
         { label: "About Us", link: "/about-us" },
@@ -29,7 +31,9 @@ const Header: React.FC = () => {
 
     const router = useRouter();
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+    const { setIsLoggedIn } = useAuthStore();
 
     useEffect(() => {
         setIsLoggedIn(hasCookie("token"));

@@ -25,7 +25,7 @@ interface AuthFormProps {
 }
 
 // const AuthForm = ({ type, onSubmit , status }: { type: "login" | "signup"; onSubmit?: (formData: any) => void }) => {
-const AuthForm = ({ type, onSubmit , status }: AuthFormProps) => {
+const AuthForm = ({ type, onSubmit, status }: AuthFormProps) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -181,16 +181,16 @@ const AuthForm = ({ type, onSubmit , status }: AuthFormProps) => {
         {type === "signup" && (
           <>
             <Input
-  label="Phone"
-  placeholder="1234567890"
-  type="tel"
-  value={phone}
-  onChange={(e) => {
-    const numericValue = e.target.value.replace(/\D/g, ""); // remove non-digits
-    setPhone(numericValue);
-  }}
-  error={fieldErrors.phone}
-/>
+              label="Phone"
+              placeholder="1234567890"
+              type="tel"
+              value={phone}
+              onChange={(e) => {
+                const numericValue = e.target.value.replace(/\D/g, ""); // remove non-digits
+                setPhone(numericValue);
+              }}
+              error={fieldErrors.phone}
+            />
             <Input label="Contact Person" placeholder="Contact Person" value={contactPerson} onChange={(e) => setContactPerson(e.target.value)} error={fieldErrors.contactPerson} />
             <Dropdown label="Branch of Service" options={branchOfServiceOptions} value={branchOfService} onChange={setBranchOfService} error={fieldErrors.branchOfService} />
             <Dropdown label="Military Status" options={militaryStatusOptions} value={militaryStatus} onChange={setMilitaryStatus} error={fieldErrors.militaryStatus} />
@@ -209,13 +209,13 @@ const AuthForm = ({ type, onSubmit , status }: AuthFormProps) => {
               }}
               error={fieldErrors.location}
             />
-            <Dropdown 
-              label="Primary Military Base Sub Serving (sub location)" 
-              options={subLocationOptions} 
-              value={subLocation} 
-              onChange={setSubLocation} 
+            <Dropdown
+              label="Primary Military Base Sub Serving (sub location)"
+              options={subLocationOptions}
+              value={subLocation}
+              onChange={setSubLocation}
               error={fieldErrors.subLocation} />
-              
+
 
             <Dropdown label="Professional Main Directory" options={directoryOptions} value={directory} onChange={(value) => {
               setDirectoryId(Number(value));

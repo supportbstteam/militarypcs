@@ -53,18 +53,26 @@ const page = async ({ params }: any) => {
       .join(' ');
   }
   return (
-    <div>
+    <>
       <DebugExposeStore />
       <QueryHydratorWrapper keys={['subDirectory']} />
       <FilterSetter subDirectoryId={selectedSubDirectory.id} />
 
       <div className="max-w-[1420px] mx-auto px-4">
-        {/* <h2 className='h2'> {unslugify(slug)}123  </h2> */}
-        <p>You are looking a professional on the basis of</p>
-        {/* <ClientFilterSummary /> */}
-        <FilterCookieLogger/>
+        <div className="grid">
+          <div>
+            <p>You are looking a professional on the basis of</p>
+            <FilterCookieLogger/>
+          </div>
+          <div>
+            <p>these are the professional in your area</p>
+            <Link href={`/professional/${1}`}>professional 1</Link>
+          </div>
+        </div>
+
+        
       </div>
-    </div>
+    </>
   )
 }
 

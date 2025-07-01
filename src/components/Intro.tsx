@@ -15,8 +15,8 @@ const Intro = async () => {
 
 
 
-    console.log(section1)
-    console.log(section1_descriptionbottom)
+    // console.log(section1)
+    // console.log(section1_descriptionbottom)
     // console.log(title, "title ")
 
 

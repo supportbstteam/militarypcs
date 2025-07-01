@@ -256,15 +256,27 @@ export const useInformation = () => {
 }
 
 // ---------------------professional----------------------
-export const fetchProfessionalById = async (id:number) =>{
-  const response = await professional(id)
-  return response
-}
+export const fetchProfessionalById = async (
+  location_id: string,
+  sublocation_id: string,
+  directory_id: string
+) => {
+  const response = await professional({
+    location_id,
+    sublocation_id,
+    directory_id
+  });
+  return response;
+};
 
-export const useProfessional = (id:number) =>{
+export const useProfessional = (
+  location_id: string,
+  sublocation_id: string,
+  directory_id: string
+) => {
   return useQuery({
-    queryKey: ['professional'],
-    queryFn: () => fetchProfessionalById(id),
-    ...noCache
-  })
-}                          
+    queryKey: ['professional', location_id, sublocation_id, directory_id],
+    queryFn: () => fetchProfessionalById(location_id, sublocation_id, directory_id),
+    ...noCache,
+  });
+};                         

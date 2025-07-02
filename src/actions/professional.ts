@@ -3,6 +3,7 @@ type Params = {
   location_id: string;
   sublocation_id: string;
   directory_id: string;
+  Subdirid: string;
 };
 const professional = async (params:Params) => {
     // const id = Number(17)
@@ -15,6 +16,7 @@ const professional = async (params:Params) => {
     location_id: params.location_id,
     sublocation_id: params.sublocation_id,
     directory_id: params.directory_id,
+    Subdirid: params.Subdirid,
 
   }), // try Subdirid or sub_directory_id based on what works
 });

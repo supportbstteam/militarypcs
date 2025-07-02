@@ -259,12 +259,14 @@ export const useInformation = () => {
 export const fetchProfessionalById = async (
   location_id: string,
   sublocation_id: string,
-  directory_id: string
+  directory_id: string,
+  Subdirid: string
 ) => {
   const response = await professional({
     location_id,
     sublocation_id,
-    directory_id
+    directory_id,
+    Subdirid
   });
   return response;
 };
@@ -272,11 +274,12 @@ export const fetchProfessionalById = async (
 export const useProfessional = (
   location_id: string,
   sublocation_id: string,
-  directory_id: string
+  directory_id: string,
+  Subdirid: string
 ) => {
   return useQuery({
-    queryKey: ['professional', location_id, sublocation_id, directory_id],
-    queryFn: () => fetchProfessionalById(location_id, sublocation_id, directory_id),
+    queryKey: ['professional', location_id, sublocation_id, directory_id, Subdirid],
+    queryFn: () => fetchProfessionalById(location_id, sublocation_id, directory_id, Subdirid),
     ...noCache,
   });
 };                         

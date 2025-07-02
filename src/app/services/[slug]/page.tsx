@@ -1,6 +1,7 @@
 import directory from '@/actions/directory'
 import FilterCookieLogger from '@/components/debug/FilterCookieLogger'
 import DebugExposeStore from '@/components/DebugExposeStore'
+import ServiceIndex from '@/components/service'
 import Button from '@/components/ui/Button'
 import ClientFilterSummary from '@/components/wrappers/ClientFilterSummary'
 import FilterSetter from '@/components/wrappers/FilterSetter'
@@ -29,20 +30,13 @@ const page = async ({ params }: any) => {
   const cookieStore = await cookies()
   const directoryId = cookieStore.get('directoryId')?.value || ''
 
-  // console.log(directoryId,"directoryId")
-
   // ---------------------- get all sub directory id ----------------------
   const id = 5
-  // console.log(id,"directoryIdNum")
 
   const subDirectory = await fetchDirectorySub({ id })
-  // console.log(subDirectory,"subDirectory")
-
+ 
   // ---------------------- get selected sub directory id ----------------------
   const selectedSubDirectory = subDirectory.find((sd: any) => sd.title === decodedSubDirectory)
-
-  // console.log(selectedSubDirectory.id, "selectedSubDirectory")
-
 
 
   // --------------------------- get professionals ----------------------------
@@ -58,23 +52,23 @@ const page = async ({ params }: any) => {
   const cookiesDirectory = cookieStoreProfessionls.get('directoryId')
   const cookiesDirectoryId = cookiesDirectory?.value
 
+  const cookiesSubDirectory = cookieStoreProfessionls.get('subDirectoryId')
+  const cookiesSubDirectoryId = cookiesSubDirectory?.value
 
-  console.log(cookiesStateId, cookiesCityId, cookiesDirectoryId, "cookeies data on professional page")
+  if (!cookiesStateId || !cookiesCityId || !directoryId || !cookiesSubDirectoryId) {
+    throw new Error('Missing required cookie values');
+  }
 
-  const data = await fetchProfessionalById("6", "6", "5")
-  // const data = await fetchProfessionalById(
-  // cookiesStateId ?? "",
-  // cookiesCityId ?? "",
-  // cookiesDirectoryId ?? ""
-  // )
-  console.log(data, "professional data ")
-
+  const data = await fetchProfessionalById(cookiesStateId, cookiesCityId, directoryId, cookiesSubDirectoryId)
+ 
   function unslugify(slug: string) {
     return slug
       .split('-')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
   }
+
+
   return (
     <>
       <div className="max-w-[1420px] mx-auto px-4">
@@ -87,36 +81,9 @@ const page = async ({ params }: any) => {
             <p>You are looking a professional on the basis of</p>
             <FilterCookieLogger />
           </div>
-          <div>
-            <Link href={`/professional/${1}`}>professional 1</Link>
-          </div>
         </div>
-
-
         <p>these are the professional in your area</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-gray-200 border border-gray-200">
-          {data.map((pro: any) => (
-            // <Link href={`/` } key={pro.id}>
-            <div className="bg-white flex flex-col items-center gap-4 p-4">
-              <div className='flex '>
-                <Image src={pro.image} alt={pro.name} width={300} height={60} className="w-16 h-16 rounded-full object-cover" />
-   
-              <Button href="/professionals">
-                Contact Now
-              </Button>
-              </div>
-              <div className=''>
-                  <h5 className="font-semibold text-gray-800">First Name : {pro.first_name}</h5>
-                  <p className="text-sm text-gray-500">Last Name : {pro.last_name}</p>
-                  <p className="text-sm text-gray-500">Professional id : {pro.id}</p>
-                  <p className="text-sm text-gray-500">Location id {pro.location}</p>
-                  <p className="text-sm text-gray-500">subdirectory : {pro.subdirectory.title}</p>
-                  <p className="text-sm text-gray-500">sublocation : {pro.sublocation.city}</p>
-                </div>
-            </div>
-            // </Link>
-          ))}
-        </div>
+         <ServiceIndex data={data} />
       </div>
 
     </>

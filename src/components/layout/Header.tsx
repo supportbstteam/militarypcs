@@ -14,7 +14,7 @@ import { hasCookie } from "cookies-next/client";
 import { useAuthStore } from "@/store/authStore";
 
 const Header: React.FC = () => {
-    
+
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navItems = [
         { label: "About Us", link: "/about-us" },
@@ -93,20 +93,27 @@ const Header: React.FC = () => {
                             :
                             (
 
-                                <Link href="/auth/login">
-                                    <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
-                                        <CiLock size={22} className="text-white" />
-                                        Sign in
-                                    </button>
-                                </Link>
+                                <>
+                                    <Link href="/auth/login">
+                                        <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
+                                            <CiLock size={22} className="text-white" />
+                                            Sign in
+                                        </button>
+                                    </Link>
+
+                                    <Link href="/auth/signup">
+                                        <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
+                                            <CiUser size={22} className="text-white" />
+                                            Join us
+                                        </button>
+                                    </Link>
+
+                                </>
+
+
                             )
                         }
-                        <Link href="/auth/signup">
-                            <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
-                                <CiUser size={22} className="text-white" />
-                                Join us
-                            </button>
-                        </Link>
+
                     </div>
                 </nav>
 

@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { deleteCookie } from "cookies-next";
 import { hasCookie } from "cookies-next/client";
 import { useAuthStore } from "@/store/authStore";
+import { useLogout } from "@/lib/query/Query";
 
 const Header: React.FC = () => {
 
@@ -28,6 +29,7 @@ const Header: React.FC = () => {
 
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
     const closeMobileMenu = () => setIsMobileMenuOpen(false);
+    const logoutMutation = useLogout()
 
     const router = useRouter();
 
@@ -39,9 +41,10 @@ const Header: React.FC = () => {
         setIsLoggedIn(hasCookie("token"));
     }, []);
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
         deleteCookie("token");
         setIsLoggedIn(false);
+        // await logoutMutation.mutateAsync();
         router.push("/auth/login");
     };
 
@@ -61,7 +64,6 @@ const Header: React.FC = () => {
                         />
                     </Link>
                 </div>
-
                 {/* Desktop Navigation */}
                 <nav className="w-9/12 hidden xl:flex gap-12 justify-end items-center">
                     <ul className="flex items-center gap-8">
@@ -78,6 +80,7 @@ const Header: React.FC = () => {
                             </li>
                         ))}
                     </ul>
+                {/* Desktop buttons */}
 
                     <div className="flex gap-2">
 
@@ -89,29 +92,27 @@ const Header: React.FC = () => {
                                 <CiUser size={22} className="text-white" />
                                 Log Out
                             </button>
+                        ) : (
+
+                            <>
+                                <Link href="/auth/login">
+                                    <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
+                                        <CiLock size={22} className="text-white" />
+                                        Sign in
+                                    </button>
+                                </Link>
+
+                                <Link href="/auth/signup">
+                                    <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
+                                        <CiUser size={22} className="text-white" />
+                                        Join us
+                                    </button>
+                                </Link>
+
+                            </>
+
+
                         )
-                            :
-                            (
-
-                                <>
-                                    <Link href="/auth/login">
-                                        <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
-                                            <CiLock size={22} className="text-white" />
-                                            Sign in
-                                        </button>
-                                    </Link>
-
-                                    <Link href="/auth/signup">
-                                        <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
-                                            <CiUser size={22} className="text-white" />
-                                            Join us
-                                        </button>
-                                    </Link>
-
-                                </>
-
-
-                            )
                         }
 
                     </div>
@@ -179,29 +180,49 @@ const Header: React.FC = () => {
                                         ))}
                                     </ul>
                                 </nav>
+                                {/* Mobile buttons */}
 
                                 <div className="mt-auto space-y-4 pt-4s ">
-                                    <Link
-                                        href="/auth/login"
-                                        onClick={closeMobileMenu}
-                                        className="block w-full"
-                                    >
-                                        <button className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200">
-                                            <CiLock size={20} />
-                                            Sign in
-                                        </button>
-                                    </Link>
+                                    {isLoggedIn ? (
+                                        <Link
+                                            href="/auth/login"
+                                            onClick={()=>{ closeMobileMenu(); handleLogout();}}
+                                            className="block w-full"
+                                        >
+                                            <button className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200">
+                                                <CiUser size={20} />
+                                                Logout
+                                            </button>
+                                        </Link>
+                                    ) : (
+                                        <>
+                                            <Link
+                                                href="/auth/login"
+                                                onClick={closeMobileMenu}
+                                                className="block w-full"
+                                            >
+                                                <button className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200">
+                                                    <CiLock size={20} />
+                                                    Sign in
+                                                </button>
+                                            </Link>
 
-                                    <Link
-                                        href="/auth/signup"
-                                        onClick={closeMobileMenu}
-                                        className="block w-full"
-                                    >
-                                        <button className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200">
-                                            <CiUser size={20} />
-                                            Join us
-                                        </button>
-                                    </Link>
+                                            <Link
+                                                href="/auth/signup"
+                                                onClick={closeMobileMenu}
+                                                className="block w-full"
+                                            >
+                                                <button className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200">
+                                                    <CiUser size={20} />
+                                                    Join us
+                                                </button>
+                                            </Link>
+                                        </>
+
+                                    )
+                                    }
+
+
                                 </div>
                             </div>
                         </motion.div>

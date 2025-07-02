@@ -23,13 +23,17 @@ const ContactForm = () => {
     const [media, setMedia] = useState("")
 
     const mediaOptions: Option[] = [
-    { label: "Active Duty", value: "activeDuty" },
-    { label: "Reserves", value: "reserves" },
-    { label: "National Guard", value: "nationalGuard" },
-    { label: "Veteran", value: "veteran" },
-    { label: "Retirees", value: "retirees" },
-    { label: "Military Spouse", value: "militarySpouse" },
-    { label: "Surviving Spouse", value: "survivingSpouse" },
+    { label: "Google", value: "google" },
+    { label: "Facebook", value: "facebook" },
+    { label: "Instagram", value: "instagram" },
+    { label: "LinkedIn", value: "linkedIn" },
+    { label: "TikTok", value: "tikTok" },
+    { label: "Transition Brief", value: "transitionbrief" },
+    { label: "Agent Referral", value: "agentreferral" },
+    { label: "Friend Referral", value: "friendreferral" },
+    { label: "Skillbridge", value: "skillbridge" },
+    { label: "YouTube", value: "youtube" },
+    { label: "Other", value: "other" },
   ];
 
 
@@ -110,7 +114,7 @@ const ContactForm = () => {
                             onChange={(e) => setTextarea(e.target.value)}
                         />
                         <Dropdown
-                            label="Primary Military Base Serving (location)"
+                            label="How did you hear about us?"
                             options={mediaOptions}
                             value={media}
                             onChange={(value) => {

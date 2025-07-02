@@ -13,8 +13,9 @@ import reviews from "@/actions/reviews"
 import sponsors from "@/actions/sponsors"
 // import { useQuery } from "@tanstack/react-query/build/modern"
 // import { useQuery } from '@tanstack/react-query';
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import information from "@/actions/information"
+import { logout } from "@/actions/logout"
 
 
 const noCache = {
@@ -283,3 +284,23 @@ export const useProfessional = (
     ...noCache,
   });
 };                         
+
+// ------------------------- logout ---------------------------
+
+export const fetchLogout = async () => {
+  const response = await logout()
+  return response
+}
+
+// export const useLogout = () => {
+//   return useQuery({
+//     queryKey: ['logout'],
+//     queryFn: fetchLogout,
+//     ...noCache
+//   })
+// }
+export const useLogout = () => {
+  return useMutation({
+    mutationFn: logout,
+  });
+};

@@ -23,4 +23,4 @@ const Input: React.FC<InputProps> = ({ label, error, className, ...props }) => {
   );
 };
 
-export default Input;
+export default Input

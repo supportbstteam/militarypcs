@@ -1,7 +1,7 @@
 import directory from '@/actions/directory'
 import FilterCookieLogger from '@/components/debug/FilterCookieLogger'
 import DebugExposeStore from '@/components/DebugExposeStore'
-import ServiceIndex from '@/components/service'
+import ProfessionalCard from '@/components/ProfessionalCard'
 import Button from '@/components/ui/Button'
 import ClientFilterSummary from '@/components/wrappers/ClientFilterSummary'
 import FilterSetter from '@/components/wrappers/FilterSetter'
@@ -83,7 +83,8 @@ const page = async ({ params }: any) => {
           </div>
         </div>
         <p>these are the professional in your area</p>
-         <ServiceIndex data={data} />
+
+         <ProfessionalCard data={data}/>
       </div>
 
     </>

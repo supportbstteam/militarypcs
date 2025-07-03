@@ -43,8 +43,6 @@ const DashboardPage = () => {
     // { id: 3, title: "Feature Request", user: "John Doe", priority: "Low", status: "Closed", created: "2024-06-28" },
   ];
 
-
-
   const getPriorityColor = (priority: string) => {
     switch (priority.toLowerCase()) {
       case 'high': return 'bg-red-100 text-red-800';

@@ -13,7 +13,7 @@ const ServiceIndex = ({ data }: { data: any }) => {
        <div key={pro.id} className="bg-white flex flex-col items-center gap-4 p-4">
           <div className='flex '>
           <Image src={pro.image} alt={pro.name} width={300} height={60} className="w-16 h-16 rounded-full object-cover" />
-          {isLoggedIn ? <Link href="/professionals">
+          {isLoggedIn ? <Link href={`/professionals/${pro.id}`}>
           Contact Now
         </Link> : <Link href="/auth/login">
           Contact Now

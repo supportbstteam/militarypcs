@@ -15,6 +15,7 @@ import sponsors from "@/actions/sponsors"
 // import { useQuery } from '@tanstack/react-query';
 import { useQuery } from "@tanstack/react-query"
 import information from "@/actions/information"
+import user from "@/actions/user"
 
 
 const noCache = {
@@ -282,4 +283,23 @@ export const useProfessional = (
     queryFn: () => fetchProfessionalById(location_id, sublocation_id, directory_id, Subdirid),
     ...noCache,
   });
-};                         
+}; 
+
+export const fetchUserBytoken = async (
+  token: string,
+) => {
+  const response = await user({
+   token
+  });
+  return response;
+};
+
+export const useUser = (
+  token: string,
+) => {
+  return useQuery({
+    queryKey: ['token', token],
+    queryFn: () => fetchUserBytoken(token),
+    ...noCache,
+  });
+};   

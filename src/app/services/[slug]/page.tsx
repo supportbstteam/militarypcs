@@ -52,8 +52,8 @@ const page = async ({ params }: any) => {
   const cookiesDirectory = cookieStoreProfessionls.get('directoryId')
   const cookiesDirectoryId = cookiesDirectory?.value
 
-  const cookiesSubDirectory = cookieStoreProfessionls.get('subDirectoryId')
-  const cookiesSubDirectoryId = cookiesSubDirectory?.value
+  const cookiesSubDirectoryId = cookieStoreProfessionls.get('subDirectoryId')?.value ?? '10'
+  // const cookiesSubDirectoryId = cookiesSubDirectory?.value
 
   if (!cookiesStateId || !cookiesCityId || !directoryId || !cookiesSubDirectoryId) {
     throw new Error('Missing required cookie values');

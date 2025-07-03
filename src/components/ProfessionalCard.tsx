@@ -1,12 +1,27 @@
 'use client'
 import { useAuthStore } from '@/store/authStore';
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Button from '@/components/ui/Button'
+import { useRouter } from 'next/navigation';
 
 const ProfessionalCard = ({ data }: { data: any }) => {
     const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+
+    const router = useRouter()
+
+    const [currentUrl, setCurrentUrl] = useState('')
+
+    useEffect(() => {
+      setCurrentUrl(window.location.href)
+    }, [])
+
+    const handle = () => {
+        localStorage.setItem('currentUrl', currentUrl);
+        router.push('/auth/login');
+    } 
+
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200">
             {data?.map((pro: any) => (
@@ -17,11 +32,10 @@ const ProfessionalCard = ({ data }: { data: any }) => {
                             <Button>
                                 Contact Now
                             </Button>
-                        </Link> : <Link href="/auth/login">
-                            <Button>
+                        </Link> :
+                            <Button onClick={handle}>
                                 Contact Now
-                            </Button>
-                        </Link>}
+                            </Button>}
                     </div>
                     <div className=''>
                         <h5 className="font-semibold text-gray-800">First Name : {pro.first_name}</h5>

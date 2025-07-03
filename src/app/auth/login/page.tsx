@@ -29,7 +29,14 @@ export default function LoginPage() {
         });
         setIsLoggedIn(true);
         // Redirect on success
-        router.push("/dashboard");
+
+        const redirectUrl = localStorage.getItem('currentUrl');
+        if(redirectUrl){
+          router.push(redirectUrl)
+          localStorage.removeItem('currentUrl') 
+        }else{
+           router.push("/dashboard");
+        }
       },
     });
   };

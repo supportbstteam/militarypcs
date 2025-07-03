@@ -23,9 +23,6 @@ const DashboardPage = () => {
     }
   })
 
-
-
-
   const user = {
     id: 1,
     name: "John Doe",
@@ -39,8 +36,8 @@ const DashboardPage = () => {
 
   const tickets = [
     { id: 65650881, title: "Plumbing", user: "John Doe", priority: "High", status: "Open", created: "2024-07-01", city: 'texas' },
-    // { id: 2, title: "Payment Problem", user: "John Doe", priority: "Medium", status: "In Progress", created: "2024-07-02" },
-    // { id: 3, title: "Feature Request", user: "John Doe", priority: "Low", status: "Closed", created: "2024-06-28" },
+    { id: 2, title: "Payment Problem", user: "John Doe", priority: "Medium", status: "In Progress", created: "2024-07-02" },
+    { id: 3, title: "Feature Request", user: "John Doe", priority: "Low", status: "Closed", created: "2024-06-28" },
   ];
 
   const getPriorityColor = (priority: string) => {

@@ -12,7 +12,13 @@ interface Option {
     value: string;
 }
 
-const ContactForm = ({ data }: any) => {
+const generateTiketNumber = ({subDirectory} : any) => {
+    const timestamp = Date.now();
+    const random = Math.floor(Math.random() * 10000);
+    return `TKT-${subDirectory}-${timestamp}-${random}`;
+};
+
+const ContactForm = ({ data, subDirectoryId, subDirectory }: any) => {
 
 
     const params = useParams();
@@ -97,6 +103,10 @@ const ContactForm = ({ data }: any) => {
         // Clear any previous errors
         setFieldErrors({});
 
+        const timestamp = Date.now();
+        const random = Math.floor(Math.random() * 10000);
+        const tiketNumber  = `TKT-${subDirectory}-${timestamp}-${random}`;
+
 
         const formData = new FormData();
         formData.append("first_name", firstName);
@@ -108,6 +118,8 @@ const ContactForm = ({ data }: any) => {
         formData.append("message", textarea);
         formData.append("receiver_id", recieverId);
         formData.append("sender_id", userId);
+        formData.append('subDirectoryId', subDirectoryId);
+        formData.append('tiket', tiketNumber);
 
         console.log("📨 FormData entries:");
         for (let [key, value] of formData.entries()) {

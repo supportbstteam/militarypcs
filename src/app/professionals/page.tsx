@@ -9,7 +9,12 @@ const page = async() => {
     const cookieToken = await cookies()
     const token = cookieToken.get('token')?.value || ''
 
+    const subDirectoryId = cookieToken.get('subDirectoryId')?.value || ''
+    const subDirectory = cookieToken.get('subDirectory')?.value || ''
+
     const user = await fetchUserBytoken(token);
+
+     
 
   return (
 
@@ -17,7 +22,7 @@ const page = async() => {
       <section className="max-w-[1420px] mx-auto px-4 py-8">
       </section>
       {/* <Professionals /> */}
-        <ContactForm data= {user}/>
+        <ContactForm data= {user} subDirectoryId={subDirectoryId} subDirectory={subDirectory}/>
     </div>
   )
 }

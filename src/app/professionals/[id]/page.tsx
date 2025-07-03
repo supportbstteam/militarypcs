@@ -1,4 +1,4 @@
-import ContactForm from '@/components/shared/ContactForm'
+import ContactForm from '@/components/shared/ContactForm/[slug]/ContactForm'
 import React from 'react'
 import { fetchUserBytoken } from '@/lib/query/Query'
 import { cookies } from 'next/headers'

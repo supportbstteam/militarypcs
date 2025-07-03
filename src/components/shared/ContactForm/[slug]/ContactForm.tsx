@@ -1,9 +1,9 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import Input from '../ui/Input'
-import Button from '../ui/Button'
-import Textarea from '../ui/Textarea'
-import Dropdown from '../ui/Dropdown'
+import Input from '../../../ui/Input'
+import Button from '../../../ui/Button'
+import Textarea from '../../../ui/Textarea'
+import Dropdown from '../../../ui/Dropdown'
 import { useParams } from 'next/navigation'
 import { useContact } from '@/lib/mutations/contact'
 
@@ -16,6 +16,7 @@ const ContactForm = ({ data }: any) => {
 
 
     const params = useParams();
+    const recieverId = params.id as string;
 
     const { mutate, isPending, isSuccess, isError, error } = useContact();
 
@@ -29,6 +30,7 @@ const ContactForm = ({ data }: any) => {
     const [destinationCity, setDestinationCity] = useState("")
     const [media, setMedia] = useState("")
     const [userId, setUserId] = useState("")
+    const [recieverUserId, setRecieverUserId] = useState("")
 
     useEffect(() => {
         if (data) {
@@ -38,6 +40,7 @@ const ContactForm = ({ data }: any) => {
             setPhone(data.user.phone || "");
             setCity(data.user.sublocation.city || "");
             setUserId(data.user.id || "");
+            setRecieverUserId(recieverId);
         }
     }, [data]);
 
@@ -83,6 +86,7 @@ const ContactForm = ({ data }: any) => {
         // if (!destinationCity.trim()) errors.destinationCity = "Destination City is required";
         if (!media) errors.media = "Please select a media option";
         if (!textarea) errors.textarea = "Additional Comments is required";
+        if (!userId) errors.sender_id = "Sender ID is missing";
 
         // If errors exist, set them and stop submission
         if (Object.keys(errors).length > 0) {
@@ -102,7 +106,7 @@ const ContactForm = ({ data }: any) => {
         formData.append("current_base", city);
         formData.append("how_did_you_hear", media);
         formData.append("message", textarea);
-        formData.append("receiver_id", params.id);
+        formData.append("receiver_id", recieverId);
         formData.append("sender_id", userId);
 
         console.log("📨 FormData entries:");

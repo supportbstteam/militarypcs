@@ -1,5 +1,5 @@
 import Professionals from '@/components/Professionals'
-import ContactForm from '@/components/shared/ContactForm'
+import ContactForm from '@/components/shared/ContactForm/[slug]/ContactForm'
 import { fetchUserBytoken } from '@/lib/query/Query'
 import { cookies } from 'next/headers'
 import React from 'react'

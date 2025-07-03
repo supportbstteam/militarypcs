@@ -30,7 +30,6 @@ const ContactForm = ({ data }: any) => {
     const [media, setMedia] = useState("")
     const [userId, setUserId] = useState("")
 
-
     useEffect(() => {
         if (data) {
             setFirstName(data.user.first_name || "");
@@ -172,6 +171,7 @@ const ContactForm = ({ data }: any) => {
                         <Dropdown
                             label="How did you hear about us?"
                             options={socialOptions}
+
                             value={media}
                             onChange={(value) => {
 

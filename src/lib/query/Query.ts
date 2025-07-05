@@ -17,6 +17,7 @@ import { useMutation, useQuery } from "@tanstack/react-query"
 import information from "@/actions/information"
 import user from "@/actions/user"
 import { logout } from "@/actions/logout"
+import chat from "@/actions/chat"
 
 
 
@@ -287,6 +288,8 @@ export const useProfessional = (
   });
 }; 
 
+// ----------- get user ------------ 
+
 export const fetchUserBytoken = async (
   token: string,
 ) => {
@@ -305,6 +308,27 @@ export const useUser = (
     ...noCache,
   });
 };   
+
+// ---------------get user query--------------
+
+export const fetchChatBytoken = async (
+  token: string,
+) => {
+  const response = await chat({
+   token
+  });
+  return response;
+};
+
+export const useChat = (
+  token: string,
+) => {
+  return useQuery({
+    queryKey: ['chat', token],
+    queryFn: () => fetchChatBytoken(token),
+    ...noCache,
+  });
+}; 
                          
 
 // ------------------------- logout ---------------------------

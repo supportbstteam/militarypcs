@@ -6,13 +6,14 @@ import Link from "next/link";
 import { CiLock, CiUser, CiMenuBurger } from "react-icons/ci";
 import { motion, AnimatePresence } from "framer-motion";
 import { RxCross1 } from "react-icons/rx";
-
+import { MdDashboard } from "react-icons/md";
 
 import { useRouter } from "next/navigation";
 import { deleteCookie } from "cookies-next";
 import { hasCookie } from "cookies-next/client";
 import { useAuthStore } from "@/store/authStore";
 import { useLogout } from "@/lib/query/Query";
+import { getCookie } from 'cookies-next';
 
 const Header: React.FC = () => {
 
@@ -47,6 +48,13 @@ const Header: React.FC = () => {
         // await logoutMutation.mutateAsync();
         router.push("/auth/login");
     };
+
+    useEffect(() => {
+        const token = getCookie('token')
+        if (!token) {
+          router.push('/auth/login'); // Redirect to login if not authenticated
+        }
+      })
 
     return (
         <header className="max-w-[1420px] mx-auto py-4 px-4 xl:px-0 relative">
@@ -88,10 +96,23 @@ const Header: React.FC = () => {
 
                         {isLoggedIn ? (
 
+                            <>
+                              
+                              <Link href="/dashboard">
+                                    <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
+                                      <MdDashboard size={22} className="text-white" />
+                                       Dashboard
+                                    </button>
+                                </Link>
+
                             <button onClick={handleLogout} className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
                                 <CiUser size={22} className="text-white" />
                                 Log Out
                             </button>
+
+                            </>
+
+                            
                         ) : (
 
                             <>

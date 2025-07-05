@@ -1,17 +1,13 @@
-import directory from '@/actions/directory'
+
 import FilterCookieLogger from '@/components/debug/FilterCookieLogger'
 import DebugExposeStore from '@/components/DebugExposeStore'
 import ProfessionalCard from '@/components/ProfessionalCard'
-import Button from '@/components/ui/Button'
-import ClientFilterSummary from '@/components/wrappers/ClientFilterSummary'
 import FilterSetter from '@/components/wrappers/FilterSetter'
 import QueryHydratorWrapper from '@/components/wrappers/QueryHydratorWrapper'
 import { fetchDirectorySub, fetchProfessionalById } from '@/lib/query/Query'
 import { cookies } from 'next/headers'
-import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
-import slugify from 'slugify'
+
 
 const page = async ({ params }: any) => {
   const rawParam = await params.slug
@@ -34,9 +30,13 @@ const page = async ({ params }: any) => {
   const id = 5
 
   const subDirectory = await fetchDirectorySub({ id })
+
+ 
  
   // ---------------------- get selected sub directory id ----------------------
   const selectedSubDirectory = subDirectory.find((sd: any) => sd.title === decodedSubDirectory)
+
+  console.log(selectedSubDirectory.id, "aa gaye");
 
 
   // --------------------------- get professionals ----------------------------
@@ -59,7 +59,7 @@ const page = async ({ params }: any) => {
     throw new Error('Missing required cookie values');
   }
 
-  const data = await fetchProfessionalById(cookiesStateId, cookiesCityId, directoryId, cookiesSubDirectoryId)
+  const data = await fetchProfessionalById(cookiesStateId, cookiesCityId, directoryId, selectedSubDirectory.id)
  
   function unslugify(slug: string) {
     return slug

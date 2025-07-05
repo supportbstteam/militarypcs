@@ -27,6 +27,15 @@ export default function LoginPage() {
           secure: true,
           sameSite: 'strict',
         });
+        
+        localStorage.setItem('user', JSON.stringify({
+          id: data.users.id,
+          first_name: data.users.first_name,
+          last_name: data.users.last_name,
+          email: data.users.email,
+          role: data.users.role,
+        }));  
+        localStorage.setItem('token', data.token);
         setIsLoggedIn(true);
         // Redirect on success
 

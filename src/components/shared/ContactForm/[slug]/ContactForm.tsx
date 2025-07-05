@@ -44,7 +44,7 @@ const ContactForm = ({ data, subDirectoryId, subDirectory }: any) => {
             setLastName(data.user.last_name || "");
             setEmail(data.user.email || "");
             setPhone(data.user.phone || "");
-            setCity(data.user.sublocation.city || "");
+            setCity(data?.user?.sublocation?.city || "");
             setUserId(data.user.id || "");
             setRecieverUserId(recieverId);
         }

@@ -32,19 +32,24 @@ const ProfessionalCard = ({ data }: { data: any }) => {
                 <div key={pro.id} className="bg-white flex flex-row items-center gap-4 p-4">
                     <div className='flex flex-col justify-center items-center gap-4'>
                         <Image src={pro?.image || "/user_Dummy.png"} alt={pro?.name} width={300} height={300} className="w-32 h-32 rounded-full object-cover" />
-                        {user?.role === 3 && (
-                            isLoggedIn ? (
+
+                        {isLoggedIn ? (
+                        <>
+                            {user?.role === 3 && (
                                 <Link href={`/professionals/${pro.id}`}>
                                     <Button>
                                         Contact Now
                                     </Button>
                                 </Link>
-                            ) : (
-                                <Button onClick={() => handle(pro.id)}>
-                                    Contact Now {pro.id}
-                                </Button>
-                            )
+                            )}
+                        </>
+
+                        ) : (
+                        <Button onClick={() => handle(pro.id)}>
+                            Contact Now {pro.id}
+                        </Button>
                         )}
+
                     </div>
                     <div>
                         <h5 className="font-semibold text-gray-800">First Name: {pro.first_name}</h5>

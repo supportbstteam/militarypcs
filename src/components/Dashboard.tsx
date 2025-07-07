@@ -61,26 +61,26 @@ const Dashboard = ({ data, chat }: any) => {
             <CardContent>
               <div className="flex items-start space-x-4">
                 <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold text-lg">
-                  {data.user.avatar ?   <img src={`${data.user.avatar}`} alt="avtar.jpg" width={50} height={50}/> :   <img src="http://localhost:3000/user.png" alt="avtar.jpg" width={50} height={50} />}
+                  {data.user?.avatar ?   <img src={`${data.user.avatar}`} alt="avtar.jpg" width={50} height={50}/> :   <img src="http://localhost:3000/user.png" alt="avtar.jpg" width={50} height={50} />}
                 
                 </div>
                 <div className="flex-1 grid gap-4">
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                      {data.user.first_name} {data.user.last_name}
+                      {data.user?.first_name} {data.user?.last_name}
                     </h3>
                     <div className="space-y-2">
                       <div className="flex items-center text-gray-600">
                         <Mail className="h-4 w-4 mr-2" />
-                        {data.user.email}
+                        {data.user?.email}
                       </div>
                       <div className="flex items-center text-gray-600">
                         <Calendar className="h-4 w-4 mr-2" />
-                        Joined {dayjs(data.user.created_at).format("DD-MM-YYYY")}
+                        Joined {dayjs(data.user?.created_at).format("DD-MM-YYYY")}
                       </div>
                       <div className="flex items-center">
                         <Badge className="bg-green-500 text-white">
-                          {data.user.status === 1 ? "Active" : "Inactive"}
+                          {data.user?.status === 1 ? "Active" : "Inactive"}
                         </Badge>
                       </div>
                     </div>

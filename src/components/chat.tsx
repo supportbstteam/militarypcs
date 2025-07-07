@@ -71,13 +71,13 @@ const Chat = ({ chatResponse, setChatResponse, user }: any) => {
 
       {/* Message Input */}
       <div className="p-4 border-t border-gray-200">
-        <div className="flex space-x-2 justify-between">
+        <div className="grid grid-cols-[7fr_1fr] space-x-2 justify-between items-center">
           <Input
             value={newMessage}
             onChange={(e: any) => setNewMessage(e.target.value)}
             placeholder="Type your message..."
             onKeyDown={(e: any) => e.key === 'Enter' && sendMessage()}
-            className="w-5/6 border-gray-200 focus:border-blue-500"
+            className="w-full border-gray-200 focus:border-blue-500 py-2"
           />
           <Button onClick={sendMessage} className="bg-blue-500 hover:bg-blue-600">
             <Send className="h-4 w-4" />

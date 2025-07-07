@@ -68,7 +68,7 @@ const page = async ({ params }: any) => {
                 >
                   {/* <Image src={directory.image} alt={directory.title} width={300} height={100} className="w-full" unoptimized /> */}
                   <h5 className="text-sm font-medium text-black my-3">
-                    {directory.title}{directory.id}
+                    {directory.title}
                   </h5>
                 </div>
               </Link>

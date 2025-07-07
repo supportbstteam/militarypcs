@@ -46,7 +46,7 @@ const ProfessionalCard = ({ data }: { data: any }) => {
 
                         ) : (
                         <Button onClick={() => handle(pro.id)}>
-                            Contact Now {pro.id}
+                            Contact Now 
                         </Button>
                         )}
 

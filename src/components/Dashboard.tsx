@@ -18,7 +18,6 @@ const Dashboard = ({ data, chat }: any) => {
 
   const handleChatClick = (ticket: String) => {
 
-
     const formData = new FormData();
     formData.append("message", "Hello");
 
@@ -43,15 +42,15 @@ const Dashboard = ({ data, chat }: any) => {
 
   return (
     <div className="max-w-[1420px] m-auto py-8">
-      <h1 className="h2">Dashboard</h1>
-      <div className="flex">
+      <h1 className="h2 px-4">Dashboard</h1>
+      <div className="flex flex-col-reverse md:flex-row gap-6 mt-6">
         {/* Chat Section */}
-        <div className="w-8/12 flex flex-col">
+        <div className="w-full md:w-8/12 flex flex-col p-4">
           <Chat chatResponse={chatResponse} setChatResponse={setChatResponse} user={data} />
         </div>
 
         {/* Right Section */}
-        <div className="w-4/12 px-4 space-y-6">
+        <div className="w-full md:w-4/12 px-4 space-y-6">
           {/* User Info */}
           <h3 className="h3">User Information</h3>
           <Card className="shadow-sm border-gray-200">

@@ -79,9 +79,9 @@ const Chat = ({ chatResponse, setChatResponse, user }: any) => {
             onKeyDown={(e: any) => e.key === 'Enter' && sendMessage()}
             className="w-full border-gray-200 focus:border-blue-500 py-2"
           />
-          <Button onClick={sendMessage} className="bg-blue-500 hover:bg-blue-600">
+          <button onClick={sendMessage} className="flex justify-center items-center text-white p-4 rounded-xl bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))]">
             <Send className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
       </div>
     </div>

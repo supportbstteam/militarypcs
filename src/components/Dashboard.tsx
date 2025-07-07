@@ -58,7 +58,7 @@ const Dashboard = ({ data, chat }: any) => {
               <CardTitle className="text-xl text-gray-800">User</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-start space-x-4">
+              <div className="flex items-start flex-col md:flex-row space-x-4">
                 <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold text-lg">
                   {data.user?.avatar ?   <img src={`${data.user.avatar}`} alt="avtar.jpg" width={50} height={50}/> :   <img src="http://localhost:3000/user.png" alt="avtar.jpg" width={50} height={50} />}
                 

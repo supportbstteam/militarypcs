@@ -47,7 +47,7 @@ const Chat = ({ chatResponse, setChatResponse, user }: any) => {
   }, [chatResponse]);
 
   return (
-    <div className='border-1 border-gray-200 rounded-xl'>
+    <div className='border-1 border-gray-200 rounded-xl p-0'>
       <div
         ref={chatContainerRef}
         className="appendMessage flex-1 overflow-y-auto p-4 space-y-4 max-h-[65vh] min-h-[65vh]"
@@ -70,7 +70,7 @@ const Chat = ({ chatResponse, setChatResponse, user }: any) => {
       </div>
 
       {/* Message Input */}
-      <div className="p-4 border-t border-gray-200">
+      <div className="p-0 md:p-4 md:border-t border-gray-200">
         <div className="grid grid-cols-[7fr_1fr] space-x-2 justify-between items-center">
           <Input
             value={newMessage}

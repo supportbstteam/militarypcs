@@ -76,13 +76,13 @@ const page = async ({ params }: any) => {
         <QueryHydratorWrapper keys={['subDirectory']} />
         <FilterSetter subDirectoryId={selectedSubDirectory.id} />
 
-        <div className="grid">
+        {/* <div className="grid">
           <div>
             <p>You are looking a professional on the basis of</p>
             <FilterCookieLogger />
           </div>
-        </div>
-        <p>these are the professional in your area</p>
+        </div> */}
+        <p className='h3 my-4' >These are the professional in your area</p>
 
          <ProfessionalCard data={data}/>
       </div>

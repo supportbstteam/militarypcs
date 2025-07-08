@@ -8,6 +8,8 @@ import dayjs from "dayjs";
 import Link from "next/link";
 import TicketList from "@/components/TicketList";
 import { getChat } from '@/lib/mutations/getChat';
+import Image from 'next/image';
+import Avatar from './icons/Avatar';
 
 const Dashboard = ({ data, chat }: any) => {
 
@@ -60,8 +62,17 @@ const Dashboard = ({ data, chat }: any) => {
             <CardContent>
               <div className="flex items-start flex-col md:flex-row space-x-4">
                 <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold text-lg">
-                  {data.user?.avatar ?   <img src={`${data.user.avatar}`} alt="avtar.jpg" width={50} height={50}/> :   <img src="http://localhost:3000/user.png" alt="avtar.jpg" width={50} height={50} />}
-                
+                  {data.user?.avatar ?
+                    <Image
+                      src={`${data.user?.avatar}`}
+                      alt="avtar.jpg"
+                      width={50}
+                      height={50}
+                    />
+                    :
+                    <Avatar src={data.user?.avatar} size={64} />
+                  }
+              
                 </div>
                 <div className="flex-1 grid gap-4">
                   <div>

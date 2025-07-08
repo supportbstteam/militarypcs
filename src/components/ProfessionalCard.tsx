@@ -27,10 +27,10 @@ const ProfessionalCard = ({ data }: { data: any }) => {
     };
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200">
             {data?.map((pro: any) => (
-                <div key={pro.id} className="bg-white flex flex-row items-center gap-4 p-4">
-                    <div className='flex flex-col justify-center items-center gap-4'>
+                <div key={pro.id} className="bg-white md:flex flex-row items-center gap-8 p-4 ">
+                    <div className='flex flex-col justify-center items-center gap-4 mb-4'>
                         <Image src={pro?.image || "/user_Dummy.png"} alt={pro?.name} width={300} height={300} className="w-32 h-32 rounded-full object-cover" />
 
                         {isLoggedIn ? (
@@ -52,12 +52,11 @@ const ProfessionalCard = ({ data }: { data: any }) => {
 
                     </div>
                     <div>
-                        <h5 className="font-semibold text-gray-800">First Name: {pro.first_name}</h5>
-                        <p className="text-sm text-gray-500">Last Name: {pro.last_name}</p>
-                        <p className="text-sm text-gray-500">Professional id: {pro.id}</p>
-                        <p className="text-sm text-gray-500">Location: {pro.location?.location}</p>
-                        <p className="text-sm text-gray-500">Subdirectory: {pro.subdirectory?.title}</p>
-                        <p className="text-sm text-gray-500">Sublocation: {pro.sublocation?.city}</p>
+                        <h5 className="text-sm text-black font-bold "> First Name: <span className=' text-gray-500'> {pro.first_name} </span></h5>
+                        <p className="text-sm text-black font-bold "> Last Name: <span className=' text-gray-500'> {pro.last_name} </span></p>
+                        <p className="text-sm text-black font-bold "> State: <span className=' text-gray-500'> {pro.location?.location} </span></p>
+                        <p className="text-sm text-black font-bold "> City: <span className=' text-gray-500'> {pro.sublocation?.city} </span></p>
+                        <p className="text-sm text-black font-bold "> Service: <span className=' text-gray-500'> {pro.subdirectory?.title} </span></p>
                     </div>
                 </div>
             ))}

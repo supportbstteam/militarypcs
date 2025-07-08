@@ -52,9 +52,9 @@ const Header: React.FC = () => {
     useEffect(() => {
         const token = getCookie('token')
         if (!token) {
-          router.push('/auth/login'); // Redirect to login if not authenticated
+            router.push('/auth/login'); // Redirect to login if not authenticated
         }
-      })
+    })
 
     return (
         <header className="max-w-[1420px] mx-auto py-4 px-4 xl:px-0 relative">
@@ -88,7 +88,7 @@ const Header: React.FC = () => {
                             </li>
                         ))}
                     </ul>
-                {/* Desktop buttons */}
+                    {/* Desktop buttons */}
 
                     <div className="flex gap-2">
 
@@ -97,22 +97,22 @@ const Header: React.FC = () => {
                         {isLoggedIn ? (
 
                             <>
-                              
-                              <Link href="/dashboard">
+
+                                <Link href="/dashboard">
                                     <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
-                                      <MdDashboard size={22} className="text-white" />
-                                       Dashboard
+                                        <MdDashboard size={22} className="text-white" />
+                                        Dashboard
                                     </button>
                                 </Link>
 
-                            <button onClick={handleLogout} className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
-                                <CiUser size={22} className="text-white" />
-                                Log Out
-                            </button>
+                                <button onClick={handleLogout} className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
+                                    <CiUser size={22} className="text-white" />
+                                    Log Out
+                                </button>
 
                             </>
 
-                            
+
                         ) : (
 
                             <>
@@ -205,16 +205,26 @@ const Header: React.FC = () => {
 
                                 <div className="mt-auto space-y-4 pt-4s ">
                                     {isLoggedIn ? (
-                                        <Link
-                                            href="/auth/login"
-                                            onClick={()=>{ closeMobileMenu(); handleLogout();}}
-                                            className="block w-full"
-                                        >
-                                            <button className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200">
-                                                <CiUser size={20} />
-                                                Logout
-                                            </button>
-                                        </Link>
+                                        <>
+                                            <Link href="/dashboard">
+                                                <button className="flex items-center justify-center gap-2 w-full mb-4 px-4 py-3 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200">
+                                                    <MdDashboard size={22} className="text-white" />
+                                                    Dashboard
+                                                </button>
+                                            </Link>
+                                            <Link
+                                                href="/auth/login"
+                                                onClick={() => { closeMobileMenu(); handleLogout(); }}
+                                                className="block w-full"
+                                            >
+                                                <button className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200">
+                                                    <CiUser size={20} />
+                                                    Logout
+                                                </button>
+                                            </Link>
+
+                                        </>
+
                                     ) : (
                                         <>
                                             <Link

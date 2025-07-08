@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { QueryProvider } from "@/lib/query/QueryProvider";
+import { cookies } from "next/headers";
+import Headers from "@/components/layout/Headers";
 
 // import "@/styles/globals.css"; // your global Tailwind CSS file
 // imports for slider ends 
@@ -40,17 +42,25 @@ export const metadata: Metadata = {
   description: " Empowering Military Families with Trusted Services",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
+
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value || "";
+
+
+
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable}`}>
       <body className="font-poppins bg-white text-black antialiased  ">
         <QueryProvider>
 
-        <Header/>
+       {!token ? <Header/> : <Headers/>} 
         {children}
         <Footer/>
         </QueryProvider>

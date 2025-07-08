@@ -59,7 +59,7 @@ const Chat = ({ chatResponse, setChatResponse, user }: any) => {
                 <div className="text-sm font-medium mb-1">{msg.sender}</div>
                 <div className="text-sm">{msg.message}</div>
                 <div className={`text-xs mt-1 text-right ${msg.sender_id === user.user.id ? 'text-blue-100' : 'text-gray-500'}`}>
-                  {dayjs(msg.created_at).format("DD-MM-YYYY")}
+                {dayjs(msg.created_at).format("D MMMM YYYY hh:mm A")}
                 </div>
               </div>
             </div>

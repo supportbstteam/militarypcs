@@ -15,7 +15,7 @@ import { useAuthStore } from "@/store/authStore";
 import { useLogout } from "@/lib/query/Query";
 import { getCookie } from 'cookies-next';
 
-const Header: React.FC = () => {
+const Headers: React.FC = () => {
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navItems = [
@@ -49,12 +49,12 @@ const Header: React.FC = () => {
         router.push("/auth/login");
     };
 
-    // useEffect(() => {
-    //     const token = getCookie('token')
-    //     if (!token) {
-    //         alert('you are not authorized') // Redirect to login if not authenticated
-    //     }
-    // })
+    useEffect(() => {
+        const token = getCookie('token')
+        if (!token) {
+            router.push('/auth/login'); // Redirect to login if not authenticated
+        }
+    })
 
     return (
         <header className="max-w-[1420px] mx-auto py-4 px-4 xl:px-0 relative">
@@ -205,13 +205,16 @@ const Header: React.FC = () => {
 
                                 <div className="mt-auto space-y-4 pt-4s ">
                                     {isLoggedIn ? (
+
                                         <>
+
                                             <Link href="/dashboard">
-                                                <button className="flex items-center justify-center gap-2 w-full mb-4 px-4 py-3 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200">
+                                                <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
                                                     <MdDashboard size={22} className="text-white" />
                                                     Dashboard
                                                 </button>
                                             </Link>
+
                                             <Link
                                                 href="/auth/login"
                                                 onClick={() => { closeMobileMenu(); handleLogout(); }}
@@ -224,7 +227,6 @@ const Header: React.FC = () => {
                                             </Link>
 
                                         </>
-
                                     ) : (
                                         <>
                                             <Link
@@ -252,8 +254,6 @@ const Header: React.FC = () => {
 
                                     )
                                     }
-
-
                                 </div>
                             </div>
                         </motion.div>
@@ -264,4 +264,4 @@ const Header: React.FC = () => {
     );
 };
 
-export default Header;
+export default Headers;

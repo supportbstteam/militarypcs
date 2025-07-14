@@ -40,8 +40,6 @@ const Dashboard = ({ data, chat }: any) => {
     );
   };
 
-
-
   return (
     <div className="max-w-[1420px] m-auto py-8">
       <h1 className="h2 px-4">Dashboard</h1>
@@ -106,7 +104,7 @@ const Dashboard = ({ data, chat }: any) => {
             <Card className="shadow-sm border-gray-200">
               <CardContent className="p-0">
                 <div className="overflow-x-auto divide-y divide-gray-100">
-                  <TicketList chat={chat} onChatClick={handleChatClick} />
+                  <TicketList chat={chat} user={data} onChatClick={handleChatClick} />
                 </div>
               </CardContent>
             </Card>

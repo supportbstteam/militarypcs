@@ -1,10 +1,20 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const TicketList = ({ chat, onChatClick }: { chat: any[], onChatClick: (ticket: string) => void }) => {
+const TicketList = ({
+  chat,
+  onChatClick,
+  user
+}: {
+  chat: any[];
+  onChatClick: (ticket: string) => void;
+  user: any;
+}) => {
   const [selectedTicketId, setSelectedTicketId] = useState<number | null>(null); // state to hold selected ticket ID
   const [expandedTicketId, setExpandedTicketId] = useState<number | null>(null);
+
+  const [setticketID, setTicketId] = useState();
 
   const toggleMoreInfo = (ticketId: number) => {
     setExpandedTicketId(prev =>
@@ -17,7 +27,8 @@ const TicketList = ({ chat, onChatClick }: { chat: any[], onChatClick: (ticket: 
     onChatClick(ticket.tiket);       // call the callback with the ticket name/code
     localStorage.setItem('ticket', ticket.tiket)
   };
-  console.log('TicketList rendered with chat:', chat);
+  
+  
 
   return (
     <>
@@ -33,15 +44,16 @@ const TicketList = ({ chat, onChatClick }: { chat: any[], onChatClick: (ticket: 
               onClick={e => {
                 e.stopPropagation(); // prevent ticket click
                 toggleMoreInfo(ticket.id);
+                setTicketId(ticket.receiver_id)
               }}
             >
               {expandedTicketId === ticket.id ? 'Less info' : 'Details'}
             </span>
           </div>{expandedTicketId === ticket.id && (
             <div className='md:flex items-center justify-between p-4 bg-gray-100'>
-              <div className="p-4 font-medium text-gray-800">{ticket.first_name} {ticket.last_name}</div>
+              <div className="p-4 font-medium text-gray-800">{user.user.role === 2 ?  ticket.first_name : ticket.receiver_first_name} {user.user.role === 2 ? ticket.last_name : ticket.receiver_last_name}</div>
               <div className="p-4 font-medium text-gray-800">{ticket.current_base}</div>
-              <div className="p-4 font-medium text-gray-800">{ticket.phone}</div>
+              <div className="p-4 font-medium text-gray-800">{user.user.role === 2 ?  ticket.phone : ticket.receiver_phone}</div>
             </div>
           )}
         </button>

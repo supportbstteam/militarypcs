@@ -50,17 +50,6 @@ const ContactForm = ({ data, subDirectoryId, subDirectory }: any) => {
         }
     }, [data]);
 
-
-    //     const mediaOptions: Option[] = [
-    //     { label: "Active Duty", value: "activeDuty" },
-    //     { label: "Reserves", value: "reserves" },
-    //     { label: "National Guard", value: "nationalGuard" },
-    //     { label: "Veteran", value: "veteran" },
-    //     { label: "Retirees", value: "retirees" },
-    //     { label: "Military Spouse", value: "militarySpouse" },
-    //     { label: "Surviving Spouse", value: "survivingSpouse" },
-    //   ];
-
     const socialOptions: Option[] = [
         { label: "Google", value: "Google" },
         { label: "Facebook", value: "Facebook" },

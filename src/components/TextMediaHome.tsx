@@ -20,7 +20,7 @@ const TextMediaHome: React.FC<{
     // console.log(section3 , "text-media-3")
     const section4 = await data.section4[0];
     const section5 = await data.section5[0];
-    // console.log(section5 , "text-media-5")
+    console.log(section4 , "text-media-5")
 
   return (
     <>
@@ -46,20 +46,20 @@ const TextMediaHome: React.FC<{
 
         </div>
       </section>
-      {/* <section className="bg-[#f9f9f9]">
+      <section className="bg-[#f9f9f9]">
         <div className="max-w-[1420px] mx-auto px-4 md:px-0 py-8 md:py-16 ">
 
 
           <div className="flex flex-col md:flex-row-reverse items-stretch  md:gap-14 ">
             <div className=" md:w-1/2 rounded-2xl bg-left bg-contain bg-no-repeat md:bg-cover overflow-hidden "
-            style={{ backgroundImage: `url('${IMAGE_BASE_URL}${section4.expert2_image}')` }}
+            style={{ backgroundImage: `url('${IMAGE_BASE_URL}${section4.image}')` }}
               >
-              <Image src={`${IMAGE_BASE_URL}${section4.expert2_image}`} alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
+              <Image src={`${IMAGE_BASE_URL}${section4.image}`} alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
 
             </div>
             <div className="md:w-6/12">
-            <h2 className="h2 mt-8">{section4.expert2_title}</h2>
-            <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html: section4.expert2_description }} />
+            <h2 className="h2 mt-8">{section4.title}</h2>
+            <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html: section4.description }} />
 
               <Button variant="outlineColor" href="/auth/signup">
                 Find a Real Estate Agent <IoIosArrowRoundForward className=" text-black text-lg" />
@@ -69,8 +69,8 @@ const TextMediaHome: React.FC<{
           </div>
         </div>
 
-      </section> */}
-      {/* <section className="max-w-[1420px] mx-auto px-4 md:px-0 py-8 md:py-16">
+      </section>
+      <section className="max-w-[1420px] mx-auto px-4 md:px-0 py-8 md:py-16">
 
         <div className="flex flex-col md:flex-row items-stretch md:gap-14  " >
           <div className=" md:w-1/2 rounded-2xl  bg-contain bg-right bg-no-repeat md:bg-cover overflow-hidden  "
@@ -90,7 +90,7 @@ const TextMediaHome: React.FC<{
           </div>
 
         </div>
-      </section> */}
+      </section>
     </>
 
   );

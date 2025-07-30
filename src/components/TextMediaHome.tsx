@@ -27,10 +27,9 @@ const TextMediaHome: React.FC<{
       <section className="max-w-[1420px] mx-auto">
         <div className="flex flex-col md:flex-row items-stretch md:gap-14 py-8 md:py-16 px-4 md:px-0" >
           <div className=" md:w-1/2 rounded-2xl  bg-contain bg-top bg-no-repeat md:bg-cover overflow-hidden "
-           
             style={{ backgroundImage: `url('${IMAGE_BASE_URL}${section3.image}')` }}
             >
-            <Image src={`${IMAGE_BASE_URL}${section3.expert1_image}`} alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
+            <Image src={`${IMAGE_BASE_URL}${section3.image}`} alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
           </div>
          
           <div className="md:w-1/2">
@@ -74,9 +73,9 @@ const TextMediaHome: React.FC<{
 
         <div className="flex flex-col md:flex-row items-stretch md:gap-14  " >
           <div className=" md:w-1/2 rounded-2xl  bg-contain bg-right bg-no-repeat md:bg-cover overflow-hidden  "
-            style={{ backgroundImage: `url('${IMAGE_BASE_URL}${section5.expert3_image}')` }}
+            style={{ backgroundImage: `url('${IMAGE_BASE_URL}${section5.image}')` }}
             >
-            <Image src={`${IMAGE_BASE_URL}${section5.expert3_image}`} alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
+            <Image src={`${IMAGE_BASE_URL}${section5.image}`} alt="militarypcs" width={300} height={100} className="w-full h-full object-cover" unoptimized />
 
           </div>
    

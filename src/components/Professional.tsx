@@ -85,7 +85,7 @@ const Professionals = () => {
 
         {/* Button */}
         <div className="mt-8 md:mt-16 text-center">
-          <Button variant="outlineColor" href="/professionals">
+          <Button variant="primary" href="/professionals">
             Find More Professionals <IoIosArrowRoundForward className=" text-black text-lg" />
           </Button>
         </div>

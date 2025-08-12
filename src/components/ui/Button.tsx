@@ -64,9 +64,9 @@ const Button: React.FC<ButtonProps> = ({
 
   const renderedIcon =
     icon && React.isValidElement(icon)
-      ? React.cloneElement(icon, {
+      ? React.cloneElement(icon as React.ReactElement<any>, {
           ...(iconSize ? { size: iconSize } : {}),
-          className: clsx("shrink-0", icon.props.className, iconClassName)
+          className: clsx("shrink-0", (icon.props as any).className, iconClassName)
         })
       : null;
 

@@ -52,7 +52,7 @@ const page = async() => {
             <p className="text-gray-700 mb-6 leading-8">
               Whether you’re settling into a new duty station or preparing for a PCS move, we’re here to make your transition smoother and your experience better
             </p> */}
-            <Button variant="outlineColor" href="/">
+            <Button variant="primary" href="/">
               Conatact Us <IoIosArrowRoundForward className=" text-black text-lg" />
             </Button>
           </div>

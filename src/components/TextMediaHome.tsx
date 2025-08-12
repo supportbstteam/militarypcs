@@ -37,7 +37,7 @@ const TextMediaHome: React.FC<{
             <h2 className="h2 mt-8">{section3.title}</h2>
             <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html: section3.description }} />
 
-            <Button variant="outlineColor" href="/auth/signup">
+            <Button variant="primary" href="/auth/signup">
               Find a VA Loan Expert <IoIosArrowRoundForward className=" text-black text-lg" />
             </Button>
 
@@ -60,7 +60,7 @@ const TextMediaHome: React.FC<{
             <h2 className="h2 mt-8">{section4.title}</h2>
             <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html: section4.description }} />
 
-              <Button variant="outlineColor" href="/auth/signup">
+              <Button variant="primary" href="/auth/signup">
                 Find a Real Estate Agent <IoIosArrowRoundForward className=" text-black text-lg" />
               </Button>
 
@@ -82,7 +82,7 @@ const TextMediaHome: React.FC<{
           <div className="md:w-1/2">
              <h2 className="h2 mt-8">{section5.title}</h2>
             <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html: section5.description }} />
-            <Button variant="outlineColor" href="/auth/signup">
+            <Button variant="primary" href="/auth/signup">
               Find a Homeowners Insurance <IoIosArrowRoundForward className=" text-black text-lg" />
             </Button>
 

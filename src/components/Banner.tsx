@@ -14,8 +14,7 @@ const Banner: React.FC<BannerProps> = ({ title, subtitle, bgImage }) => {
       className="relative bg-contain bg-top bg-no-repeat md:bg-cover  "
       style={{
         // backgroundImage: `url('/images/Hero-1.webp'), linear-gradient(135deg, #b43141, #274768)`,
-        // backgroundImage: ` url('/assets/Homepage1.png')`,
-        backgroundImage: ` ${bgImage}`,
+        backgroundImage: ` ${"url('/assets/bgnew.png')"}`,
       }}
     >
       <img

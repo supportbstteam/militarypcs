@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
           <div className="flex space-x-3 mt-4 md:mt-0 items-center">
             {["linkedin", "youtube", "facebook", "x"].map(icon => (
-              <Image key={icon} src={`/icons/${icon}.png`} alt={icon} width={10} height={10} className="w-fit h-fit" />
+              <Image key={icon} src={`/icons/${icon}.png`} alt={icon} width={23} height={10} className="" />
             ))}
           </div>
         </div>

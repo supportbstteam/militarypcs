@@ -19,24 +19,19 @@ import Intro3 from "@/components/Intro3";
 export default function Home() {
   return (
     <>
-      {/* <Banner bgImage={"url('/assets/Homepage1.png')"}/> */}
-      {/* <br /> */}
-      <Banner bgImage={"url('/assets/bgnew.png')"}/>
-      {/* <br /> */}
-      {/* <Banner bgImage={"url('/assets/Homepage3.jpg')"}/> */}
-      {/* <br /> */}
+      <Banner/>
       <Intro/>
       <Intro2/>
       <Intro3/>
       <HowItWorks/>
       {/* <MilitryBasesMap/> */}
-      {/* <TextMediaHome/>  */}
-      {/* <SliderComponent/> */}
+      <SliderComponent/>
+      <TextMediaHome/>
       {/* <Services/> */}
-      {/* <Professionals/> */}
-      {/* <TestimonialSlider/> */}
-      {/* <CTA/> */}
-      {/* <ArticlesSection title="ARTICLES"/> */}
+      <Professionals/>
+      <TestimonialSlider/>
+      <CTA/>
+      <ArticlesSection title="ARTICLES"/>
     </>
   );
 }

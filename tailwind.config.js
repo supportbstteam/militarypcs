@@ -10,17 +10,17 @@ export default {
     extend: {
       colors:{
         // primary: "#BF0A30", // red
-        primary: '#ffffff', // red
+        primary: '#BF0A30', // red
         secondary: '#002868', // blue
         light: '#f5f5f5', //
         dark: '#', //
         background : '#232323', 
         accent:"#CDC5A7",
+        transparent: "#ffffff"
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
       },
-      
     }
   },
   plugins: [],

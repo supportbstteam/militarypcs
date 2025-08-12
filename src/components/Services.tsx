@@ -76,46 +76,62 @@ const Services = () => {
   ];
 
   return (
-    <section className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] py-8 md:py-16 ">
-    {/* <section className="bg-primary py-16 "> */}
-      <div className="max-w-[1420px] mx-auto px-4">
+    <section className=" py-8 md:py-16 bg-[#F8F8F8]">
+      {/* <section className="bg-primary py-16 "> */}
+      <div className="max-w-5xl mx-auto px-4">
         {/* Section Heading */}
-        {path==="/" ?
-        <div className="flex items-center flex-col text-center md:mb-10">
-          <h2 className="h2White uppercase">
-            Need Trusted Home Services Pros?
-          </h2>
-          <p className="text-base md:text-xl md:w-8/12 text-white mb-8 leading-8">Connect with verified military veterans and spouse professionals for everything from home inspections, plumbing, painting — and much more, all near your base.</p>
-
-        </div>
+        {path === "/" ?
+          <div className="text-center mb-10 flex justify-center items-center flex-col">
+            <h2 className="h2">
+              Need Trusted Home Services Pros?
+            </h2>
+            <Image src="/assets/stars.png" alt=' ' width={300} height={100} />
+            <div className="mt-12 mb-4 h-4  flex justify-center items-center ">
+              <p className=" psm">Connect with verified military veterans and spouse professionals for everything from home inspections, plumbing, painting - and much more, all near your base.</p>
+            </div>
+          </div>
           : ""}
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
-          {servicesData.map((service) => (
-            <Link key={service.id} href={`/services/${service.title}`}>
-            <div
-              
-              className="bg-white text-center rounded-3xl overflow-hidden  hover:shadow-lg transition"
-            >
-            <Image src={service.image} alt={service.title} width={300} height={100} className="w-full" unoptimized />
-              <h5 className="text-sm font-medium text-black my-3">
-                {service.title}
-              </h5>
-            </div>
-            </Link>
-          ))}
-        </div>
+      </div>
+      {/* <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8"> */}
+      <div className="grid grid-cols-10  justify-center items-center ">
+        {servicesData.map((service, i) => (
+          <section
+            className="relative bg-contain bg-top bg-no-repeat md:bg-cover flex justify-center items-end h-48 p-4 "
+            style={{
+              // backgroundImage: `url('/images/Hero-1.webp'), linear-gradient(135deg, #b43141, #274768)`,
+              // backgroundImage: ` ${"url('/assets/bgnew.png')"}`,
+              // backgroundImage: ` ${"url({`{service.image}`})"}`,
+              backgroundImage: `url(${service.image})`,
+            }}>
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,_theme('colors.primary'),_theme('colors.secondary'))] hover-bg-primary opacity-80 z-0"></div>
+            <></>
+            <div className="relative z-10 flex items-center">
+            {/* 
+              <div className="flex justify-center items-center  bg-green-500 h-48"> */}
 
-        {/* CTA Button */}
-        {path==="/" ? 
+                  <p className="text-white font-semibold text-xs text-center ">
+                    {service.title}
+                  </p>
+
+               
+              {/* </div>
+             */}
+             </div>
+          </section>
+        ))}
+      </div>
+
+
+      {/* CTA Button */}
+      {path === "/" ?
         <div className="mt-8 md:mt-16 text-center">
           <Button variant="primary" href="/services">
             View All Home Services <IoIosArrowRoundForward className=" text-white text-lg" />
           </Button>
         </div>
-          : "" }
-      </div>
+        : ""}
     </section>
   );
 };

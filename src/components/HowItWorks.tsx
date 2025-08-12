@@ -101,7 +101,7 @@ const HowItWorks: React.FC = () => {
 
                 {TitleData.filter(title => title.tab === toggle).map((title, i) => (
 
-                    <div className="text-center mb-10 flex justify-center items-center flex-col">
+                    <div key={i} className="text-center mb-10 flex justify-center items-center flex-col">
                         <h2 className="h2">
                             {title.h2}
                         </h2>
@@ -136,7 +136,7 @@ const HowItWorks: React.FC = () => {
                     .map((card, i) => {
                         const Icon = card.icon;
                         return (
-                            <div key={i} className={`group hover:bg-white bg-[#ececec] p-8 rounded-3xl border-l-4 border-secondary hover:border-primary flex flex-col items-start justify-between hover:shadow-lg transition`}>
+                            <div key={i} className={`group hover:bg-white bg-[#ececec] p-8 rounded-3xl border-l-4 border-secondary hover:border-primary flex flex-col items-start justify-between hover:shadow-lg transition cursor-pointer`}>
                                 <div>
 
                                     <Icon className="text-6xl text-primary transition-colors" />

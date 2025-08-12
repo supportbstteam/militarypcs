@@ -9,6 +9,7 @@
   --color-dark: #171717;
   --color-bg:#f9f9f9;
   --accent:#CDC5A7;
+  --transparent :"#ffffff"
 }
 
 /* --color-secondary: #002868; */
@@ -30,7 +31,6 @@
 /* } */
 body {
   background-color: white !important;
-  background-color: red;
   color: black !important;
   font-family: 'Poppins', sans-serif;
 }

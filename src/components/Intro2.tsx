@@ -20,7 +20,7 @@ const Intro2 = async () => {
                     {
                         data.map((card: any) => (
 
-                            <div key={card.id} className="group text-left rounded-xl overflow-hidden  hover:shadow-lg transition px-8 py-6 pb-12 text-white bg-white min-h-[310px]" >
+                            <div key={card.id} className="group text-left rounded-xl overflow-hidden  hover:shadow-lg transition px-8 py-12 text-white bg-white min-h-[310px]" >
                                 <h3 className='group-hover:text-primary h3 mb-4 text-black border-l-2 border-primary pl-6  font-bold'>{card.title}</h3>
                                 <p className='text-black psm'>{card.description}</p>
                             </div>

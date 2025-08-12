@@ -6,6 +6,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useSponsors } from "@/lib/query/Query";
 import Image from "next/image";
 
+
 // const images = [
 //   "/sponsors/sponsor1.webp",
 //   "/sponsors/sponsor2.webp",
@@ -50,23 +51,22 @@ const SliderComponent: React.FC = () => {
   return (
     <section className=" py-16 pb-20 bg-[#f9f9f9]">
       <div className="max-w-5xl mx-auto ">
-        <h2 className="text-center text-2xl md:text-3xl font-semibold bg-[linear-gradient(135deg,#b43141,#274768)] bg-clip-text text-transparent mb-12">
-        </h2>
+
         <div className="text-center mb-10 flex justify-center items-center flex-col">
           <h2 className="h2">
-          Our Corporate Sponsors <br /> Fueling Resources for Military Families
+            Our Corporate Sponsors <br /> Fueling Resources for Military Families
           </h2>
           <Image src="/assets/stars.png" alt=' ' width={300} height={100} />
           <div className="mt-12 mb-4 h-4  flex justify-center items-center ">
-            <p></p>
+            <p className="w-3/4 psm">Join us to connect service members, veterans, and families, empowering them with resources and community strength.</p>
           </div>
         </div>
         {/* <div className="  "> */}
         <Slider {...settings}>
           {sponsors?.data?.messages.map((sponsor: any) => (
             <div key={sponsor.id} className="px-4">
-              <div className="bg-white rounded-full w-35 h-35 mx-auto flex items-center justify-center ">
-                <img src={sponsor.logo} alt={`Logo ${sponsor.id}`} className="h-25 object-contain" />
+              <div className=" rounded-[40px] w-40 h-40 mx-auto flex items-center justify-center border border-[#C1C1C1]">
+                <img src={sponsor.logo} alt={`Logo ${sponsor.id}`} className="h-30 object-contain" />
               </div>
             </div>
           ))}
@@ -95,19 +95,21 @@ const SliderComponent: React.FC = () => {
 
 const NextArrow: React.FC<any> = ({ onClick }) => (
   <div
-    className="absolute   right-[-1px] md:right-[-32px] top-1/2 transform -translate-y-1/2 pr-4 cursor-pointer text-gray-600 hover:text-black"
+    className="absolute   right-[-150px] top-1/2 transform -translate-y-1/2 pr-4 cursor-pointer text-gray-600 hover:text-black"
     onClick={onClick}
   >
-    <FaChevronRight size={24} />
+    {/* <FaChevronRight size={24} />  */}
+    <Image src="/icons/arrowRight.png" alt="icon" width={60} height={100}></Image>
   </div>
 );
 
 const PrevArrow: React.FC<any> = ({ onClick }) => (
   <div
-    className="absolute   left-[-1px] md:left-[-32px] top-1/2 transform -translate-y-1/2 pl-4 cursor-pointer text-gray-600 hover:text-black"
+    className="absolute   left-[-150px] top-1/2 transform -translate-y-1/2 pl-4 cursor-pointer text-gray-600 hover:text-black"
     onClick={onClick}
   >
-    <FaChevronLeft size={24} />
+    {/* <FaChevronLeft size={24} /> */}
+    <Image src="/icons/arrowLeft.png" alt="icon" width={60} height={100}></Image>
   </div>
 );
 

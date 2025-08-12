@@ -2,6 +2,7 @@
 import { fetchLocation, useLocation } from "@/lib/query/Query";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "../ui/Button";
 
 const Footer = () => {
 
@@ -16,7 +17,7 @@ const Footer = () => {
     { label: "Events", link: "/events" },
     { label: "Donate", link: "/donate" },
     { label: "Resourcess", link: "/resourcess" },
-    { label: "Testing", link: "/testing" }, 
+    { label: "Testing", link: "/testing" },
   ];
   const InformationLinks = [
     { label: "Privacy Policy", link: "/privacy-policy" },
@@ -38,80 +39,96 @@ const Footer = () => {
 
 
   return (
-    <footer className="w-full bg-[#fbfbfb] py-8 md:pt-16 text-gray-600 text-sm">
-      <div className=" max-w-[1420px] mx-auto px-4 xl:px-0 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-8 mb-16">
-
+    <footer className="w-full bg-[#232323]  text-gray-100 text-sm">
+      <div className=" max-w-5xl mx-auto px-4 xl:px-0 grid grid-cols-1 md:grid-cols-4 xl:grid-cols-4 gap-8  py-16 ">
         <div className="">
-          <div className="text-base text-gray-500 mt-2 mb-4 leading-8 ">
+          <div className="text-base  mt-2 mb-4 leading-8 ">
             <Link href="/">
-              <Image src="/images/footerLogo.png" alt="militarypcs" width={300} height={60} className=" w-full md:w-[250px] mb-8" />
+              <Image src="/images/logoFooter.png" alt="militarypcs" width={300} height={60} className=" w-full md:w-[250px] mb-8" />
             </Link>
-            <p>We’re a mission-driven platform built by and for the military community.</p>
+            <p className="text-sm leading-5 text-white/70">We’re a mission-driven platform built by and for the military community.</p>
           </div>
-          <div className="mt-4">
-            <h4 className="font-medium text-base text-black mb-2">Contact information</h4>
-            <p className="text-2xl  font-semibold bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] bg-clip-text text-transparent w-fit">
-              Call : 123 456 7890
-            </p>
-            <Link href="mailto:info@militarypcs.com" className="underline mt-1 inline-block text-base">
-              info@militarypcs.com
-            </Link>
+          <div className="flex space-x-3 mt-4 md:mt-0 items-center">
+            {["linkedin", "youtube", "facebook", "x"].map(icon => (
+              <Image key={icon} src={`/icons/${icon}.png`} alt={icon} width={10} height={10} className="w-fit h-fit" />
+            ))}
           </div>
         </div>
         {/* Quick Links */}
-        <div>
-          <h4 className="text-xl font-semibold text-black mb-8">Quick Links</h4>
-          <ul className="space-y-4">
+        <div className="border-l-1 border-white/20 pl-4">
+          <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
+          <ul className="space-y-1">
             {quickLinks.map((link, i) => (
-              <li key={i}><Link href={link.link} className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">{link.label}</Link></li>
+              <li key={i}><Link href={link.link} className="text-gray-200 text-sm hover:text-white">{link.label}</Link></li>
             ))}
           </ul>
         </div>
 
         {/* Information */}
-        <div>
-          <h4 className="text-xl font-semibold text-black mb-8">Information</h4>
-          <ul className="space-y-4">
+        <div className="border-l-1 border-white/20 pl-4">
+          <h4 className="text-lg font-semibold text-white mb-4">Information</h4>
+          <ul className="space-y-1">
             {InformationLinks.map(policy => (
-              <li key={policy.label}><Link href={policy.link} className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">{policy.label}</Link></li>
+              <li key={policy.label}><Link href={policy.link} className="text-gray-200 text-sm hover:text-white">{policy.label}</Link></li>
             ))}
           </ul>
         </div>
-      </div>
-      <div className="max-w-[1420px] mx-auto px-4 xl:px-0 mt-10  ">
-        {/* Locations */}
-        <div>
-          <h4 className="text-xl font-semibold text-black mb-8">Locations</h4>
+
+        {/* Information */}
+        <div className="border-l-1 border-white/20 pl-4">
+          <h4 className="text-xl font-semibold text-white mb-4">Contact</h4>
+          <p className="text-base bg-clip-text  w-fit">
+            Call : <span className="text-base  font-semibold">123 456 7890</span>
+          </p>
+          <Link href="mailto:info@militarypcs.com" className="underline mt-1 inline-block text-sm">
+            info@militarypcs.com
+          </Link>
+          <div className="flex flex-col gap-4 mt-8">
+            <Link href="/auth/login">
+              <Button size="sm">
+                {/* <MdDashboard size={22} className="text-white" /> */}
+                Sign In
+              </Button>
+            </Link>
+            <Link href="/auth/signup">
+              <Button variant="outline" size="sm">
+                {/* <CiUser size={22} className="text-white" /> */}
+                Join
+              </Button >
+            </Link>
+          </div>
         </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      </div>
+      <div className=" bg-[#1D1D1D] py-6">
+        <div className="max-w-5xl mx-auto px-4 xl:px-0 mt-10">
+          {/* Locations */}
+          <div>
+            <h4 className="text-lg font-semibold text-primary mb-4">Locations</h4>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 ">
             {stateChunks.map((chunk, idx) => (
-              <ul key={idx} className="space-y-4">
+              <ul key={idx} className="space-y-1 border-l-1 border-white/20 pl-4">
                 {chunk.map((state) => (
-                  <li key={state.id} className="text-gray-500 text-base hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-clip-text hover:text-transparent">
-                    <Link key={state.id} href={`/states/${state.location}?state=${encodeURIComponent(state.location)}` }>
-                      
-
+                  <li key={state.id} className="text-white/70 text-sm hover:text-white  ">
+                    <Link key={state.id} href={`/states/${state.location}?state=${encodeURIComponent(state.location)}`}>
                       {state.location}
-                    
-
                     </Link>
                   </li>
                 ))}
               </ul>
             ))}
           </div>
-      </div>
-      {/* Bottom Section */}
-      <div className="max-w-[1420px] mx-auto px-4 xl:px-0 mt-10 border-t border-gray-300 pt-4 flex flex-col md:flex-row justify-between items-center">
-        <p className="text-sm text-gray-500">
-          © 2025 <span className="font-medium text-black">MilitaryPCS</span>. All rights reserved. Website Design by <span className="font-medium text-black"> <Link href="https://www.betasofttechnology.com/" target="_blank">Beta Soft Technology</Link></span>.
-        </p>
-        <div className="flex space-x-3 mt-4 md:mt-0 rounded-circle overflow-hidden">
-          {["facebook", "tiktok", "instagram", "x", "linkedin", "threads", "youtube"].map(icon => (
-            <Image key={icon} src={`/icons/${icon}.svg`} alt={icon} width={20} height={20} className="rounded-circle overflow-hidden" />
-          ))}
+
+        </div>
+        {/* Bottom Section */}
+        <div className="max-w-5xl mx-auto px-4 xl:px-0 mt-10 flex flex-col md:flex-row justify-center items-center">
+          <p className="text-sm text-gray-100 text-center">
+            <span className="font-medium text-white/70">© 2025 MilitaryPCS. All rights reserved.</span>
+          </p>
+
         </div>
       </div>
+
     </footer>
   );
 };

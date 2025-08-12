@@ -1,23 +1,29 @@
 import React from "react";
 import clsx from "clsx";
-import type { IconType } from "react-icons";
+
+type ButtonVariant = "primary" | "secondary" | "outline" | "icon";
+type ButtonSize = "xs" | "sm" | "md" | "lg" | "full";
+type ButtonColor = "black" | "white" | "gray" | "primary" | "secondary";
 
 type ButtonProps = {
-  variant?: "primary" | "secondary" | "outlineWhite" | "outlineColor";
+  variant?: ButtonVariant;
   icon?: React.ReactElement;
   iconSize?: number;
   iconClassName?: string;
   href?: string;
   className?: string;
   children: React.ReactNode;
-  width?: string; // e.g., "full", "fit", "auto", or any custom width like "300px"
+  size?: ButtonSize;
+  color?: ButtonColor;
+  disabled?: boolean;
+  width?: string; // e.g., "full", "fit", "auto", "300px"
 } & (
   | React.ButtonHTMLAttributes<HTMLButtonElement>
   | React.AnchorHTMLAttributes<HTMLAnchorElement>
 );
 
 const Button: React.FC<ButtonProps> = ({
-  variant ="primary",
+  variant = "primary",
   className,
   icon,
   iconSize,
@@ -25,26 +31,45 @@ const Button: React.FC<ButtonProps> = ({
   href,
   children,
   width,
+  size = "md",
+  color,
+  disabled = false,
   ...props
 }) => {
-  // const base = "min-w-[240px]  inline-flex justify-center items-center  gap-2 w-fit px-6 py-4 text-base   rounded-lg font-semibold cursor-pointer";
-  const base = `min-w-[240px] w-${width}  inline-flex justify-center items-center  gap-2 w-fit px-6 py-4 text-base   rounded-lg font-semibold cursor-pointer transition shadow capitalize`;
-  const variants = {
-    primary: " text-white bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:bg-[linear-gradient(135deg,_theme('colors.secondary'),_theme('colors.primary'))] transition duration-200",
-    secondary: "bg-gray-200 text-black hover:bg-gray-300",
-    outlineWhite:"border border-white text-white bg-transparent hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] hover:text-white transition shadow",
-    // outlineColor:"border border-[#B43141] bg-[linear-gradient(135deg,#b43141,#274768)] bg-clip-text text-transparent text hover:bg-[linear-gradient(135deg,#274768,#b43141)] hover:text-white",
-    
-    outlineColor:"border border-primary text-black bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] bg-clip-text text-transparent  hover:bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] ",
+  const baseStyles =
+    "inline-flex items-center justify-center rounded-full  transition-colors cursor-pointer h-fit min-w-[90px] ";
+
+  const sizeStyles: Record<ButtonSize, string> = {
+    xs: "px-3 py-1 text-xs",
+    sm: "px-5 py-[6px] text-sm",
+    md: "px-12 py-3 text-base min-w-220",
+    lg: "px-8 py-4 text-lg font-bold",
+    full: "w-full px-4 py-2 text-base"
   };
 
-const renderedIcon =
-  icon && React.isValidElement(icon)
-    ? React.cloneElement(icon as React.ReactElement<{ className?: string; size?: number }>, {
-        ...(iconSize ? { size: iconSize } : {}),
-        className: clsx("shrink-0", (icon.props as { className?: string }).className, iconClassName),
-      })
-    : null;
+  const colorStyles: Record<ButtonColor, string> = {
+    black: "text-black",
+    white: "text-white",
+    gray: "text-gray-400",
+    primary: "text-primary",
+    secondary: "text-secondary"
+  };
+
+  const variantStyles: Record<ButtonVariant, string> = {
+    primary: "bg-primary text-white border border-transparent hover:bg-white hover:text-black transition hover:border-black",
+    secondary: "bg-white border hover:border-black",
+    outline: "border border-white text-white bg-transparent hover:bg-white hover:text-black transition",
+    icon: "bg-transparent p-2"
+  };
+
+  const renderedIcon =
+    icon && React.isValidElement(icon)
+      ? React.cloneElement(icon, {
+          ...(iconSize ? { size: iconSize } : {}),
+          className: clsx("shrink-0", icon.props.className, iconClassName)
+        })
+      : null;
+
   const content = (
     <>
       {renderedIcon && <span>{renderedIcon}</span>}
@@ -52,11 +77,23 @@ const renderedIcon =
     </>
   );
 
+  const classes = clsx(
+    baseStyles,
+    sizeStyles[size],
+    variantStyles[variant],
+    color && colorStyles[color],
+    disabled && "opacity-50 cursor-not-allowed",
+    width && width !== "full" && `w-[${width}]`,
+    className
+  );
+
   if (href) {
     return (
       <a
         href={href}
-        className={clsx(base, variants[variant], className)}
+        className={classes}
+        aria-disabled={disabled}
+        onClick={disabled ? (e) => e.preventDefault() : undefined}
         {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         {content}
@@ -66,7 +103,8 @@ const renderedIcon =
 
   return (
     <button
-      className={clsx(base, variants[variant], className)}
+      className={classes}
+      disabled={disabled}
       {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     >
       {content}

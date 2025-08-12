@@ -14,6 +14,7 @@ import { hasCookie } from "cookies-next/client";
 import { useAuthStore } from "@/store/authStore";
 import { useLogout } from "@/lib/query/Query";
 import { getCookie } from 'cookies-next';
+import Button from "../ui/Button";
 
 const Header: React.FC = () => {
 
@@ -57,10 +58,10 @@ const Header: React.FC = () => {
     // })
 
     return (
-        <header className="max-w-[1420px] mx-auto py-4 px-4 xl:px-0 relative">
+        <header className="max-w-7xl mx-auto py-4 px-4 xl:px-0 relative">
             <div className="flex items-center justify-between">
                 {/* Logo */}
-                <div className="w-8/12 md:w-3/12">
+                <div className="flex flex-row justify-between gap-6">
                     <Link href="/" onClick={closeMobileMenu}>
                         <Image
                             src="/images/logo.png"
@@ -71,73 +72,78 @@ const Header: React.FC = () => {
                             priority
                         />
                     </Link>
+                    {/* Desktop Navigation */}
+                    <nav className="w-9/12 hidden xl:flex gap-12 justify-end items-center">
+                        <ul className="flex items-center gap-8">
+                            {navItems.map((item, i) => (
+                                <li key={i}>
+                                    <Link
+                                        href={item.link}
+                                        className=""
+                                    >
+                                        <span className="text-black text-base font-medium ">
+                                            {item.label}
+                                        </span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+
+                    </nav>
                 </div>
-                {/* Desktop Navigation */}
-                <nav className="w-9/12 hidden xl:flex gap-12 justify-end items-center">
-                    <ul className="flex items-center gap-8">
-                        {navItems.map((item, i) => (
-                            <li key={i}>
-                                <Link
-                                    href={item.link}
-                                    className="block hover:scale-105 transition duration-150 ease-in-out"
-                                >
-                                    <span className="text-black text-base font-medium hover:bg-[linear-gradient(135deg,#b43141,#274768)] hover:bg-clip-text hover:text-transparent">
-                                        {item.label}
-                                    </span>
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                    {/* Desktop buttons */}
 
-                    <div className="flex gap-2">
+                {/* Desktop buttons */}
+
+                <div className="flex gap-2">
 
 
 
-                        {isLoggedIn ? (
+                    {isLoggedIn ? (
+                        <>
+                            <Link href="/auth/login">
 
-                            <>
+                                <Button variant="secondary" size="sm">
+                                    <MdDashboard size={22} className="text-white" />
+                                    Dashboard
+                                </Button>
+                            </Link>
 
-                                <Link href="/dashboard">
-                                    <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
-                                        <MdDashboard size={22} className="text-white" />
-                                        Dashboard
-                                    </button>
-                                </Link>
+                            <Link href="/auth/signup">
 
-                                <button onClick={handleLogout} className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
+                                <Button size="sm">
                                     <CiUser size={22} className="text-white" />
                                     Log Out
-                                </button>
+                                </Button >
+                            </Link>
 
-                            </>
-
-
-                        ) : (
-
-                            <>
-                                <Link href="/auth/login">
-                                    <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
-                                        <CiLock size={22} className="text-white" />
-                                        Sign in
-                                    </button>
-                                </Link>
-
-                                <Link href="/auth/signup">
-                                    <button className="flex items-center gap-1 px-4 py-2 text-sm bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold hover:from-secondary hover:to-primary transition duration-200 cursor-pointer">
-                                        <CiUser size={22} className="text-white" />
-                                        Join us
-                                    </button>
-                                </Link>
-
-                            </>
+                        </>
 
 
-                        )
-                        }
 
-                    </div>
-                </nav>
+                    ) : (
+
+                        <>
+                            <Link href="/auth/login">
+
+                                <Button variant="secondary" size="sm" className="border-black">
+                                    Sign In
+                                </Button>
+                            </Link>
+
+                            <Link href="/auth/signup">
+
+                                <Button size="sm">
+                                    Join Us
+                                </Button>
+                            </Link>
+
+                        </>
+
+
+                    )
+                    }
+
+                </div>
 
                 {/* Mobile Menu Toggle */}
                 <button

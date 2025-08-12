@@ -4,6 +4,7 @@ import React from "react";
 import Slider, { Settings } from "react-slick";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useSponsors } from "@/lib/query/Query";
+import Image from "next/image";
 
 // const images = [
 //   "/sponsors/sponsor1.webp",
@@ -20,7 +21,7 @@ const SliderComponent: React.FC = () => {
   const sponsors = useSponsors()
   // console.log(sponsors?.data?.messages, "sponsors");
   const settings: Settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 5,
@@ -47,15 +48,22 @@ const SliderComponent: React.FC = () => {
   };
 
   return (
-    <section className="py-8 pb-14 md:py-16 bg-[#f9f9f9]">
-      <div className="max-w-[1420px] mx-auto px-4">
+    <section className=" py-16 pb-20 bg-[#f9f9f9]">
+      <div className="max-w-5xl mx-auto ">
         <h2 className="text-center text-2xl md:text-3xl font-semibold bg-[linear-gradient(135deg,#b43141,#274768)] bg-clip-text text-transparent mb-12">
-          Our Corporate Sponsors <br /> Fueling Resources for Military Families
         </h2>
+        <div className="text-center mb-10 flex justify-center items-center flex-col">
+          <h2 className="h2">
+          Our Corporate Sponsors <br /> Fueling Resources for Military Families
+          </h2>
+          <Image src="/assets/stars.png" alt=' ' width={300} height={100} />
+          <div className="mt-12 mb-4 h-4  flex justify-center items-center ">
+            <p></p>
+          </div>
+        </div>
         {/* <div className="  "> */}
-
         <Slider {...settings}>
-          {sponsors?.data?.messages.map((sponsor:any) => (
+          {sponsors?.data?.messages.map((sponsor: any) => (
             <div key={sponsor.id} className="px-4">
               <div className="bg-white rounded-full w-35 h-35 mx-auto flex items-center justify-center ">
                 <img src={sponsor.logo} alt={`Logo ${sponsor.id}`} className="h-25 object-contain" />
@@ -63,7 +71,7 @@ const SliderComponent: React.FC = () => {
             </div>
           ))}
         </Slider>
-          {/* </div> */}
+        {/* </div> */}
       </div>
 
       <style jsx global>{`

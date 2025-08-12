@@ -10,10 +10,12 @@ export default {
     extend: {
       colors:{
         // primary: "#BF0A30", // red
-        primary: '#008000', // green Test
+        primary: '#ffffff', // red
         secondary: '#002868', // blue
-        light: '#f5f5f5',
-        dark: '#171717',
+        light: '#f5f5f5', //
+        dark: '#', //
+        background : '#232323', 
+        accent:"#CDC5A7",
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],

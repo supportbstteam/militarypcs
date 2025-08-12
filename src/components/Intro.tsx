@@ -6,65 +6,36 @@ import React from 'react'
 
 const Intro = async () => {
 
-    const section1 = await fetchHome();
-
-    const data = section1.section1.data
-    const title = section1.section1.titleData[0]
-    const section1_descriptionbottom = section1.section1.titleData[0].section1_descriptionbottom
-    const section1_descriptiontop =section1.section1.titleData[0].section1_descriptiontop
-
-
-
-    // console.log(section1)
-    // console.log(section1_descriptionbottom)
-    // console.log(title, "title ")
-
-
-
     return (
-        <section className="py-8 md:py-16 bg-[#f9f9f9]">
-            <div className="max-w-[1420px] mx-auto px-4">
+        <>
+        <section className="py-8 md:py-16 bg-[#ffffff]">
+            <div className="max-w-5xl mx-auto">
                 {/* Heading */}
-                <div className="text-center mb-10">
-                    <h2 className="h2 mb-4">
-                        {/* Welcome to MilitaryPCS.com — Built by Military, for Military */}
-                        {title.section1_title}
+                <div className="text-center mb-10 flex justify-center items-center flex-col">
+                    <p className='text-2xl'><span className='text-primary'>Welcome</span>  to MilitaryPCS.com</p>
+                    <h2 className="h2">
+                        Built by Military, for Military
                     </h2>
+                    <Image src="/assets/stars.png" alt=' ' width={300} height={100} />
+                </div>
+                <div className='grid grid-cols-2 gap-12'>
+                    <Image src="/assets/intro.png" alt=' ' width={300} height={100} className='w-full rounded-2xl' />
+                    <div>
+                        <p className='psm'>At MilitaryPCS.com, we believe in the power of our community to create something bigger than ourselves.</p>
+                        <div className='font-bold border-l-2 border-primary pl-6 my-6 text-sm'> <p> This isn’t just another resource platform - it’s a mission-driven movement to transform how military families connect, move,thrive and are served by others.</p></div>
+                        <p className="psm">When you share MilitaryPCS.com with other military families, you help build a powerful network of members and professionals who understand the unique challenges and lifestyle of military life. The more we grow together, the more impact we make - saving time, money, and bringing peace of mind to every military family that joins.</p>
 
-                    <div className="text-black mb-4 md:mb-8 text-left" >
-                        {/* {title.section1_descriptiontop} */}
-                        <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html:section1_descriptiontop}} />
-                        
                     </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-8">
-                    {
-                        data.map((card: any) => (
-
-                            <div key={card.id} className="bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-left rounded-3xl overflow-hidden  hover:shadow-lg transition px-8 py-6 text-white" >
-                                <h3 className='h3 mb-4'>{card.title}</h3>
-                                <p>{card.description}</p>
-                            </div>
-                        ))
-                    }
-                    
-                </div>   
-                <>
-                </>
-                    <div className="text-center ">
-
-                        <div className="text-black text-left" >
-                        {/* {title.section1_descriptionbottom} */}
-                        <div className="text-black mb-4 md:mb-8 text-left" dangerouslySetInnerHTML={{ __html:section1_descriptionbottom}} />
-
-
-                        </div>
-
-                    </div>
-
-
-                </div>
+            </div>
         </section>
+        <section className='bg-primary'>
+            <div className="max-w-5xl mx-auto flex justify-center py-10">
+                <p className='text-white text-2xl'>Here’s how MilitaryPCS.com delivers <span className='font-bold'>unmatched value:</span></p>
+            </div>
+        </section>
+        </>
+
     )
 }
 

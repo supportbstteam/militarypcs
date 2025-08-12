@@ -12,6 +12,8 @@ import TestimonialSlider from "@/components/TestimonialSlider";
 import CTA from "@/components/CTA";
 import ArticlesSection from "@/components/ArticlesSection";
 import Intro from "@/components/Intro";
+import Intro2 from "@/components/Intro2";
+import Intro3 from "@/components/Intro3";
 
 
 export default function Home() {
@@ -19,20 +21,22 @@ export default function Home() {
     <>
       {/* <Banner bgImage={"url('/assets/Homepage1.png')"}/> */}
       {/* <br /> */}
-      <Banner bgImage={"url('/assets/Homepage2.jpg')"}/>
+      <Banner bgImage={"url('/assets/bgnew.png')"}/>
       {/* <br /> */}
       {/* <Banner bgImage={"url('/assets/Homepage3.jpg')"}/> */}
       {/* <br /> */}
       <Intro/>
+      <Intro2/>
+      <Intro3/>
       <HowItWorks/>
-      <MilitryBasesMap/>
-      <TextMediaHome/> 
-      <SliderComponent/>
-      <Services/>
-      <Professionals/>
-      <TestimonialSlider/>
-      <CTA/>
-      <ArticlesSection title="ARTICLES"/>
+      {/* <MilitryBasesMap/> */}
+      {/* <TextMediaHome/>  */}
+      {/* <SliderComponent/> */}
+      {/* <Services/> */}
+      {/* <Professionals/> */}
+      {/* <TestimonialSlider/> */}
+      {/* <CTA/> */}
+      {/* <ArticlesSection title="ARTICLES"/> */}
     </>
   );
 }

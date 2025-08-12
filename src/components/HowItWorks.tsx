@@ -10,8 +10,8 @@ import { PiNetworkLight, PiSpeakerSimpleHighLight } from "react-icons/pi";
 import { SlBadge, SlBell, SlBubble, SlChart, SlEvent, SlLocationPin, SlNotebook, SlUserFollowing } from "react-icons/sl";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 import Button from "./ui/Button";
-
-
+import Image from "next/image";
+import { CircleArrowRight } from "lucide-react";
 
 
 type Step = {
@@ -95,32 +95,35 @@ const HowItWorks: React.FC = () => {
             "subTitle": "We provide PCS resources and match military families with verified, mission-aligned professionals in real estate, VA lending, insurance, home services, and more. Military Serving Military isn’t just our motto—it’s the heart of what we do."
         }
     ]
-
     return (
-        <section className="max-w-[1420px] mx-auto px-4 xl:px-0  py-8 md:py-16">
-            <div className="lg:flex justify-between items-start ">
+        <section className="max-w-5xl mx-auto px-4 xl:px-0  py-8 md:py-16">
+            <div className=" flex flex-col justify-center items-center">
 
                 {TitleData.filter(title => title.tab === toggle).map((title, i) => (
-                    <div className="lg:w-[50%]  " key={i}>
-                        <h2 className="h2   ">
+
+                    <div className="text-center mb-10 flex justify-center items-center flex-col">
+                        <h2 className="h2">
                             {title.h2}
                         </h2>
-                        <p className="text-base md:text-lg text-gray-600 mt-2 mb-4">
-                            {title.subTitle}
-                        </p>
+                        <Image src="/assets/stars.png" alt=' ' width={300} height={100} />
+                        <div className="mt-12 mb-4 h-4  flex justify-center items-center ">
+
+                            <p>{title.subTitle}</p>
+                        </div>
+
                     </div>
                 ))}
-                <div className="sm:flex items-center rounded-xl items">
+                <div className="flex items-center justify-center rounded-full  w-fit border border-black">
                     <span
                         onClick={() => setToggel("members")}
-                        className={` rounded-t-xl sm:rounded-t-none sm:rounded-l-xl cursor-pointer flex items-center justify-center gap-2   text-base font-semibold px-12 py-3  transition duration-100 ${toggle === "members" ? "bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-white " : " text-black bg-[#DEDEDE]"}`}
+                        className={` rounded-full cursor-pointer flex items-center justify-center gap-2   text-base font-semibold px-12 py-3  transition duration-100 ${toggle === "members" ? "bg-primary text-white border border-primary scale-y-104 scale-x-101" : " text-black "}`}
 
                     >
                         For Military Members
                     </span>
                     <span
                         onClick={() => setToggel("professionals")}
-                        className={` rounded-b-xl sm:rounded-b-none sm:rounded-r-xl sm:rounded-br-xl  cursor-pointer flex  items-center justify-center gap-2   text-base font-semibold px-12 py-3 transition duration-100 ${toggle === "professionals" ? "bg-[linear-gradient(135deg,_theme('colors.primary'),_theme('colors.secondary'))] text-white " : " text-black bg-[#DEDEDE]"}`}
+                        className={` rounded-full  cursor-pointer flex  items-center justify-center gap-2   text-base font-semibold px-12 py-3 transition duration-100 ${toggle === "professionals" ? "bg-primary text-white border border-primary scale-y-104 scale-x-103" : " text-black "}`}
                     >
                         For Professionals
                     </span>
@@ -133,28 +136,35 @@ const HowItWorks: React.FC = () => {
                     .map((card, i) => {
                         const Icon = card.icon;
                         return (
-                            <div key={i} className="group hover:transform hover:scale-105 transition-all duration-300">
-                                <Icon className="text-4xl text-primary transition-colors group-hover:text-secondary" />
-                                <h4 className="text-xl font-semibold text-gray-800 mt-8 mb-0">
-                                    {card.title}
-                                </h4>
-                                <p className="text-base md:text-base leading-8 text-gray-600 mt-2 mb-8">
-                                    {card.text}
-                                </p>
-                                <a
-                                    href="/auth/signup"
-                                    className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold text-sm hover:opacity-80 transition-opacity"
-                                >
-                                    {card.button}
-                                    <IoIosArrowRoundForward className="text-primary text-lg" />
-                                </a>
+                            <div key={i} className={`group hover:bg-white bg-[#ececec] p-8 rounded-3xl border-l-4 border-secondary hover:border-primary flex flex-col items-start justify-between hover:shadow-lg transition`}>
+                                <div>
+
+                                    <Icon className="text-6xl text-primary transition-colors" />
+                                    <h4 className="text-xl font-semibold text-gray-800 mt-4 mb-0">
+                                        {card.title}
+                                    </h4>
+                                    <p className="psm mt-2 mb-8">
+                                        {card.text}
+                                    </p>
+                                </div>
+                                <div className="w-full border-t-1 pt-4 border-gray-400 h-12 ">
+
+                                    <a
+                                        href="/auth/signup"
+                                        className="flex items-center justify-between gap-2  text-sm group-hover:text-primary"
+                                    >
+                                        {card.button}
+                                        {/* <IoIosArrowRoundForward className="text-primary text-lg" /> */}
+                                        <CircleArrowRight size={32} strokeWidth={0.5} />
+                                    </a>
+                                </div>
                             </div>
                         );
                     })}
             </div>
-            <div className="grid">
-                <p className="my-4">Military serving Military matters!</p>
-                <Button variant="primary" href="/auth/signup">Join Today</Button>
+            <div className="grid justify-center items-center mt-8">
+                <p className="my-4 font-semibold">Military serving Military matters!</p>
+                <Button  href="/auth/signup">Join Today</Button>
 
             </div>
 

@@ -37,14 +37,7 @@ const TextMediaHome: React.FC<{
   media?: React.ReactNode;
 }> =  ({ title, subtitle, media }) => {
 
-  // const data = await fetchHome();
-  // //  console.log(data , "data")
 
-  // const section3 = await data.section3.section3;
-  // // console.log(section3 , "text-media-3")
-  // const section4 = await data.section4[0];
-  // const section5 = await data.section5[0];
-  // console.log(section4, "text-media-5")
 
   const [activeTab, setActiveTab] = useState("loan")
 
@@ -112,8 +105,8 @@ const TextMediaHome: React.FC<{
 
         </div>
       </section>
-       }
-      {activeTab==="estate" &&  
+      }
+      {activeTab==="estate" && 
 
 
       <section className="max-w-5xl mx-auto">
@@ -191,12 +184,8 @@ const TextMediaHome: React.FC<{
                   Search for Professionals
                 </Button>
               </div>
-
             </div>
-
-
           </div>
-
         </div>
       </section>
       }

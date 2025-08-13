@@ -81,7 +81,7 @@ const Header: React.FC = () => {
                                         href={item.link}
                                         className=""
                                     >
-                                        <span className="text-black text-base font-medium ">
+                                        <span className="text-black text-sm font-medium ">
                                             {item.label}
                                         </span>
                                     </Link>

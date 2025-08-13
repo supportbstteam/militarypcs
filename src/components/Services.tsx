@@ -3,6 +3,8 @@ import React from "react";
 import Button from './ui/Button';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import Image from 'next/image';
+import Slider, { Settings } from "react-slick";
+
 
 import { GoArrowRight } from "react-icons/go";
 import { usePathname } from "next/navigation";
@@ -75,10 +77,36 @@ const Services = () => {
     },
   ];
 
+  const settings: Settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 10,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024, // tablet
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 640, // mobile
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
   return (
     <section className=" py-8 md:py-16 bg-[#F8F8F8]">
       {/* <section className="bg-primary py-16 "> */}
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-[1920px] m-auto mx-auto ">
         {/* Section Heading */}
         {path === "/" ?
           <div className="text-center mb-10 flex justify-center items-center flex-col">
@@ -87,40 +115,37 @@ const Services = () => {
             </h2>
             <Image src="/assets/stars.png" alt=' ' width={300} height={100} />
             <div className="mt-12 mb-4 h-4  flex justify-center items-center ">
-              <p className=" psm">Connect with verified military veterans and spouse professionals for everything from home inspections, plumbing, painting - and much more, all near your base.</p>
+              <p className=" psm w-2/3">Connect with verified military veterans and spouse professionals for everything from home inspections, plumbing, painting - and much more, all near your base.</p>
             </div>
           </div>
           : ""}
 
         {/* Services Grid */}
-      </div>
-      {/* <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8"> */}
-      <div className="grid grid-cols-10  justify-center items-center ">
-        {servicesData.map((service, i) => (
-          <section
-            className="relative bg-contain bg-top bg-no-repeat md:bg-cover flex justify-center items-end h-48 p-4 "
-            style={{
-              // backgroundImage: `url('/images/Hero-1.webp'), linear-gradient(135deg, #b43141, #274768)`,
-              // backgroundImage: ` ${"url('/assets/bgnew.png')"}`,
-              // backgroundImage: ` ${"url({`{service.image}`})"}`,
-              backgroundImage: `url(${service.image})`,
-            }}>
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,_theme('colors.primary'),_theme('colors.secondary'))] hover-bg-primary opacity-80 z-0"></div>
-            <></>
-            <div className="relative z-10 flex items-center">
-            {/* 
-              <div className="flex justify-center items-center  bg-green-500 h-48"> */}
+      <div className="">
+        <Slider {...settings}>
+          {servicesData.map((service, i) => (
+            <section
+              key={i}
+              className="relative flex justify-center items-end h-80 bg-cover bg-center bg-red-400"
+              >
+              <Image 
+                src={service.image} 
+                alt=' image' 
+                width={300} 
+                height={800} 
+                className="h-80 object-cover absolute inset-0 z-0" 
+                />
 
-                  <p className="text-white font-semibold text-xs text-center ">
-                    {service.title}
-                  </p>
+              <div className="relative z-1 bg-[linear-gradient(180deg,#00286850,#002868)] hover:bg-[linear-gradient(180deg,#BF0A3010,#BF0A30)]  hover:opacity-70 h-80"></div>
+              <div className=" relative bottom-14 z-2 flex items-center justify-center w-full">
+                <p className="text-white font-medium text-base text-center ">
+                  {service.title}
+                </p>
+              </div>
+            </section>
+          ))}
+        </Slider>
 
-               
-              {/* </div>
-             */}
-             </div>
-          </section>
-        ))}
       </div>
 
 
@@ -128,12 +153,47 @@ const Services = () => {
       {path === "/" ?
         <div className="mt-8 md:mt-16 text-center">
           <Button variant="primary" href="/services">
-            View All Home Services <IoIosArrowRoundForward className=" text-white text-lg" />
+            More Professionals
           </Button>
         </div>
         : ""}
+      </div>
+
+      <style jsx global>{`
+        .slick-dots {
+          margin-top: 1.5rem;
+          
+        }
+        .slick-dots li button:before {
+          color: #6b7280;
+        }
+        .slick-dots li.slick-active button:before {
+          color: #b43141;
+        }
+        .slick-arrow {
+          z-index: 10;
+        }
+      `}</style>
     </section>
   );
 };
+const NextArrow: React.FC<any> = ({ onClick }) => (
+  <div
+    className="absolute   right-[500px] top-90 transform -translate-y-1/2 pr-4 cursor-pointer text-gray-600 hover:text-black"
+    onClick={onClick}
+  >
+    {/* <FaChevronRight size={24} />  */}
+    <Image src="/icons/arrowRight.png" alt="icon" width={60} height={100}></Image>
+  </div>
+);
 
+const PrevArrow: React.FC<any> = ({ onClick }) => (
+  <div
+    className="absolute   left-[500px] top-90 transform -translate-y-1/2 pl-4 cursor-pointer text-gray-600 hover:text-black"
+    onClick={onClick}
+  >
+    {/* <FaChevronLeft size={24} /> */}
+    <Image src="/icons/arrowLeft.png" alt="icon" width={60} height={100}></Image>
+  </div>
+);
 export default Services;

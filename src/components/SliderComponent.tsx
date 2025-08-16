@@ -20,7 +20,6 @@ import Image from "next/image";
 
 const SliderComponent: React.FC = () => {
   const sponsors = useSponsors()
-  // console.log(sponsors?.data?.messages, "sponsors");
   const settings: Settings = {
     dots: false,
     infinite: true,

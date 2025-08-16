@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import Link from "next/link"; // ✅ Correct import
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "icon";
 type ButtonSize = "xs" | "sm" | "md" | "lg" | "full" | "none";
@@ -37,7 +38,7 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    "inline-flex items-center justify-center   transition-colors cursor-pointer h-fit  ";
+    "inline-flex items-center justify-center transition-colors cursor-pointer h-fit";
 
   const sizeStyles: Record<ButtonSize, string> = {
     xs: "px-3 py-1 text-xs",
@@ -45,7 +46,7 @@ const Button: React.FC<ButtonProps> = ({
     md: "px-12 py-3 text-base min-w-220",
     lg: "px-8 py-4 text-lg font-bold",
     full: "w-full px-4 py-2 text-base",
-    none:"p-0"
+    none: "p-0",
   };
 
   const colorStyles: Record<ButtonColor, string> = {
@@ -53,29 +54,36 @@ const Button: React.FC<ButtonProps> = ({
     white: "text-white",
     gray: "text-gray-400",
     primary: "text-primary",
-    secondary: "text-secondary"
+    secondary: "text-secondary",
   };
 
   const variantStyles: Record<ButtonVariant, string> = {
-    primary: "rounded-full min-w-[90px] bg-primary text-white border border-transparent hover:bg-white hover:text-black transition hover:border-black",
-    secondary: "rounded-full min-w-[90px] bg-white border hover:border-black",
-    outline: "rounded-full min-w-[90px] border border-white text-white bg-transparent hover:bg-white hover:text-black transition",
-    icon: "w-fit bg-transparent"
+    primary:
+      "rounded-full min-w-[90px] bg-primary text-white border border-transparent hover:bg-white hover:text-black hover:border-black transition",
+    secondary:
+      "rounded-full min-w-[90px] bg-white border hover:border-black",
+    outline:
+      "rounded-full min-w-[90px] border border-white text-white bg-transparent hover:bg-white hover:text-black transition",
+    icon: "w-fit bg-transparent",
   };
 
   const renderedIcon =
     icon && React.isValidElement(icon)
       ? React.cloneElement(icon as React.ReactElement<any>, {
           ...(iconSize ? { size: iconSize } : {}),
-          className: clsx("shrink-0", (icon.props as any).className, iconClassName)
+          className: clsx(
+            "shrink-0",
+            (icon.props as any).className,
+            iconClassName
+          ),
         })
       : null;
 
   const content = (
     <span className="inline-flex items-center gap-4">
-    {renderedIcon}
-    {children}
-  </span>
+      {renderedIcon}
+      {children}
+    </span>
   );
 
   const classes = clsx(
@@ -90,7 +98,7 @@ const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-      <a
+      <Link
         href={href}
         className={classes}
         aria-disabled={disabled}
@@ -98,7 +106,7 @@ const Button: React.FC<ButtonProps> = ({
         {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         {content}
-      </a>
+      </Link>
     );
   }
 
